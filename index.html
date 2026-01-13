@@ -139,7 +139,7 @@
                         <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
                             <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
                         </div>
-                        <input
+                        <input id="search-input" onkeyup="handleSearch()"
                             class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
                             placeholder="Suche im Intranet..." value="" />
                     </div>
@@ -313,6 +313,19 @@
                                     class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2 mt-auto">
                                     <span>Ansehen</span>
                                 </button>
+
+                                <div
+                                    class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-text-secondary">
+                                    <span>War dieser Beitrag hilfreich?</span>
+                                    <div class="flex gap-2">
+                                        <button onclick="handleFeedback(this, true)"
+                                            class="hover:text-green-600 transition-colors material-symbols-outlined text-[18px]"
+                                            title="Ja">thumb_up</button>
+                                        <button onclick="handleFeedback(this, false)"
+                                            class="hover:text-red-500 transition-colors material-symbols-outlined text-[18px]"
+                                            title="Nein">thumb_down</button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Card 3: Service Katalog -->
                             <div
@@ -336,36 +349,63 @@
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Neuigkeiten</h3>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Card 1: Teams -->
                             <div
-                                class="flex-1 bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer">
-                                <div class="w-32 h-24 rounded-lg bg-cover bg-center shrink-0"
-                                    data-alt="Two people discussing business in a modern office"
-                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJqh7ODz3v_7C-ajGurik7au4DdoUel59Wjc385Ksb-J2bnMPcp1poxkupcvve9ujiu8ilFzNxSDkCnaXUsIxwXlFl4wuxFERJ6e1NWlbmq8dQ3xqBfFKCqNDcFRF0NFtdWEPZ-c6RWNGzrJqT4aRMWwQRJ38JiJSXpnZBARgxo0hmgji2abCb7VSjWtbWR4Gk1Qt1Fx-fzuNOiChNqpYXulZze5AqS_gSSy99iwKWqwJFgzDh7KOKT8WkwPM72jtQEHOuNRUmviSq");'>
+                                class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="mb-3">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-xs font-semibold text-blue-600 dark:text-blue-400">M365
+                                        Update</span>
                                 </div>
-                                <div class="flex flex-col justify-center">
-                                    <span class="text-xs font-semibold text-primary mb-1">Unternehmensnews</span>
-                                    <h4 class="font-bold text-text-main dark:text-white mb-1 line-clamp-2">Q3 Ergebnisse
-                                        übertreffen Erwartungen</h4>
-                                    <p class="text-sm text-text-secondary line-clamp-1">Ein Rückblick auf ein
-                                        erfolgreiches Quartal und Ausblick auf kommende Projekte.</p>
-                                    <span class="text-xs text-text-secondary mt-2">Vor 2 Stunden</span>
-                                </div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
+                                    Microsoft Teams: Intelligente Zusammenfassung</h4>
+                                <p class="text-sm text-text-secondary mb-4 flex-1">KI-gestützte Recaps helfen dir,
+                                    Meetings effizienter nachzubereiten.</p>
+                                <button onclick="showToast('Vollständiger Artikel wird geladen...')"
+                                    class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
+                                    Mehr lesen
+                                    <span
+                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </button>
                             </div>
+
+                            <!-- Card 2: Places -->
                             <div
-                                class="flex-1 bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer">
-                                <div class="w-32 h-24 rounded-lg bg-cover bg-center shrink-0"
-                                    data-alt="Close up of computer code on a screen"
-                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATgmW4Ct_L1C9RpfTxaMCLt3LHZx_bhoxWSucr4IRNpMsbe69OINQeTJhu5ESiDp3J7RdtzbO0EIGu0SKQd88tWuK2iPQ29iHtrY5LgRSV-tmQ3pIt6qbpjXemP7CgH_LNjDBaWYqjAr67o1xEb1BOZr8xAsCRCVp9PJzuU0bFBhmhJpHk0RIn5L6l01qXptpCaWb0eZnBhrqYSI2TG1i08ciMzE0ouFEIfq9A4RSzT6Vx8bwBQNEfePqRBCuY2kv7Ry-FpcBKgNsK");'>
+                                class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="mb-3">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded-md bg-purple-50 dark:bg-purple-900/30 text-xs font-semibold text-purple-600 dark:text-purple-400">Neuerscheinung</span>
                                 </div>
-                                <div class="flex flex-col justify-center">
-                                    <span class="text-xs font-semibold text-green-600 mb-1">IT Update</span>
-                                    <h4 class="font-bold text-text-main dark:text-white mb-1 line-clamp-2">
-                                        Wartungsarbeiten am Wochenende</h4>
-                                    <p class="text-sm text-text-secondary line-clamp-1">Geplante Server-Updates am
-                                        Samstag von 22:00 bis 02:00 Uhr.</p>
-                                    <span class="text-xs text-text-secondary mt-2">Gestern</span>
+                                <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
+                                    Microsoft Places: Der neue Standard für hybrides Arbeiten</h4>
+                                <p class="text-sm text-text-secondary mb-4 flex-1">Koordiniere Büro-Tage und finde freie
+                                    Schreibtische mit Leichtigkeit.</p>
+                                <button onclick="showToast('Vollständiger Artikel wird geladen...')"
+                                    class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
+                                    Mehr lesen
+                                    <span
+                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </button>
+                            </div>
+
+                            <!-- Card 3: PowerPoint -->
+                            <div
+                                class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="mb-3">
+                                    <span
+                                        class="inline-block px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-xs font-semibold text-amber-600 dark:text-amber-400">Tipp</span>
                                 </div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
+                                    PowerPoint: Design-Vorschläge mit KI</h4>
+                                <p class="text-sm text-text-secondary mb-4 flex-1">Erstelle professionelle Folien
+                                    schneller mit den neuesten Designer-Features.</p>
+                                <button onclick="showToast('Vollständiger Artikel wird geladen...')"
+                                    class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
+                                    Mehr lesen
+                                    <span
+                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -556,6 +596,93 @@
             showToast('Anfrage wurde an das Helpdesk-Team gesendet');
             // Reset form
             e.target.reset();
+        }
+
+        /* Search Functionality */
+        function handleSearch() {
+            const input = document.getElementById('search-input');
+            const filter = input.value.toLowerCase();
+            const promptGrid = document.getElementById('prompt-grid');
+            const otherResourcesGrid = document.querySelector('.flex-col.gap-6:nth-of-type(3) .grid'); // Identifying the "Weitere Ressourcen" grid
+
+            // 1. Search Prompts
+            // If search is empty, go back to currently selected text, else search ALL prompts
+            let matchingPrompts = [];
+
+            if (filter.length === 0) {
+                // Restore default view (check which button is active or default to marketing)
+                // For simplicity, we can just trigger the active filter again or defaulting to marketing logic.
+                // Finding active button:
+                if (document.getElementById('btn-marketing').classList.contains('bg-white')) filterPrompts('marketing');
+                else if (document.getElementById('btn-hr').classList.contains('bg-white')) filterPrompts('hr');
+                else filterPrompts('it');
+            } else {
+                // Search across all categories
+                const allPrompts = [...promptData.marketing, ...promptData.hr, ...promptData.it];
+                matchingPrompts = allPrompts.filter(p =>
+                    p.title.toLowerCase().includes(filter) ||
+                    p.desc.toLowerCase().includes(filter) ||
+                    p.prompt.toLowerCase().includes(filter)
+                );
+
+                // Render matched prompts
+                promptGrid.innerHTML = '';
+                if (matchingPrompts.length > 0) {
+                    matchingPrompts.forEach(p => renderPromptCard(p, promptGrid));
+                } else {
+                    promptGrid.innerHTML = `<div class="col-span-full text-center text-text-secondary py-4 italic">Keine Prompts gefunden.</div>`;
+                }
+            }
+
+            // 2. Search Other Resources (Static Cards)
+            // We'll traverse the generic cards in the "Weitere Ressourcen" section
+            // Note: We need to give the "Weitere Ressourcen" grid a specific ID or cleaner selector for robustness, 
+            // but for now we will rely on DOM structure or adding a class.
+            // Let's assume the cards are children of the element we selected above.
+            if (otherResourcesGrid) {
+                const cards = otherResourcesGrid.children;
+                let foundResource = false;
+
+                for (let card of cards) {
+                    const text = card.innerText.toLowerCase();
+                    if (text.includes(filter)) {
+                        card.style.display = 'flex'; // Restore flex
+                        foundResource = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+
+                // Handle "No Results" for resources? visual gap is fine, or we can add a message.
+            }
+        }
+
+        // Helper to Render Prompt Card (extracted to be reusable)
+        function renderPromptCard(p, grid) {
+            const card = document.createElement('div');
+            card.className = "group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full";
+            card.innerHTML = `
+                <div class="mb-4">
+                    <h4 class="text-lg font-bold text-text-main dark:text-white mb-1">${p.title}</h4>
+                    <p class="text-text-secondary text-sm">${p.desc}</p>
+                </div>
+                <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" class="w-full h-9 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
+                        <span>Kopieren</span>
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        }
+
+        function handleFeedback(btn, isPositive) {
+            // Find parent container to replace content
+            const container = btn.parentElement.parentElement;
+            container.innerHTML = '<span class="text-green-600 font-medium w-full text-center">Vielen Dank für dein Feedback!</span>';
+
+            // Still show toast for extra visibility/delight
+            showToast('Vielen Dank für dein Feedback!');
         }
     </script>
 
