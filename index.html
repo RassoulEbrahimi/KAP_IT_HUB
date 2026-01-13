@@ -72,6 +72,51 @@
             opacity: 1;
             bottom: 50px;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .dark .modal {
+            background: #1a2632;
+            border: 1px solid #334155;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -202,30 +247,37 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Feature Grid -->
+                    <!-- KI Prompt Galerie Section -->
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h3>
+                                <p class="text-sm text-text-secondary mt-1">Wähle deinen Bereich für passgenaue
+                                    KI-Vorlagen</p>
+                            </div>
+                            <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                                <button onclick="filterPrompts('marketing')" id="btn-marketing"
+                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white dark:bg-slate-700 text-primary shadow-sm">Marketing</button>
+                                <button onclick="filterPrompts('hr')" id="btn-hr"
+                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white">HR</button>
+                                <button onclick="filterPrompts('it')" id="btn-it"
+                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white">IT
+                                    Support</button>
+                            </div>
+                        </div>
+
+                        <div id="prompt-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Prompts will be injected here by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Other Resources Grid -->
                     <div class="flex flex-col gap-6">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-xl font-bold text-text-main dark:text-white">Wichtige Ressourcen</h3>
+                            <h3 class="text-xl font-bold text-text-main dark:text-white">Weitere Ressourcen</h3>
                             <a class="text-sm font-medium text-primary hover:underline" href="#">Alle anzeigen</a>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Card 1: KI Prompt Galerie -->
-                            <div
-                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
-                                <div
-                                    class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <span class="material-symbols-outlined" style="font-size: 32px;">psychology</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">KI Prompt Galerie</h4>
-                                <p class="text-text-secondary text-sm mb-6 flex-1">Entdecke kuratierte Prompts für mehr
-                                    Produktivität und bessere Ergebnisse in deiner Arbeit.</p>
-                                <button onclick="showToast('Wird geladen...')"
-                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span>Entdecken</span>
-                                    <span class="material-symbols-outlined"
-                                        style="font-size: 18px;">arrow_forward</span>
-                                </button>
-                            </div>
                             <!-- Card 2: M365 Helfer -->
                             <div
                                 class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
@@ -234,10 +286,31 @@
                                     <span class="material-symbols-outlined" style="font-size: 32px;">grid_view</span>
                                 </div>
                                 <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">M365 Helfer</h4>
-                                <p class="text-text-secondary text-sm mb-6 flex-1">Nützliche Tipps, Tricks und
+                                <p class="text-text-secondary text-sm mb-4">Nützliche Tipps, Tricks und
                                     Anleitungen für deine täglichen Office-Tools und Teams.</p>
+
+                                <!-- Tip of the Week Card -->
+                                <div
+                                    class="mb-6 rounded-lg bg-blue-50 dark:bg-blue-900/20 p-4 border border-blue-100 dark:border-blue-800/30">
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-primary mt-0.5"
+                                            style="font-size: 20px;">info</span>
+                                        <div>
+                                            <h5 class="text-sm font-bold text-text-main dark:text-white mb-1">Tipp der
+                                                Woche: Microsoft Loop</h5>
+                                            <p class="text-xs text-text-secondary mb-2">Erstelle deinen ersten Workspace
+                                                in 3 Schritten:</p>
+                                            <ol class="text-xs text-text-secondary list-decimal list-inside space-y-1">
+                                                <li>Öffne <strong>loop.microsoft.com</strong></li>
+                                                <li>Klicke auf <strong>"+"</strong> (Neuer Workspace)</li>
+                                                <li>Gib einen <strong>Titel</strong> ein und starte</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button
-                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2 mt-auto">
                                     <span>Ansehen</span>
                                 </button>
                             </div>
@@ -251,7 +324,7 @@
                                 <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Service Katalog</h4>
                                 <p class="text-text-secondary text-sm mb-6 flex-1">Bestelle Hardware, Software und
                                     Zugriffsrechte einfach und schnell online.</p>
-                                <button
+                                <button onclick="openModal()"
                                     class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
                                     <span>Zum Katalog</span>
                                 </button>
@@ -301,6 +374,111 @@
         </div>
     </div>
     <script>
+        // Prompt Data
+        const promptData = {
+            marketing: [
+                {
+                    title: "Blogpost Generator",
+                    desc: "Erstelle SEO-optimierte Blogartikel in Sekunden.",
+                    prompt: "Schreibe einen Blogartikel über [Thema] für [Zielgruppe]. Nutze einen freundlichen, aber professionellen Ton und integriere die Keywords: [Keyword 1], [Keyword 2]."
+                },
+                {
+                    title: "Social Media Plan",
+                    desc: "Wochenplan für LinkedIn und Twitter.",
+                    prompt: "Erstelle einen Content-Plan für die nächste Woche für LinkedIn mit dem Fokus auf [Thema]. Schlage 5 Post-Ideen vor inklusive Hook und Call-to-Action."
+                },
+                {
+                    title: "Produkt-Launch E-Mail",
+                    desc: "Überzeugende E-Mail für neue Features.",
+                    prompt: "Verfasse eine E-Mail an unsere Bestandskunden, um das neue Feature [Name] vorzustellen. Betone den Nutzen [Nutzen] und fordere zum Testen auf."
+                }
+            ],
+            hr: [
+                {
+                    title: "Stellenanzeige Entwurf",
+                    desc: "Attraktive Job-Beschreibungen schnell erstellt.",
+                    prompt: "Erstelle eine Stellenanzeige für die Position [Jobtitel]. Wir suchen jemanden mit Erfahrung in [Skill 1] und [Skill 2]. Die Unternehmenskultur ist [Adjektiv]."
+                },
+                {
+                    title: "Interview-Fragen",
+                    desc: "Strukturierte Fragen für Bewerbungsgespräche.",
+                    prompt: "Generiere 5 Interviewfragen für einen Bewerber im Bereich [Bereich], um die Soft Skills und Problemlösefähigkeiten zu testen."
+                },
+                {
+                    title: "Onboarding Checkliste",
+                    desc: "Willkommensplan für neue Mitarbeiter.",
+                    prompt: "Erstelle eine strukturierte Onboarding-Checkliste für die erste Woche eines neuen Mitarbeiters im [Abteilung]-Team."
+                }
+            ],
+            it: [
+                {
+                    title: "Fehlermeldung Erklärung",
+                    desc: "Technische Fehler verständlich erklären.",
+                    prompt: "Erkläre den Fehlercode [Code] einem nicht-technischen Nutzer höflich und gib eine Schritt-für-Schritt-Anleitung zur Lösung."
+                },
+                {
+                    title: "PowerShell Skript Docs",
+                    desc: "Automatische Dokumentation für Code.",
+                    prompt: "Erstelle eine Dokumentation für das folgende PowerShell-Skript. Erkläre die Parameter, die Funktion und gib ein Anwendungsbeispiel: [Code einfügen]"
+                },
+                {
+                    title: "Sicherheitswarnung",
+                    desc: "Phishing-Warnung an alle Mitarbeiter.",
+                    prompt: "Verfasse eine interne Sicherheitswarnung bezüglich einer aktuellen Phishing-Welle. Erkläre woran man die Mail erkennt und was zu tun ist."
+                }
+            ]
+        };
+
+        // Initialize with Marketing
+        document.addEventListener('DOMContentLoaded', () => {
+            filterPrompts('marketing');
+        });
+
+        function filterPrompts(category) {
+            // Update Buttons
+            const buttons = ['marketing', 'hr', 'it'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (btn === category) {
+                    el.className = "px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white dark:bg-slate-700 text-primary shadow-sm";
+                } else {
+                    el.className = "px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white";
+                }
+            });
+
+            // Update Grid
+            const grid = document.getElementById('prompt-grid');
+            grid.innerHTML = '';
+
+            const prompts = promptData[category];
+            prompts.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full";
+                card.innerHTML = `
+                    <div class="mb-4">
+                        <h4 class="text-lg font-bold text-text-main dark:text-white mb-1">${p.title}</h4>
+                        <p class="text-text-secondary text-sm">${p.desc}</p>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" class="w-full h-9 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
+                            <span>Kopieren</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function copyPrompt(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Prompt erfolgreich kopiert!');
+            }).catch(err => {
+                console.error('Copy failed', err);
+                showToast('Kopieren fehlgeschlagen');
+            });
+        }
+
         function showToast(message) {
             let toast = document.getElementById("toast");
             if (!toast) {
@@ -314,6 +492,71 @@
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
         }
     </script>
-</body>
+
+    <!-- Service Katalog Modal -->
+    <div id="service-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-text-main dark:text-white">Software Anfrage</h3>
+                <button onclick="closeModal()" class="text-text-secondary hover:text-text-main dark:hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <form onsubmit="submitRequest(event)" class="flex flex-col gap-4">
+                <div>
+                    <label for="software-name"
+                        class="block text-sm font-medium text-text-main dark:text-white mb-1">Software Name</label>
+                    <input type="text" id="software-name" required
+                        class="w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-text-main dark:text-white focus:ring-primary focus:border-primary"
+                        placeholder="z.B. Adobe Photoshop">
+                </div>
+
+                <div>
+                    <label for="justification"
+                        class="block text-sm font-medium text-text-main dark:text-white mb-1">Business
+                        Justification</label>
+                    <textarea id="justification" required rows="3"
+                        class="w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-text-main dark:text-white focus:ring-primary focus:border-primary"
+                        placeholder="Warum wird diese Software benötigt?"></textarea>
+                </div>
+
+                <div class="flex justify-end gap-3 mt-4">
+                    <button type="button" onclick="closeModal()"
+                        class="px-4 py-2rounded-lg text-text-secondary hover:text-text-main dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">Abbrechen</button>
+                    <button type="submit"
+                        class="px-4 py-2 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors shadow-sm">Anfrage
+                        senden</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('service-modal').classList.add('open');
+            document.getElementById('software-name').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('service-modal').classList.remove('open');
+        }
+
+        // Close on outside click
+        document.getElementById('service-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        function submitRequest(e) {
+            e.preventDefault();
+            // In a real app, we would send data to backend here
+            closeModal();
+            showToast('Anfrage wurde an das Helpdesk-Team gesendet');
+            // Reset form
+            e.target.reset();
+        }
+    </script>
 
 </html>
