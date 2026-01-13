@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kapp IT Hub Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "text-main": "#0e141b",
+                        "text-secondary": "#4e7397",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Toast Notification Styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-text-main">
+    <div class="relative flex h-screen w-full flex-col overflow-hidden">
+        <!-- Top Navigation Bar -->
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center rounded bg-primary/10">
+                        <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
+                    </div>
+                    <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kapp
+                        IT Hub</h2>
+                </div>
+                <!-- Desktop Search -->
+                <div class="hidden md:flex flex-col min-w-80 h-10">
+                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+                        <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                        </div>
+                        <input
+                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
+                            placeholder="Suche im Intranet..." value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+                    <span
+                        class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2632]"></span>
+                </button>
+                <button
+                    class="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-8"
+                        data-alt="User profile picture placeholder"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
+                    </div>
+                    <span class="text-sm font-medium hidden lg:block text-text-main dark:text-white">Sarah Müller</span>
+                    <span class="material-symbols-outlined text-text-secondary hidden lg:block"
+                        style="font-size: 20px;">expand_more</span>
+                </button>
+            </div>
+        </header>
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Side Navigation Bar -->
+            <aside
+                class="hidden md:flex w-64 flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0">
+                <div class="flex flex-col gap-2 p-4">
+                    <div class="flex flex-col mb-4 px-3">
+                        <h1 class="text-text-secondary text-xs font-semibold uppercase tracking-wider leading-normal">
+                            Main Menu</h1>
+                    </div>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+                        <p class="text-sm font-semibold leading-normal">Home</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">smart_toy</span>
+                        <p class="text-sm font-medium leading-normal">AI Hub</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">tips_and_updates</span>
+                        <p class="text-sm font-medium leading-normal">M365 Tips</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">newspaper</span>
+                        <p class="text-sm font-medium leading-normal">News</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">build_circle</span>
+                        <p class="text-sm font-medium leading-normal">Self-Service</p>
+                    </a>
+                </div>
+                <div class="mt-auto p-4 border-t border-slate-200 dark:border-slate-800">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">help</span>
+                        <p class="text-sm font-medium leading-normal">IT Support</p>
+                    </a>
+                </div>
+            </aside>
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-10">
+                <div class="max-w-[1200px] mx-auto flex flex-col gap-10">
+                    <!-- Hero Section -->
+                    <div class="rounded-2xl overflow-hidden relative min-h-[320px] flex items-center bg-cover bg-center shadow-md"
+                        data-alt="Abstract blue technology background with glowing nodes"
+                        style='background-image: linear-gradient(135deg, rgba(23, 115, 207, 0.9) 0%, rgba(14, 20, 27, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2iUb5xSBRyFqnyKcSNVXC3elqZYtfrNzblV-Sey11iX-eyi99wy1YL5gOPGAxOLG9TbEEg0Bp5hO3a_NCYb1titlkyBvagraz_CPiNsHy52IM3BZ_uTcLrFWzAiXaKAvSA-tKZ0mk0Wr_-lXrB65Ce7qd944rSTUebk3ZJ5OPzhWVdP5MF7DXVIVM3WQdy6DjPzFrhtVdocmDHB-v5pqsfRoLh4ypU0GSkDqGCdnN82iQ47ekhSX7WrP2H0UveVjTONvSbN6St7Sy");'>
+                        <div class="absolute inset-0 bg-black/10"></div>
+                        <div class="relative z-10 p-8 md:p-12 max-w-2xl text-white">
+                            <h1 class="text-3xl md:text-5xl font-black leading-tight tracking-tight mb-4">
+                                Willkommen im Kapp<br /> Wissens-Hub
+                            </h1>
+                            <h2 class="text-lg md:text-xl font-medium opacity-90 mb-8">
+                                Was möchtest du heute lernen?
+                            </h2>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <button
+                                    class="bg-white text-primary hover:bg-slate-100 transition-colors h-12 px-6 rounded-lg font-bold text-sm md:text-base flex items-center justify-center gap-2 shadow-lg">
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 20px;">rocket_launch</span>
+                                    <span>Quick Tour Starten</span>
+                                </button>
+                                <button
+                                    class="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white transition-colors h-12 px-6 rounded-lg font-bold text-sm md:text-base border border-white/30 flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">play_circle</span>
+                                    <span>Video ansehen</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feature Grid -->
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-text-main dark:text-white">Wichtige Ressourcen</h3>
+                            <a class="text-sm font-medium text-primary hover:underline" href="#">Alle anzeigen</a>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Card 1: KI Prompt Galerie -->
+                            <div
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+                                <div
+                                    class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined" style="font-size: 32px;">psychology</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">KI Prompt Galerie</h4>
+                                <p class="text-text-secondary text-sm mb-6 flex-1">Entdecke kuratierte Prompts für mehr
+                                    Produktivität und bessere Ergebnisse in deiner Arbeit.</p>
+                                <button onclick="showToast('Wird geladen...')"
+                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span>Entdecken</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 18px;">arrow_forward</span>
+                                </button>
+                            </div>
+                            <!-- Card 2: M365 Helfer -->
+                            <div
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+                                <div
+                                    class="size-12 rounded-lg bg-green-50 dark:bg-green-900/30 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined" style="font-size: 32px;">grid_view</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">M365 Helfer</h4>
+                                <p class="text-text-secondary text-sm mb-6 flex-1">Nützliche Tipps, Tricks und
+                                    Anleitungen für deine täglichen Office-Tools und Teams.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span>Ansehen</span>
+                                </button>
+                            </div>
+                            <!-- Card 3: Service Katalog -->
+                            <div
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+                                <div
+                                    class="size-12 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined" style="font-size: 32px;">shopping_bag</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Service Katalog</h4>
+                                <p class="text-text-secondary text-sm mb-6 flex-1">Bestelle Hardware, Software und
+                                    Zugriffsrechte einfach und schnell online.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span>Zum Katalog</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Secondary Section (News) -->
+                    <div class="flex flex-col gap-6 pt-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-text-main dark:text-white">Neuigkeiten</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div
+                                class="flex-1 bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer">
+                                <div class="w-32 h-24 rounded-lg bg-cover bg-center shrink-0"
+                                    data-alt="Two people discussing business in a modern office"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJqh7ODz3v_7C-ajGurik7au4DdoUel59Wjc385Ksb-J2bnMPcp1poxkupcvve9ujiu8ilFzNxSDkCnaXUsIxwXlFl4wuxFERJ6e1NWlbmq8dQ3xqBfFKCqNDcFRF0NFtdWEPZ-c6RWNGzrJqT4aRMWwQRJ38JiJSXpnZBARgxo0hmgji2abCb7VSjWtbWR4Gk1Qt1Fx-fzuNOiChNqpYXulZze5AqS_gSSy99iwKWqwJFgzDh7KOKT8WkwPM72jtQEHOuNRUmviSq");'>
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <span class="text-xs font-semibold text-primary mb-1">Unternehmensnews</span>
+                                    <h4 class="font-bold text-text-main dark:text-white mb-1 line-clamp-2">Q3 Ergebnisse
+                                        übertreffen Erwartungen</h4>
+                                    <p class="text-sm text-text-secondary line-clamp-1">Ein Rückblick auf ein
+                                        erfolgreiches Quartal und Ausblick auf kommende Projekte.</p>
+                                    <span class="text-xs text-text-secondary mt-2">Vor 2 Stunden</span>
+                                </div>
+                            </div>
+                            <div
+                                class="flex-1 bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer">
+                                <div class="w-32 h-24 rounded-lg bg-cover bg-center shrink-0"
+                                    data-alt="Close up of computer code on a screen"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATgmW4Ct_L1C9RpfTxaMCLt3LHZx_bhoxWSucr4IRNpMsbe69OINQeTJhu5ESiDp3J7RdtzbO0EIGu0SKQd88tWuK2iPQ29iHtrY5LgRSV-tmQ3pIt6qbpjXemP7CgH_LNjDBaWYqjAr67o1xEb1BOZr8xAsCRCVp9PJzuU0bFBhmhJpHk0RIn5L6l01qXptpCaWb0eZnBhrqYSI2TG1i08ciMzE0ouFEIfq9A4RSzT6Vx8bwBQNEfePqRBCuY2kv7Ry-FpcBKgNsK");'>
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <span class="text-xs font-semibold text-green-600 mb-1">IT Update</span>
+                                    <h4 class="font-bold text-text-main dark:text-white mb-1 line-clamp-2">
+                                        Wartungsarbeiten am Wochenende</h4>
+                                    <p class="text-sm text-text-secondary line-clamp-1">Geplante Server-Updates am
+                                        Samstag von 22:00 bis 02:00 Uhr.</p>
+                                    <span class="text-xs text-text-secondary mt-2">Gestern</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        function showToast(message) {
+            let toast = document.getElementById("toast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast";
+                toast.className = "toast";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.className = "toast show";
+            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
+</body>
+
+</html>
