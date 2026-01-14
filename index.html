@@ -143,20 +143,25 @@
                         <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
                             <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
                         </div>
-                        <input id="search-input" onkeyup="handleSearch()"
+                        <input id="search-input" oninput="handleSearch()"
                             class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
                             placeholder="Suche im Intranet..." value="" />
                     </div>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <button
+                <button onclick="showToast('Du hast keine neuen Benachrichtigungen.')"
                     class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors relative">
                     <span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
                     <span
                         class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2632]"></span>
                 </button>
-                <button
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined" style="font-size: 24px;">dark_mode</span>
+                </button>
+                <button onclick="showToast('Profil-Einstellungen in Vorbereitung.')"
                     class="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                     <div class="bg-center bg-no-repeat bg-cover rounded-full size-8"
                         data-alt="User profile picture placeholder"
@@ -226,7 +231,7 @@
                 <div class="max-w-[1200px] mx-auto flex flex-col gap-10">
                     <!-- Hero Section -->
                     <div id="home"
-                        class="scroll-mt-6 rounded-2xl overflow-hidden relative min-h-[320px] flex items-center bg-cover bg-center shadow-md"
+                        class="scroll-mt-32 rounded-2xl overflow-hidden relative min-h-[320px] flex items-center bg-cover bg-center shadow-md"
                         data-alt="Abstract blue technology background with glowing nodes"
                         style='background-image: linear-gradient(135deg, rgba(23, 115, 207, 0.9) 0%, rgba(14, 20, 27, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2iUb5xSBRyFqnyKcSNVXC3elqZYtfrNzblV-Sey11iX-eyi99wy1YL5gOPGAxOLG9TbEEg0Bp5hO3a_NCYb1titlkyBvagraz_CPiNsHy52IM3BZ_uTcLrFWzAiXaKAvSA-tKZ0mk0Wr_-lXrB65Ce7qd944rSTUebk3ZJ5OPzhWVdP5MF7DXVIVM3WQdy6DjPzFrhtVdocmDHB-v5pqsfRoLh4ypU0GSkDqGCdnN82iQ47ekhSX7WrP2H0UveVjTONvSbN6St7Sy");'>
                         <div class="absolute inset-0 bg-black/10"></div>
@@ -238,13 +243,13 @@
                                 Was möchtest du heute lernen?
                             </h2>
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <button onclick="showToast('Quick Tour wird gestartet...')"
+                                <button onclick="startQuickTour()"
                                     class="bg-white text-primary hover:bg-slate-100 transition-colors h-12 px-6 rounded-lg font-bold text-sm md:text-base flex items-center justify-center gap-2 shadow-lg">
                                     <span class="material-symbols-outlined"
                                         style="font-size: 20px;">rocket_launch</span>
                                     <span>Quick Tour Starten</span>
                                 </button>
-                                <button onclick="showToast('Video-Player wird geladen...')"
+                                <button onclick="showToast('Demo-Video wird für die Pilotphase vorbereitet.')"
                                     class="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white transition-colors h-12 px-6 rounded-lg font-bold text-sm md:text-base border border-white/30 flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size: 20px;">play_circle</span>
                                     <span>Video ansehen</span>
@@ -253,7 +258,7 @@
                         </div>
                     </div>
                     <!-- KI Prompt Galerie Section -->
-                    <div id="ai-hub" class="scroll-mt-6 flex flex-col gap-6">
+                    <div id="ai-hub" class="scroll-mt-32 flex flex-col gap-6">
                         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                             <div>
                                 <h3 class="text-xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h3>
@@ -277,10 +282,12 @@
                     </div>
 
                     <!-- Other Resources Grid -->
-                    <div id="resources" class="scroll-mt-6 flex flex-col gap-6">
+                    <div id="resources" class="scroll-mt-32 flex flex-col gap-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Weitere Ressourcen</h3>
-                            <a class="text-sm font-medium text-primary hover:underline" href="#">Alle anzeigen</a>
+                            <a class="text-sm font-medium text-primary hover:underline" href="#"
+                                onclick="showToast('Alle Ressourcen werden geladen...'); return false;">Alle
+                                anzeigen</a>
                         </div>
                         <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <!-- Card 2: M365 Helfer -->
@@ -313,8 +320,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <button
+                                <button onclick="showToast('M365 Helfer Modul wird geladen...')"
                                     class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2 mt-auto">
                                     <span>Ansehen</span>
                                 </button>
@@ -350,11 +356,11 @@
                         </div>
                     </div>
                     <!-- Top Formulare Section -->
-                    <div id="self-service" class="scroll-mt-6 flex flex-col gap-6">
+                    <div id="self-service" class="scroll-mt-32 flex flex-col gap-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Top Formulare</h3>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div id="self-service-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <!-- Button 1: Urlaubsantrag -->
                             <button onclick="showToast('Urlaubsantrag wird geladen...')"
                                 class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#1a2632] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-primary/50 dark:hover:border-primary/50 transition-all group">
@@ -388,7 +394,7 @@
                     </div>
 
                     <!-- Secondary Section (News) -->
-                    <div id="news" class="scroll-mt-6 flex flex-col gap-6 pt-6">
+                    <div id="news" class="scroll-mt-32 flex flex-col gap-6 pt-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Neuigkeiten</h3>
                         </div>
@@ -406,7 +412,7 @@
                                 <p class="text-sm text-text-secondary mb-4 flex-1">KI-gestützte Recaps helfen dir,
                                     Meetings effizienter nachzubereiten.</p>
                                 <button
-                                    onclick="window.open('https://support.microsoft.com/en-us/office/view-meeting-recap-in-microsoft-teams-c2e3a0de-f698-4a79-bf66-237190e5b0b6', '_blank')"
+                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://support.microsoft.com/en-us/office/view-meeting-recap-in-microsoft-teams-c2e3a0de-f698-4a79-bf66-237190e5b0b6', '_blank')"
                                     class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
                                     Mehr lesen
                                     <span
@@ -426,7 +432,7 @@
                                 <p class="text-sm text-text-secondary mb-4 flex-1">Koordiniere Büro-Tage und finde freie
                                     Schreibtische mit Leichtigkeit.</p>
                                 <button
-                                    onclick="window.open('https://www.microsoft.com/en-us/microsoft-places', '_blank')"
+                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://www.microsoft.com/en-us/microsoft-places', '_blank')"
                                     class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
                                     Mehr lesen
                                     <span
@@ -446,7 +452,7 @@
                                 <p class="text-sm text-text-secondary mb-4 flex-1">Erstelle professionelle Folien
                                     schneller mit den neuesten Designer-Features.</p>
                                 <button
-                                    onclick="window.open('https://support.microsoft.com/en-us/office/create-professional-slide-layouts-with-designer-53c77d7b-dc40-45c2-b9a5-0e08530af7a8', '_blank')"
+                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://support.microsoft.com/en-us/office/create-professional-slide-layouts-with-designer-53c77d7b-dc40-45c2-b9a5-0e08530af7a8', '_blank')"
                                     class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
                                     Mehr lesen
                                     <span
@@ -576,6 +582,16 @@
             toast.textContent = message;
             toast.className = "toast show";
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        function startQuickTour() {
+            showToast('🚀 Willkommen! Hier findest du alle Tools...');
+            setTimeout(() => {
+                showToast('🤖 Links ist der KI Hub für deine Prompts...');
+            }, 3000);
+            setTimeout(() => {
+                showToast('👇 Unten gibt es Self-Service Formulare!');
+            }, 6000);
         }
     </script>
 
@@ -716,6 +732,16 @@
                 msg.innerText = 'Keine Ergebnisse gefunden.';
                 grid.appendChild(msg);
             }
+
+            // Fix: If filter is empty, ensure all original items are visible
+            if (filter.length === 0) {
+                const cards = grid.children;
+                for (let card of cards) {
+                    if (!card.classList.contains('no-results-msg')) {
+                        card.style.display = 'flex';
+                    }
+                }
+            }
         }
 
         // Helper to Render Prompt Card (extracted to be reusable)
@@ -747,6 +773,17 @@
         }
         // Active State Scroll Logic
         document.addEventListener('DOMContentLoaded', () => {
+            // Theme Initialization
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+                if (icon) icon.innerText = 'light_mode';
+            } else {
+                html.classList.remove('dark');
+                if (icon) icon.innerText = 'dark_mode';
+            }
+
             const sections = ['home', 'ai-hub', 'resources', 'self-service', 'news'];
             const navLinks = {};
 
@@ -754,9 +791,12 @@
                 navLinks[id] = document.getElementById(`nav-${id}`);
             });
 
+            // RELAXED Observer Logic
             const observerOptions = {
-                root: document.querySelector('main'),
-                rootMargin: '-20% 0px -60% 0px', // Trigger when section is near top
+                root: null,
+                // Trigger when element intersects with the middle 60% of screen, or strictly top
+                // -10% from top, -10% from bottom (80% detection height)
+                rootMargin: '-10% 0px -10% 0px',
                 threshold: 0
             };
 
@@ -773,6 +813,13 @@
                 if (el) observer.observe(el);
             });
 
+            // Explicit Bottom Override
+            window.addEventListener('scroll', () => {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
+                    highlightNav('news');
+                }
+            });
+
             function highlightNav(activeId) {
                 Object.keys(navLinks).forEach(id => {
                     const link = navLinks[id];
@@ -783,7 +830,7 @@
                     if (id === activeId) {
                         // Active Style
                         link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors";
-                        icon.className = "material-symbols-outlined"; // Reset classes to inherit primary color
+                        icon.className = "material-symbols-outlined";
                     } else {
                         // Inactive Style
                         link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors";
@@ -792,6 +839,22 @@
                 });
             }
         });
+
+        // Toggle Theme Function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.innerText = 'dark_mode';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.innerText = 'light_mode';
+            }
+        }
     </script>
 
 </html>
