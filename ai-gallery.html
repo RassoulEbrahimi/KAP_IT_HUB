@@ -194,9 +194,9 @@
                             <nav class="flex text-sm text-text-secondary mb-2">
                                 <a href="index.html" class="hover:text-primary transition-colors">Startseite</a>
                                 <span class="mx-2">›</span>
-                                <span class="text-text-main dark:text-white font-medium">KI Prompt Galerie</span>
+                                <span class="text-text-main dark:text-white font-medium">KI Hub</span>
                             </nav>
-                            <h1 class="text-3xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h1>
+                            <h1 class="text-3xl font-bold text-text-main dark:text-white">KI Hub</h1>
                             <p class="text-text-secondary mt-1 max-w-2xl">Optimiere deine Arbeitsprozesse mit
                                 vorgefertigten, qualitätsgeprüften KI-Prompts für ChatGPT und andere Tools.</p>
                         </div>
@@ -221,21 +221,18 @@
                         <span class="text-sm font-medium text-text-main dark:text-white mr-2">Kategorien:</span>
                         <button onclick="filterPrompts('all')" id="btn-all"
                             class="px-4 py-1.5 text-sm font-medium rounded-full bg-text-main text-white transition-all shadow-sm whitespace-nowrap">Alle</button>
+                        <button onclick="filterPrompts('hr')" id="btn-hr"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">👥
+                            HR & Recruiting</button>
                         <button onclick="filterPrompts('marketing')" id="btn-marketing"
                             class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">📢
                             Marketing</button>
-                        <button onclick="filterPrompts('hr')" id="btn-hr"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">👥
-                            Personalwesen (HR)</button>
-                        <button onclick="filterPrompts('it')" id="btn-it"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">💻
-                            IT-Support</button>
                         <button onclick="filterPrompts('sales')" id="btn-sales"
                             class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">📈
-                            Vertrieb (Sales)</button>
-                        <button onclick="filterPrompts('legal')" id="btn-legal"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">⚖️
-                            Legal</button>
+                            Sales</button>
+                        <button onclick="filterPrompts('productivity')" id="btn-productivity"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">⚡
+                            Productivity</button>
                     </div>
 
                     <!-- Layout: Prompts Grid -->
@@ -284,84 +281,54 @@
 
         // Expanded Prompt Data
         const promptData = {
+            hr: [
+                {
+                    title: "Interviewfragen erstellen",
+                    desc: "Erstelle verhaltensbasierte Fragen für Bewerbungsgespräche, die fachliche Kompetenz und Culture Fit abdecken.",
+                    prompt: "Erstelle 6-8 verhaltensbasierte Interviewfragen für eine offene Stelle als [Stellenbezeichnung] in der Abteilung [Team]. Berücksichtige unsere Unternehmenswerte und frage sowohl nach fachlichen Kompetenzen als auch nach dem Culture Fit.",
+                    tag: "HR & Recruiting",
+                    icon: "question_answer"
+                },
+                {
+                    title: "Mitarbeiterbefragung",
+                    desc: "Neutrale Fragen zur Messung von Zugehörigkeit und Work-Life-Balance.",
+                    prompt: "Entwirf 8 neutrale Fragen für eine Mitarbeiterbefragung, um das Zugehörigkeitsgefühl und die Work-Life-Balance im Team zu messen. Gib Vorschläge für eine 5-stufige Bewertungsskala an.",
+                    tag: "HR & Recruiting",
+                    icon: "group"
+                }
+            ],
             marketing: [
                 {
-                    title: "E-Mail Kampagne Entwurf",
-                    desc: "Generieren Sie überzeugende E-Mail-Marketing-Texte für Produktlaunches oder Newsletter.",
-                    prompt: "Erstelle eine 3-teilige E-Mail-Sequenz für den Launch von [Produktname]. Zielgruppe: [Zielgruppe]. Fokus auf: [USP].",
+                    title: "Produkt-Launch E-Mail",
+                    desc: "Überzeugende Ankündigungs-E-Mail für Bestandskunden mit Fokus auf USPs.",
+                    prompt: "Schreibe eine überzeugende Ankündigungs-E-Mail für unser neues Produkt [Name]. Zielgruppe sind Bestandskunden. Hebe die Top-3 Vorteile hervor und formatiere sie als fertigen Entwurf inklusive Betreffzeile.",
                     tag: "Marketing",
                     icon: "mail"
                 },
                 {
-                    title: "Blogpost Struktur",
-                    desc: "Erstellen Sie eine SEO-freundliche Gliederung für Blogartikel mit H1, H2 und H3.",
-                    prompt: "Erstelle eine Gliederung für einen Blogpost zum Thema '[Thema]'. Integriere folgende Keywords: [Keywords]. Ziel: [Ziel].",
-                    tag: "Marketing",
-                    icon: "edit_note"
-                },
-                {
-                    title: "Social Media Caption",
-                    desc: "Kreative Captions für Instagram und LinkedIn Posts mit Hashtags.",
-                    prompt: "Schreibe eine 'viral' gehende Caption für LinkedIn über [Thema]. Nutze Storytelling und ende mit einer Frage. Tonalität: [Ton].",
+                    title: "Social Media Content Plan",
+                    desc: "Strukturierter Plan für LinkedIn-Beiträge mit Hook und Call-to-Action.",
+                    prompt: "Erstelle einen Redaktionsplan für 3 LinkedIn-Beiträge über [Thema]. Jeder Beitrag sollte einen Hook, den Hauptteil und eine Call-to-Action enthalten, die zu unserer Marke Kap passt.",
                     tag: "Marketing",
                     icon: "share"
                 }
             ],
-            hr: [
-                {
-                    title: "Stellenanzeige Generator",
-                    desc: "Erstellen Sie detaillierte und inklusive Stellenbeschreibungen unter Angabe von Anforderungen.",
-                    prompt: "Schreibe eine Stellenanzeige für [Jobtitel]. Seniorität: [Level]. Aufgaben: [Aufgaben]. Wir bieten: [Benefits].",
-                    tag: "HR",
-                    icon: "badge"
-                },
-                {
-                    title: "Onboarding Plan",
-                    desc: "Strukturierter 30-60-90 Tage Plan für neue Mitarbeiter.",
-                    prompt: "Erstelle einen Onboarding-Plan für die erste Woche eines neuen [Position]. Fokus auf: Team-Integration und [Tools].",
-                    tag: "HR",
-                    icon: "person_add"
-                }
-            ],
-            it: [
-                {
-                    title: "SQL Query Helper",
-                    desc: "Hilft beim Schreiben und Optimieren komplexer SQL-Abfragen. Fügen Sie Ihr Schema ein.",
-                    prompt: "Ich habe eine Tabelle 'Orders' (id, date, amount) und 'Users' (id, name). Schreibe eine SQL-Query für die Top 10 User nach Umsatz im Jahr 2023.",
-                    tag: "IT-Support",
-                    icon: "data_object"
-                },
-                {
-                    title: "Code Dokumentation",
-                    desc: "Generiert automatische Dokumentation für Codeschnipsel in Python, JS, C#.",
-                    prompt: "Dokumentiere diese Funktion im Javadoc-Stil. Erkläre alle Parameter und Rückgabewerte: [Code einfügen].",
-                    tag: "IT-Support",
-                    icon: "description"
-                }
-            ],
             sales: [
                 {
-                    title: "Cold Outreach Skript",
-                    desc: "Vorlagen für die Erstansprache potenzieller Kunden auf LinkedIn oder per Mail.",
-                    prompt: "Schreibe eine kurze Cold-Message an einen CTO. Problem: [Problem]. Lösung: [Unser Produkt]. Ziel: Terminvereinbarung.",
+                    title: "Kaltakquise Personalisierung",
+                    desc: "Personalisierter Outreach für Entscheider mit Fokus auf Problemlösung.",
+                    prompt: "Schreibe eine personalisierte Outreach-E-Mail an einen Entscheider in der Branche [Branche]. Erkläre, wie unser Service das Problem [Pain Point] löst. Tonfall: Professionell aber nahbar.",
                     tag: "Sales",
-                    icon: "handshake"
-                },
-                {
-                    title: "Einwandbehandlung",
-                    desc: "Strategien um typische Einwände von Kunden zu entkräften.",
-                    prompt: "Der Kunde sagt: 'Das ist zu teuer'. Gib mir 3 Argumente, die den ROI betonen und den Preis rechtfertigen.",
-                    tag: "Sales",
-                    icon: "price_check"
+                    icon: "rocket_launch"
                 }
             ],
-            general: [
+            productivity: [
                 {
-                    title: "Meeting Protokoll",
-                    desc: "Wandeln Sie rohe Meeting-Notizen in ein strukturiertes Protokoll mit Action-Items um.",
-                    prompt: "Formatiere diese Notizen in ein Protokoll mit: Teilnehmer, Agenda, Entscheidungen, Aufgaben (Wer, Bis Wann). Notizen: [Text].",
-                    tag: "General",
-                    icon: "assignment"
+                    title: "Meeting-Agenda & Protokoll",
+                    desc: "Strukturierte Agenda für effiziente Meetings mit Platz für Entscheidungen.",
+                    prompt: "Erstelle eine strukturierte Agenda für ein 60-minütiges Meeting zum Thema [Thema]. Füge am Ende einen Platzhalter für die Zusammenfassung der wichtigsten Entscheidungen und Verantwortlichkeiten hinzu.",
+                    tag: "Productivity",
+                    icon: "schedule"
                 }
             ]
         };
@@ -372,7 +339,7 @@
             currentCategory = category;
 
             // Update Buttons
-            const buttons = ['all', 'marketing', 'hr', 'it', 'sales', 'legal'];
+            const buttons = ['all', 'marketing', 'hr', 'sales', 'productivity'];
             buttons.forEach(btn => {
                 const el = document.getElementById(`btn-${btn}`);
                 if (!el) return;
@@ -426,9 +393,9 @@
                 // Color mapping for tags
                 let tagColor = "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300";
                 if (p.tag === 'Marketing') tagColor = "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400";
-                if (p.tag === 'HR') tagColor = "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
-                if (p.tag === 'IT-Support') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
+                if (p.tag === 'HR & Recruiting') tagColor = "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
                 if (p.tag === 'Sales') tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
+                if (p.tag === 'Productivity') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between mb-4">
@@ -455,7 +422,7 @@
 
         function copyPrompt(text) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast('✨ Prompt erfolgreich in die Zwischenablage kopiert!');
+                showToast('Prompt in die Zwischenablage kopiert!');
             }).catch(err => {
                 console.error('Copy failed', err);
                 showToast('❌ Kopieren fehlgeschlagen');
