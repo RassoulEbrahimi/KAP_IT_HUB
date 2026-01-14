@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Kap IT Hub Dashboard</title>
+    <title>Kap IT Hub - Dashboard</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
@@ -13,11 +12,8 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -76,51 +72,6 @@
             opacity: 1;
             bottom: 50px;
         }
-
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 50;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        .modal {
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            padding: 24px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: slideIn 0.3s ease-out;
-        }
-
-        .dark .modal {
-            background: #1a2632;
-            border: 1px solid #334155;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 
@@ -130,20 +81,20 @@
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
             <div class="flex items-center gap-8">
-                <div class="flex items-center gap-4 text-primary">
+                <a href="index.html" class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
                     <div class="size-8 flex items-center justify-center rounded bg-primary/10">
                         <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
                     </div>
                     <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kap
                         IT Hub</h2>
-                </div>
+                </a>
                 <!-- Desktop Search -->
                 <div class="hidden md:flex flex-col min-w-80 h-10">
                     <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
                         <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
                             <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
                         </div>
-                        <input id="search-input" oninput="handleSearch()"
+                        <input id="search-input"
                             class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
                             placeholder="Suche im Intranet..." value="" />
                     </div>
@@ -183,47 +134,55 @@
                             Main Menu</h1>
                     </div>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors"
-                        href="#home" id="nav-home">
+                        href="index.html" id="nav-home">
                         <span class="material-symbols-outlined" style="font-size: 24px;">home</span>
-                        <p class="text-sm font-semibold leading-normal">Home</p>
+                        <p class="text-sm font-semibold leading-normal">Dashboard</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#ai-hub" id="nav-ai-hub">
+                        href="ai-gallery.html" id="nav-ai-hub">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">smart_toy</span>
-                        <p class="text-sm font-medium leading-normal">AI Hub</p>
+                        <p class="text-sm font-medium leading-normal">KI Tools / Prompt Galerie</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#resources" id="nav-resources">
+                        href="m365-helfer.html" id="nav-resources">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">tips_and_updates</span>
-                        <p class="text-sm font-medium leading-normal">M365 Tips</p>
+                        <p class="text-sm font-medium leading-normal">M365 Helfer</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#self-service" id="nav-self-service">
+                        href="self-service.html" id="nav-self-service">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">build_circle</span>
                         <p class="text-sm font-medium leading-normal">Self-Service</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#news" id="nav-news">
+                        href="news.html" id="nav-news">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">newspaper</span>
-                        <p class="text-sm font-medium leading-normal">News</p>
+                        <p class="text-sm font-medium leading-normal">Neuigkeiten</p>
                     </a>
                 </div>
+                <!-- IT Support Modal Trigger in Sidebar -->
                 <div class="mt-auto p-4 border-t border-slate-200 dark:border-slate-800">
-                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#" onclick="openModal(); return false;">
+                    <button onclick="showToast('Support-Modal wird in Kürze implementiert.')"
+                        class="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">help</span>
                         <p class="text-sm font-medium leading-normal">IT Support</p>
-                    </a>
+                    </button>
+                    <div class="mt-4 flex items-center gap-3 px-3">
+                        <a href="#"
+                            class="text-text-secondary hover:text-text-main dark:hover:text-white transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+                        </a>
+                        <p class="text-sm font-medium text-text-secondary">Einstellungen</p>
+                    </div>
                 </div>
             </aside>
             <!-- Main Content Area -->
@@ -257,90 +216,50 @@
                             </div>
                         </div>
                     </div>
-                    <!-- KI Prompt Galerie Section -->
-                    <div id="ai-hub" class="scroll-mt-32 flex flex-col gap-6">
-                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h3>
-                                <p class="text-sm text-text-secondary mt-1">Wähle deinen Bereich für passgenaue
-                                    KI-Vorlagen</p>
-                            </div>
-                            <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                                <button onclick="filterPrompts('marketing')" id="btn-marketing"
-                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white dark:bg-slate-700 text-primary shadow-sm">Marketing</button>
-                                <button onclick="filterPrompts('hr')" id="btn-hr"
-                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white">HR</button>
-                                <button onclick="filterPrompts('it')" id="btn-it"
-                                    class="px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white">IT
-                                    Support</button>
-                            </div>
-                        </div>
 
-                        <div id="prompt-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Prompts will be injected here by JS -->
-                        </div>
-                    </div>
-
-                    <!-- Other Resources Grid -->
+                    <!-- Dashboard Cards -->
                     <div id="resources" class="scroll-mt-32 flex flex-col gap-6">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-xl font-bold text-text-main dark:text-white">Weitere Ressourcen</h3>
-                            <a class="text-sm font-medium text-primary hover:underline" href="#"
-                                onclick="showToast('Alle Ressourcen werden geladen...'); return false;">Alle
-                                anzeigen</a>
+                            <h3 class="text-xl font-bold text-text-main dark:text-white">Schnellzugriff</h3>
                         </div>
                         <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Card 1: AI Hub -->
+                            <div
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                                <div
+                                    class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <span class="material-symbols-outlined" style="font-size: 32px;">psychology</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">KI Prompt Galerie</h4>
+                                <p class="text-text-secondary text-sm mb-6 flex-1">Entdecke kuratierte Prompts für mehr
+                                    Produktivität und bessere Ergebnisse in deiner Arbeit.</p>
+                                <a href="ai-gallery.html"
+                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span>Entdecken</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 18px;">arrow_forward</span>
+                                </a>
+                            </div>
+
                             <!-- Card 2: M365 Helfer -->
                             <div
-                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                                 <div
                                     class="size-12 rounded-lg bg-green-50 dark:bg-green-900/30 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                     <span class="material-symbols-outlined" style="font-size: 32px;">grid_view</span>
                                 </div>
                                 <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">M365 Helfer</h4>
-                                <p class="text-text-secondary text-sm mb-4">Nützliche Tipps, Tricks und
+                                <p class="text-text-secondary text-sm mb-6 flex-1">Nützliche Tipps, Tricks und
                                     Anleitungen für deine täglichen Office-Tools und Teams.</p>
-
-                                <!-- Tip of the Week Card -->
-                                <div
-                                    class="mb-6 rounded-lg bg-blue-50 dark:bg-blue-900/20 p-4 border border-blue-100 dark:border-blue-800/30">
-                                    <div class="flex items-start gap-3">
-                                        <span class="material-symbols-outlined text-primary mt-0.5"
-                                            style="font-size: 20px;">info</span>
-                                        <div>
-                                            <h5 class="text-sm font-bold text-text-main dark:text-white mb-1">Tipp der
-                                                Woche: Microsoft Loop</h5>
-                                            <p class="text-xs text-text-secondary mb-2">Erstelle deinen ersten Workspace
-                                                in 3 Schritten:</p>
-                                            <ol class="text-xs text-text-secondary list-decimal list-inside space-y-1">
-                                                <li>Öffne <strong>loop.microsoft.com</strong></li>
-                                                <li>Klicke auf <strong>"+"</strong> (Neuer Workspace)</li>
-                                                <li>Gib einen <strong>Titel</strong> ein und starte</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button onclick="showToast('M365 Helfer Modul wird geladen...')"
-                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <a href="m365-helfer.html"
+                                    class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
                                     <span>Ansehen</span>
-                                </button>
-
-                                <div
-                                    class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-text-secondary">
-                                    <span>War dieser Beitrag hilfreich?</span>
-                                    <div class="flex gap-2">
-                                        <button onclick="handleFeedback(this, true)"
-                                            class="hover:text-green-600 transition-colors material-symbols-outlined text-[18px]"
-                                            title="Ja">thumb_up</button>
-                                        <button onclick="handleFeedback(this, false)"
-                                            class="hover:text-red-500 transition-colors material-symbols-outlined text-[18px]"
-                                            title="Nein">thumb_down</button>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
+
                             <!-- Card 3: Service Katalog -->
                             <div
-                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+                                class="group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                                 <div
                                     class="size-12 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                     <span class="material-symbols-outlined" style="font-size: 32px;">shopping_bag</span>
@@ -348,116 +267,39 @@
                                 <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Service Katalog</h4>
                                 <p class="text-text-secondary text-sm mb-6 flex-1">Bestelle Hardware, Software und
                                     Zugriffsrechte einfach und schnell online.</p>
-                                <button onclick="openModal()"
+                                <a href="self-service.html"
                                     class="w-full h-10 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-600 text-text-main dark:text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
                                     <span>Zum Katalog</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Top Formulare Section -->
-                    <div id="self-service" class="scroll-mt-32 flex flex-col gap-6">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-xl font-bold text-text-main dark:text-white">Top Formulare</h3>
-                        </div>
-                        <div id="self-service-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Button 1: Urlaubsantrag -->
-                            <button onclick="showToast('Urlaubsantrag wird geladen...')"
-                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#1a2632] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-primary/50 dark:hover:border-primary/50 transition-all group">
-                                <div
-                                    class="size-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <span class="material-symbols-outlined">beach_access</span>
-                                </div>
-                                <span class="font-semibold text-text-main dark:text-white">Urlaubsantrag</span>
-                            </button>
 
-                            <!-- Button 2: Home-Office -->
-                            <button onclick="showToast('Home-Office Formular wird geladen...')"
-                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#1a2632] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-primary/50 dark:hover:border-primary/50 transition-all group">
-                                <div
-                                    class="size-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <span class="material-symbols-outlined">home_work</span>
-                                </div>
-                                <span class="font-semibold text-text-main dark:text-white">Home-Office</span>
-                            </button>
-
-                            <!-- Button 3: Reisekosten -->
-                            <button onclick="showToast('Reisekosten-Tool wird geladen...')"
-                                class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-[#1a2632] border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-primary/50 dark:hover:border-primary/50 transition-all group">
-                                <div
-                                    class="size-10 rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                    <span class="material-symbols-outlined">receipt_long</span>
-                                </div>
-                                <span class="font-semibold text-text-main dark:text-white">Reisekosten</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Secondary Section (News) -->
+                    <!-- News Teaser -->
                     <div id="news" class="scroll-mt-32 flex flex-col gap-6 pt-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Neuigkeiten</h3>
+                            <a href="news.html" class="text-sm font-medium text-primary hover:underline">Alle
+                                anzeigen</a>
                         </div>
                         <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Card 1: Teams -->
+                            <!-- Show top 3 news here (implied) or just static ones -->
                             <div
                                 class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
                                 <div class="mb-3">
                                     <span
-                                        class="inline-block px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-xs font-semibold text-blue-600 dark:text-blue-400">M365
-                                        Update</span>
+                                        class="inline-block px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-xs font-semibold text-blue-600 dark:text-blue-400">Top
+                                        Story</span>
                                 </div>
                                 <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
-                                    Microsoft Teams: Intelligente Zusammenfassung</h4>
-                                <p class="text-sm text-text-secondary mb-4 flex-1">KI-gestützte Recaps helfen dir,
-                                    Meetings effizienter nachzubereiten.</p>
-                                <button
-                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://support.microsoft.com/en-us/office/view-meeting-recap-in-microsoft-teams-c2e3a0de-f698-4a79-bf66-237190e5b0b6', '_blank')"
+                                    Erfolgreicher Launch der neuen KI-Plattform</h4>
+                                <p class="text-sm text-text-secondary mb-4 flex-1">Ab heute steht allen Mitarbeitern die
+                                    neue Kap AI Suite zur Verfügung.</p>
+                                <a href="news.html"
                                     class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
-                                    Mehr lesen
-                                    <span
+                                    Mehr lesen <span
                                         class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                                </button>
-                            </div>
-
-                            <!-- Card 2: Places -->
-                            <div
-                                class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="mb-3">
-                                    <span
-                                        class="inline-block px-2 py-1 rounded-md bg-purple-50 dark:bg-purple-900/30 text-xs font-semibold text-purple-600 dark:text-purple-400">Neuerscheinung</span>
-                                </div>
-                                <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
-                                    Microsoft Places: Der neue Standard für hybrides Arbeiten</h4>
-                                <p class="text-sm text-text-secondary mb-4 flex-1">Koordiniere Büro-Tage und finde freie
-                                    Schreibtische mit Leichtigkeit.</p>
-                                <button
-                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://www.microsoft.com/en-us/microsoft-places', '_blank')"
-                                    class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
-                                    Mehr lesen
-                                    <span
-                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                                </button>
-                            </div>
-
-                            <!-- Card 3: PowerPoint -->
-                            <div
-                                class="flex flex-col bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="mb-3">
-                                    <span
-                                        class="inline-block px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-xs font-semibold text-amber-600 dark:text-amber-400">Tipp</span>
-                                </div>
-                                <h4 class="font-bold text-text-main dark:text-white mb-2 text-lg leading-tight">
-                                    PowerPoint: Design-Vorschläge mit KI</h4>
-                                <p class="text-sm text-text-secondary mb-4 flex-1">Erstelle professionelle Folien
-                                    schneller mit den neuesten Designer-Features.</p>
-                                <button
-                                    onclick="showToast('Artikel wird geöffnet...'); window.open('https://support.microsoft.com/en-us/office/create-professional-slide-layouts-with-designer-53c77d7b-dc40-45c2-b9a5-0e08530af7a8', '_blank')"
-                                    class="text-sm font-medium text-primary hover:text-blue-700 dark:hover:text-blue-400 transition-colors self-start flex items-center gap-1 group">
-                                    Mehr lesen
-                                    <span
-                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -466,111 +308,6 @@
         </div>
     </div>
     <script>
-        // Prompt Data
-        const promptData = {
-            marketing: [
-                {
-                    title: "Blogpost Generator",
-                    desc: "Erstelle SEO-optimierte Blogartikel in Sekunden.",
-                    prompt: "Schreibe einen Blogartikel über [Thema] für [Zielgruppe]. Nutze einen freundlichen, aber professionellen Ton und integriere die Keywords: [Keyword 1], [Keyword 2]."
-                },
-                {
-                    title: "Social Media Plan",
-                    desc: "Wochenplan für LinkedIn und Twitter.",
-                    prompt: "Erstelle einen Content-Plan für die nächste Woche für LinkedIn mit dem Fokus auf [Thema]. Schlage 5 Post-Ideen vor inklusive Hook und Call-to-Action."
-                },
-                {
-                    title: "Produkt-Launch E-Mail",
-                    desc: "Überzeugende E-Mail für neue Features.",
-                    prompt: "Verfasse eine E-Mail an unsere Bestandskunden, um das neue Feature [Name] vorzustellen. Betone den Nutzen [Nutzen] und fordere zum Testen auf."
-                }
-            ],
-            hr: [
-                {
-                    title: "Stellenanzeige Entwurf",
-                    desc: "Attraktive Job-Beschreibungen schnell erstellt.",
-                    prompt: "Erstelle eine Stellenanzeige für die Position [Jobtitel]. Wir suchen jemanden mit Erfahrung in [Skill 1] und [Skill 2]. Die Unternehmenskultur ist [Adjektiv]."
-                },
-                {
-                    title: "Interview-Fragen",
-                    desc: "Strukturierte Fragen für Bewerbungsgespräche.",
-                    prompt: "Generiere 5 Interviewfragen für einen Bewerber im Bereich [Bereich], um die Soft Skills und Problemlösefähigkeiten zu testen."
-                },
-                {
-                    title: "Onboarding Checkliste",
-                    desc: "Willkommensplan für neue Mitarbeiter.",
-                    prompt: "Erstelle eine strukturierte Onboarding-Checkliste für die erste Woche eines neuen Mitarbeiters im [Abteilung]-Team."
-                }
-            ],
-            it: [
-                {
-                    title: "Fehlermeldung Erklärung",
-                    desc: "Technische Fehler verständlich erklären.",
-                    prompt: "Erkläre den Fehlercode [Code] einem nicht-technischen Nutzer höflich und gib eine Schritt-für-Schritt-Anleitung zur Lösung."
-                },
-                {
-                    title: "PowerShell Skript Docs",
-                    desc: "Automatische Dokumentation für Code.",
-                    prompt: "Erstelle eine Dokumentation für das folgende PowerShell-Skript. Erkläre die Parameter, die Funktion und gib ein Anwendungsbeispiel: [Code einfügen]"
-                },
-                {
-                    title: "Sicherheitswarnung",
-                    desc: "Phishing-Warnung an alle Mitarbeiter.",
-                    prompt: "Verfasse eine interne Sicherheitswarnung bezüglich einer aktuellen Phishing-Welle. Erkläre woran man die Mail erkennt und was zu tun ist."
-                }
-            ]
-        };
-
-        // Initialize with Marketing
-        document.addEventListener('DOMContentLoaded', () => {
-            filterPrompts('marketing');
-        });
-
-        function filterPrompts(category) {
-            // Update Buttons
-            const buttons = ['marketing', 'hr', 'it'];
-            buttons.forEach(btn => {
-                const el = document.getElementById(`btn-${btn}`);
-                if (btn === category) {
-                    el.className = "px-4 py-1.5 text-sm font-medium rounded-md transition-all bg-white dark:bg-slate-700 text-primary shadow-sm";
-                } else {
-                    el.className = "px-4 py-1.5 text-sm font-medium rounded-md transition-all text-text-secondary hover:text-text-main dark:hover:text-white";
-                }
-            });
-
-            // Update Grid
-            const grid = document.getElementById('prompt-grid');
-            grid.innerHTML = '';
-
-            const prompts = promptData[category];
-            prompts.forEach(p => {
-                const card = document.createElement('div');
-                card.className = "group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full";
-                card.innerHTML = `
-                    <div class="mb-4">
-                        <h4 class="text-lg font-bold text-text-main dark:text-white mb-1">${p.title}</h4>
-                        <p class="text-text-secondary text-sm">${p.desc}</p>
-                    </div>
-                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
-                        <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" class="w-full h-9 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-medium text-sm transition-colors flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
-                            <span>Kopieren</span>
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function copyPrompt(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('Prompt erfolgreich kopiert!');
-            }).catch(err => {
-                console.error('Copy failed', err);
-                showToast('Kopieren fehlgeschlagen');
-            });
-        }
-
         function showToast(message) {
             let toast = document.getElementById("toast");
             if (!toast) {
@@ -585,260 +322,14 @@
         }
 
         function startQuickTour() {
-            showToast('🚀 Willkommen! Hier findest du alle Tools...');
+            showToast('🚀 Willkommen! Navigiere über die Sidebar...');
             setTimeout(() => {
-                showToast('🤖 Links ist der KI Hub für deine Prompts...');
+                showToast('💡 Im Bereich KI Tools findest du nützliche Prompts...');
             }, 3000);
             setTimeout(() => {
-                showToast('👇 Unten gibt es Self-Service Formulare!');
+                showToast('🛠️ Nutze Self-Service für Anträge!');
             }, 6000);
         }
-    </script>
-
-    <!-- Service Katalog Modal -->
-    <div id="service-modal" class="modal-overlay">
-        <div class="modal">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-text-main dark:text-white">Service Anfrage</h3>
-                <button onclick="closeModal()" class="text-text-secondary hover:text-text-main dark:hover:text-white">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-
-            <form onsubmit="submitRequest(event)" class="flex flex-col gap-4">
-                <div>
-                    <label for="software-name"
-                        class="block text-sm font-medium text-text-main dark:text-white mb-1">Betreff
-                        (Software/Hardware)</label>
-                    <input type="text" id="software-name" required
-                        class="w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-text-main dark:text-white focus:ring-primary focus:border-primary"
-                        placeholder="z.B. Adobe Photoshop Lizenz">
-                </div>
-
-                <div>
-                    <label for="justification"
-                        class="block text-sm font-medium text-text-main dark:text-white mb-1">Business
-                        Justification</label>
-                    <textarea id="justification" required rows="3"
-                        class="w-full rounded-lg border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-text-main dark:text-white focus:ring-primary focus:border-primary"
-                        placeholder="Warum wird diese Software benötigt?"></textarea>
-                </div>
-
-                <div class="flex justify-end gap-3 mt-4">
-                    <button type="button" onclick="closeModal()"
-                        class="px-4 py-2 rounded-lg text-text-secondary hover:text-text-main dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">Abbrechen</button>
-                    <button type="submit"
-                        class="px-4 py-2 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors shadow-sm">Anfrage
-                        senden</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        function openModal() {
-            document.getElementById('service-modal').classList.add('open');
-            document.getElementById('software-name').focus();
-        }
-
-        function closeModal() {
-            document.getElementById('service-modal').classList.remove('open');
-        }
-
-        // Close on outside click
-        document.getElementById('service-modal').addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        function submitRequest(e) {
-            e.preventDefault();
-            // In a real app, we would send data to backend here
-            closeModal();
-            showToast('✅ Ticket #2024-894 erstellt: Anfrage an Helpdesk übermittelt');
-            // Reset form
-            e.target.reset();
-        }
-
-        /* Search Functionality */
-        function handleSearch() {
-            const input = document.getElementById('search-input');
-            const filter = input.value.toLowerCase();
-            const promptGrid = document.getElementById('prompt-grid');
-            const resourceGrid = document.getElementById('resource-grid');
-            const newsGrid = document.getElementById('news-grid');
-
-            // 1. Search Prompts
-            let matchingPrompts = [];
-
-            if (filter.length === 0) {
-                // Restore default view
-                if (document.getElementById('btn-marketing').classList.contains('bg-white')) filterPrompts('marketing');
-                else if (document.getElementById('btn-hr').classList.contains('bg-white')) filterPrompts('hr');
-                else filterPrompts('it');
-            } else {
-                const allPrompts = [...promptData.marketing, ...promptData.hr, ...promptData.it];
-                matchingPrompts = allPrompts.filter(p =>
-                    p.title.toLowerCase().includes(filter) ||
-                    p.desc.toLowerCase().includes(filter) ||
-                    p.prompt.toLowerCase().includes(filter)
-                );
-
-                promptGrid.innerHTML = '';
-                if (matchingPrompts.length > 0) {
-                    matchingPrompts.forEach(p => renderPromptCard(p, promptGrid));
-                } else {
-                    promptGrid.innerHTML = `<div class="col-span-full text-center text-text-secondary py-4 italic">Keine Prompts für "${input.value}" gefunden.</div>`;
-                }
-            }
-
-            // 2. Search Other Resources
-            filterGrid(resourceGrid, filter);
-
-            // 3. Search News
-            filterGrid(newsGrid, filter);
-        }
-
-        // Helper to filter static grids
-        function filterGrid(grid, filter) {
-            if (!grid) return;
-            const cards = grid.children;
-            let hasVisible = false;
-
-            for (let card of cards) {
-                // Ignore generated "no results" entries
-                if (card.classList.contains('no-results-msg')) {
-                    card.remove();
-                    continue;
-                }
-
-                const text = card.innerText.toLowerCase();
-                if (text.includes(filter)) {
-                    card.style.display = 'flex';
-                    hasVisible = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-
-            // Remove existing no-results message if any
-            const existingMsg = grid.querySelector('.no-results-msg');
-            if (existingMsg) existingMsg.remove();
-
-            if (!hasVisible && filter.length > 0) {
-                const msg = document.createElement('div');
-                msg.className = 'no-results-msg col-span-full text-center text-text-secondary py-4 italic';
-                msg.innerText = 'Keine Ergebnisse gefunden.';
-                grid.appendChild(msg);
-            }
-
-            // Fix: If filter is empty, ensure all original items are visible
-            if (filter.length === 0) {
-                const cards = grid.children;
-                for (let card of cards) {
-                    if (!card.classList.contains('no-results-msg')) {
-                        card.style.display = 'flex';
-                    }
-                }
-            }
-        }
-
-        // Helper to Render Prompt Card (extracted to be reusable)
-        function renderPromptCard(p, grid) {
-            const card = document.createElement('div');
-            card.className = "group bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:scale-105 transition-transform duration-300 flex flex-col h-full";
-            card.innerHTML = `
-                <div class="mb-4">
-                    <h4 class="text-lg font-bold text-text-main dark:text-white mb-1">${p.title}</h4>
-                    <p class="text-text-secondary text-sm">${p.desc}</p>
-                </div>
-                <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
-                    <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" class="w-full h-9 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary font-medium text-sm transition-colors flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined" style="font-size: 18px;">content_copy</span>
-                        <span>Kopieren</span>
-                    </button>
-                </div>
-            `;
-            grid.appendChild(card);
-        }
-
-        function handleFeedback(btn, isPositive) {
-            // Find parent container to replace content
-            const container = btn.parentElement.parentElement;
-            container.innerHTML = '<span class="text-green-600 font-medium w-full text-center">Vielen Dank für dein Feedback!</span>';
-
-            // Still show toast for extra visibility/delight
-            showToast('Vielen Dank für dein Feedback!');
-        }
-        // Active State Scroll Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme Initialization
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
-                if (icon) icon.innerText = 'light_mode';
-            } else {
-                html.classList.remove('dark');
-                if (icon) icon.innerText = 'dark_mode';
-            }
-
-            const sections = ['home', 'ai-hub', 'resources', 'self-service', 'news'];
-            const navLinks = {};
-
-            sections.forEach(id => {
-                navLinks[id] = document.getElementById(`nav-${id}`);
-            });
-
-            // RELAXED Observer Logic
-            const observerOptions = {
-                root: null,
-                // Trigger when element intersects with the middle 60% of screen, or strictly top
-                // -10% from top, -10% from bottom (80% detection height)
-                rootMargin: '-10% 0px -10% 0px',
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        highlightNav(entry.target.id);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) observer.observe(el);
-            });
-
-            // Explicit Bottom Override
-            window.addEventListener('scroll', () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
-                    highlightNav('news');
-                }
-            });
-
-            function highlightNav(activeId) {
-                Object.keys(navLinks).forEach(id => {
-                    const link = navLinks[id];
-                    if (!link) return;
-
-                    const icon = link.querySelector('.material-symbols-outlined');
-
-                    if (id === activeId) {
-                        // Active Style
-                        link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors";
-                        icon.className = "material-symbols-outlined";
-                    } else {
-                        // Inactive Style
-                        link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors";
-                        icon.className = "material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white";
-                    }
-                });
-            }
-        });
 
         // Toggle Theme Function
         function toggleTheme() {
@@ -855,6 +346,14 @@
                 icon.innerText = 'light_mode';
             }
         }
+
+        // Initialize Theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerText = 'light_mode';
+        }
     </script>
+</body>
 
 </html>

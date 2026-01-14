@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kap IT Hub - AI Gallery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1773cf",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "text-main": "#0e141b",
+                        "text-secondary": "#4e7397",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Toast Notification Styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-text-main">
+    <div class="relative flex h-screen w-full flex-col overflow-hidden">
+        <!-- Top Navigation Bar -->
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
+                    <div class="size-8 flex items-center justify-center rounded bg-primary/10">
+                        <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
+                    </div>
+                    <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kap
+                        IT Hub</h2>
+                </a>
+                <!-- Desktop Search -->
+                <div class="hidden md:flex flex-col min-w-80 h-10">
+                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+                        <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                        </div>
+                        <input id="search-input" oninput="handleSearch()"
+                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
+                            placeholder="Suche im Intranet..." value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="showToast('Du hast keine neuen Benachrichtigungen.')"
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+                    <span
+                        class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2632]"></span>
+                </button>
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined" style="font-size: 24px;">dark_mode</span>
+                </button>
+                <button onclick="showToast('Profil-Einstellungen in Vorbereitung.')"
+                    class="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-8"
+                        data-alt="User profile picture placeholder"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
+                    </div>
+                    <span class="text-sm font-medium hidden lg:block text-text-main dark:text-white">Sarah Müller</span>
+                    <span class="material-symbols-outlined text-text-secondary hidden lg:block"
+                        style="font-size: 20px;">expand_more</span>
+                </button>
+            </div>
+        </header>
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Side Navigation Bar -->
+            <aside
+                class="hidden md:flex w-64 flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0">
+                <div class="flex flex-col gap-2 p-4">
+                    <div class="flex flex-col mb-4 px-3">
+                        <h1 class="text-text-secondary text-xs font-semibold uppercase tracking-wider leading-normal">
+                            Main Menu</h1>
+                    </div>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="index.html" id="nav-home">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">home</span>
+                        <p class="text-sm font-medium leading-normal">Dashboard</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors"
+                        href="ai-gallery.html" id="nav-ai-hub">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">smart_toy</span>
+                        <p class="text-sm font-semibold leading-normal">KI Tools / Prompt Galerie</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="m365-helfer.html" id="nav-resources">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">tips_and_updates</span>
+                        <p class="text-sm font-medium leading-normal">M365 Helfer</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="self-service.html" id="nav-self-service">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">build_circle</span>
+                        <p class="text-sm font-medium leading-normal">Self-Service</p>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
+                        href="news.html" id="nav-news">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">newspaper</span>
+                        <p class="text-sm font-medium leading-normal">Neuigkeiten</p>
+                    </a>
+                </div>
+                <!-- IT Support Modal Trigger in Sidebar -->
+                <div class="mt-auto p-4 border-t border-slate-200 dark:border-slate-800">
+                    <button onclick="showToast('Support-Modal wird in Kürze implementiert.')"
+                        class="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors">
+                        <span
+                            class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
+                            style="font-size: 24px;">help</span>
+                        <p class="text-sm font-medium leading-normal">IT Support</p>
+                    </button>
+                    <div class="mt-4 flex items-center gap-3 px-3">
+                        <a href="#"
+                            class="text-text-secondary hover:text-text-main dark:hover:text-white transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">settings</span>
+                        </a>
+                        <p class="text-sm font-medium text-text-secondary">Einstellungen</p>
+                    </div>
+                </div>
+            </aside>
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-10">
+                <div class="max-w-[1200px] mx-auto flex flex-col gap-10">
+                    <!-- Page Header -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div>
+                            <nav class="flex text-sm text-text-secondary mb-2">
+                                <a href="index.html" class="hover:text-primary transition-colors">Startseite</a>
+                                <span class="mx-2">›</span>
+                                <span class="text-text-main dark:text-white font-medium">KI Prompt Galerie</span>
+                            </nav>
+                            <h1 class="text-3xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h1>
+                            <p class="text-text-secondary mt-1 max-w-2xl">Optimiere deine Arbeitsprozesse mit
+                                vorgefertigten, qualitätsgeprüften KI-Prompts für ChatGPT und andere Tools.</p>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar Specific to Page -->
+                    <div
+                        class="w-full bg-white dark:bg-[#1a2632] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex gap-4">
+                        <div class="flex-1 relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
+                            <input id="prompt-search" oninput="handlePromptSearch()" type="text"
+                                placeholder="Nach Prompts, Themen oder Abteilungen suchen..."
+                                class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-primary text-text-main dark:text-white">
+                        </div>
+                        <button
+                            class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">Suchen</button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-2">
+                        <span class="text-sm font-medium text-text-main dark:text-white mr-2">Kategorien:</span>
+                        <button onclick="filterPrompts('all')" id="btn-all"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-text-main text-white transition-all shadow-sm whitespace-nowrap">Alle</button>
+                        <button onclick="filterPrompts('marketing')" id="btn-marketing"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">📢
+                            Marketing</button>
+                        <button onclick="filterPrompts('hr')" id="btn-hr"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">👥
+                            Personalwesen (HR)</button>
+                        <button onclick="filterPrompts('it')" id="btn-it"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">💻
+                            IT-Support</button>
+                        <button onclick="filterPrompts('sales')" id="btn-sales"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">📈
+                            Vertrieb (Sales)</button>
+                        <button onclick="filterPrompts('legal')" id="btn-legal"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">⚖️
+                            Legal</button>
+                    </div>
+
+                    <!-- Layout: Prompts Grid -->
+                    <div id="prompt-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Prompts will be loaded here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        // Use Global Theme Script
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                if (icon) icon.innerText = 'dark_mode';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                if (icon) icon.innerText = 'light_mode';
+            }
+        }
+
+        // Initialize Theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            const icon = document.getElementById('theme-icon');
+            if (icon) icon.innerText = 'light_mode';
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById("toast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast";
+                toast.className = "toast";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.className = "toast show";
+            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // Expanded Prompt Data
+        const promptData = {
+            marketing: [
+                {
+                    title: "E-Mail Kampagne Entwurf",
+                    desc: "Generieren Sie überzeugende E-Mail-Marketing-Texte für Produktlaunches oder Newsletter.",
+                    prompt: "Erstelle eine 3-teilige E-Mail-Sequenz für den Launch von [Produktname]. Zielgruppe: [Zielgruppe]. Fokus auf: [USP].",
+                    tag: "Marketing",
+                    icon: "mail"
+                },
+                {
+                    title: "Blogpost Struktur",
+                    desc: "Erstellen Sie eine SEO-freundliche Gliederung für Blogartikel mit H1, H2 und H3.",
+                    prompt: "Erstelle eine Gliederung für einen Blogpost zum Thema '[Thema]'. Integriere folgende Keywords: [Keywords]. Ziel: [Ziel].",
+                    tag: "Marketing",
+                    icon: "edit_note"
+                },
+                {
+                    title: "Social Media Caption",
+                    desc: "Kreative Captions für Instagram und LinkedIn Posts mit Hashtags.",
+                    prompt: "Schreibe eine 'viral' gehende Caption für LinkedIn über [Thema]. Nutze Storytelling und ende mit einer Frage. Tonalität: [Ton].",
+                    tag: "Marketing",
+                    icon: "share"
+                }
+            ],
+            hr: [
+                {
+                    title: "Stellenanzeige Generator",
+                    desc: "Erstellen Sie detaillierte und inklusive Stellenbeschreibungen unter Angabe von Anforderungen.",
+                    prompt: "Schreibe eine Stellenanzeige für [Jobtitel]. Seniorität: [Level]. Aufgaben: [Aufgaben]. Wir bieten: [Benefits].",
+                    tag: "HR",
+                    icon: "badge"
+                },
+                {
+                    title: "Onboarding Plan",
+                    desc: "Strukturierter 30-60-90 Tage Plan für neue Mitarbeiter.",
+                    prompt: "Erstelle einen Onboarding-Plan für die erste Woche eines neuen [Position]. Fokus auf: Team-Integration und [Tools].",
+                    tag: "HR",
+                    icon: "person_add"
+                }
+            ],
+            it: [
+                {
+                    title: "SQL Query Helper",
+                    desc: "Hilft beim Schreiben und Optimieren komplexer SQL-Abfragen. Fügen Sie Ihr Schema ein.",
+                    prompt: "Ich habe eine Tabelle 'Orders' (id, date, amount) und 'Users' (id, name). Schreibe eine SQL-Query für die Top 10 User nach Umsatz im Jahr 2023.",
+                    tag: "IT-Support",
+                    icon: "data_object"
+                },
+                {
+                    title: "Code Dokumentation",
+                    desc: "Generiert automatische Dokumentation für Codeschnipsel in Python, JS, C#.",
+                    prompt: "Dokumentiere diese Funktion im Javadoc-Stil. Erkläre alle Parameter und Rückgabewerte: [Code einfügen].",
+                    tag: "IT-Support",
+                    icon: "description"
+                }
+            ],
+            sales: [
+                {
+                    title: "Cold Outreach Skript",
+                    desc: "Vorlagen für die Erstansprache potenzieller Kunden auf LinkedIn oder per Mail.",
+                    prompt: "Schreibe eine kurze Cold-Message an einen CTO. Problem: [Problem]. Lösung: [Unser Produkt]. Ziel: Terminvereinbarung.",
+                    tag: "Sales",
+                    icon: "handshake"
+                },
+                {
+                    title: "Einwandbehandlung",
+                    desc: "Strategien um typische Einwände von Kunden zu entkräften.",
+                    prompt: "Der Kunde sagt: 'Das ist zu teuer'. Gib mir 3 Argumente, die den ROI betonen und den Preis rechtfertigen.",
+                    tag: "Sales",
+                    icon: "price_check"
+                }
+            ],
+            general: [
+                {
+                    title: "Meeting Protokoll",
+                    desc: "Wandeln Sie rohe Meeting-Notizen in ein strukturiertes Protokoll mit Action-Items um.",
+                    prompt: "Formatiere diese Notizen in ein Protokoll mit: Teilnehmer, Agenda, Entscheidungen, Aufgaben (Wer, Bis Wann). Notizen: [Text].",
+                    tag: "General",
+                    icon: "assignment"
+                }
+            ]
+        };
+
+        let currentCategory = 'all';
+
+        function filterPrompts(category) {
+            currentCategory = category;
+
+            // Update Buttons
+            const buttons = ['all', 'marketing', 'hr', 'it', 'sales', 'legal'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (!el) return;
+
+                if (btn === category) {
+                    el.className = "px-4 py-1.5 text-sm font-medium rounded-full bg-text-main text-white transition-all shadow-sm whitespace-nowrap";
+                } else {
+                    el.className = "px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap";
+                }
+            });
+
+            renderGrid();
+        }
+
+        function handlePromptSearch() {
+            renderGrid();
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('prompt-grid');
+            const search = document.getElementById('prompt-search').value.toLowerCase();
+            grid.innerHTML = '';
+
+            // Collect all prompts
+            let allPrompts = [];
+            if (currentCategory === 'all') {
+                Object.values(promptData).forEach(arr => allPrompts.push(...arr));
+            } else {
+                allPrompts = promptData[currentCategory] || [];
+            }
+
+            // Filter by search
+            const filtered = allPrompts.filter(p =>
+                p.title.toLowerCase().includes(search) ||
+                p.desc.toLowerCase().includes(search) ||
+                p.prompt.toLowerCase().includes(search)
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-12 text-center text-text-secondary flex flex-col items-center">
+                    <span class="material-symbols-outlined text-4xl mb-2 opacity-50">search_off</span>
+                    <p>Keine passenden Prompts gefunden.</p>
+                </div>`;
+                return;
+            }
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative group";
+
+                // Color mapping for tags
+                let tagColor = "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300";
+                if (p.tag === 'Marketing') tagColor = "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400";
+                if (p.tag === 'HR') tagColor = "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
+                if (p.tag === 'IT-Support') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
+                if (p.tag === 'Sales') tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="size-10 rounded-lg ${tagColor} flex items-center justify-center">
+                             <span class="material-symbols-outlined">${p.icon || 'smart_toy'}</span>
+                        </div>
+                        <span class="px-2 py-1 rounded text-xs font-semibold ${tagColor}">${p.tag}</span>
+                    </div>
+                    
+                    <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">${p.title}</h4>
+                    <p class="text-text-secondary text-sm mb-6 flex-1">${p.desc}</p>
+                    
+                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" 
+                                class="w-full h-10 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 group-hover:border-primary/50">
+                            <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors" style="font-size: 18px;">content_copy</span>
+                            <span>Prompt kopieren</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function copyPrompt(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('✨ Prompt erfolgreich in die Zwischenablage kopiert!');
+            }).catch(err => {
+                console.error('Copy failed', err);
+                showToast('❌ Kopieren fehlgeschlagen');
+            });
+        }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            filterPrompts('all');
+        });
+    </script>
+</body>
+
+</html>
