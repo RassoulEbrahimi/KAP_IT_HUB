@@ -47,6 +47,10 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Toast Notification Styles */
         .toast {
             visibility: hidden;
@@ -174,33 +178,33 @@
                             Main Menu</h1>
                     </div>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors"
-                        href="#">
+                        href="#home" id="nav-home">
                         <span class="material-symbols-outlined" style="font-size: 24px;">home</span>
                         <p class="text-sm font-semibold leading-normal">Home</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#">
+                        href="#ai-hub" id="nav-ai-hub">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">smart_toy</span>
                         <p class="text-sm font-medium leading-normal">AI Hub</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#">
+                        href="#resources" id="nav-resources">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">tips_and_updates</span>
                         <p class="text-sm font-medium leading-normal">M365 Tips</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#">
+                        href="#news" id="nav-news">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">newspaper</span>
                         <p class="text-sm font-medium leading-normal">News</p>
                     </a>
                     <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors"
-                        href="#">
+                        href="#self-service" id="nav-self-service">
                         <span
                             class="material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white"
                             style="font-size: 24px;">build_circle</span>
@@ -221,7 +225,8 @@
             <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 md:p-10">
                 <div class="max-w-[1200px] mx-auto flex flex-col gap-10">
                     <!-- Hero Section -->
-                    <div class="rounded-2xl overflow-hidden relative min-h-[320px] flex items-center bg-cover bg-center shadow-md"
+                    <div id="home"
+                        class="scroll-mt-6 rounded-2xl overflow-hidden relative min-h-[320px] flex items-center bg-cover bg-center shadow-md"
                         data-alt="Abstract blue technology background with glowing nodes"
                         style='background-image: linear-gradient(135deg, rgba(23, 115, 207, 0.9) 0%, rgba(14, 20, 27, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2iUb5xSBRyFqnyKcSNVXC3elqZYtfrNzblV-Sey11iX-eyi99wy1YL5gOPGAxOLG9TbEEg0Bp5hO3a_NCYb1titlkyBvagraz_CPiNsHy52IM3BZ_uTcLrFWzAiXaKAvSA-tKZ0mk0Wr_-lXrB65Ce7qd944rSTUebk3ZJ5OPzhWVdP5MF7DXVIVM3WQdy6DjPzFrhtVdocmDHB-v5pqsfRoLh4ypU0GSkDqGCdnN82iQ47ekhSX7WrP2H0UveVjTONvSbN6St7Sy");'>
                         <div class="absolute inset-0 bg-black/10"></div>
@@ -248,7 +253,7 @@
                         </div>
                     </div>
                     <!-- KI Prompt Galerie Section -->
-                    <div class="flex flex-col gap-6">
+                    <div id="ai-hub" class="scroll-mt-6 flex flex-col gap-6">
                         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                             <div>
                                 <h3 class="text-xl font-bold text-text-main dark:text-white">KI Prompt Galerie</h3>
@@ -272,7 +277,7 @@
                     </div>
 
                     <!-- Other Resources Grid -->
-                    <div class="flex flex-col gap-6">
+                    <div id="resources" class="scroll-mt-6 flex flex-col gap-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Weitere Ressourcen</h3>
                             <a class="text-sm font-medium text-primary hover:underline" href="#">Alle anzeigen</a>
@@ -345,7 +350,7 @@
                         </div>
                     </div>
                     <!-- Top Formulare Section -->
-                    <div class="flex flex-col gap-6">
+                    <div id="self-service" class="scroll-mt-6 flex flex-col gap-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Top Formulare</h3>
                         </div>
@@ -383,7 +388,7 @@
                     </div>
 
                     <!-- Secondary Section (News) -->
-                    <div class="flex flex-col gap-6 pt-6">
+                    <div id="news" class="scroll-mt-6 flex flex-col gap-6 pt-6">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Neuigkeiten</h3>
                         </div>
@@ -740,6 +745,53 @@
             // Still show toast for extra visibility/delight
             showToast('Vielen Dank für dein Feedback!');
         }
+        // Active State Scroll Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = ['home', 'ai-hub', 'resources', 'news', 'self-service'];
+            const navLinks = {};
+
+            sections.forEach(id => {
+                navLinks[id] = document.getElementById(`nav-${id}`);
+            });
+
+            const observerOptions = {
+                root: document.querySelector('main'),
+                rootMargin: '-20% 0px -60% 0px', // Trigger when section is near top
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        highlightNav(entry.target.id);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) observer.observe(el);
+            });
+
+            function highlightNav(activeId) {
+                Object.keys(navLinks).forEach(id => {
+                    const link = navLinks[id];
+                    if (!link) return;
+
+                    const icon = link.querySelector('.material-symbols-outlined');
+
+                    if (id === activeId) {
+                        // Active Style
+                        link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary group transition-colors";
+                        icon.className = "material-symbols-outlined"; // Reset classes to inherit primary color
+                    } else {
+                        // Inactive Style
+                        link.className = "flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 group transition-colors";
+                        icon.className = "material-symbols-outlined text-text-secondary group-hover:text-text-main dark:group-hover:text-white";
+                    }
+                });
+            }
+        });
     </script>
 
 </html>
