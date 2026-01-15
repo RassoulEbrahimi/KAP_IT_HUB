@@ -465,49 +465,63 @@
                 {
                     title: "Kaltakquise-E-Mail",
                     desc: "Überzeugende E-Mail für Erstgespräche an spezifische Entscheider.",
-                    prompt: "Schreibe eine kurze, überzeugende Kaltakquise-E-Mail an einen [Jobtitel] bei [Unternehmen]. Nutze diesen Hintergrund: [Value Props]. Format: E-Mail-ready.",
+                    prompt: "Schreibe eine kurze, überzeugende Kaltakquise-E-Mail an einen [Jobtitel] bei [Unternehmen]. Nutze: [Value Props]. Format: E-Mail-bereit.",
                     tag: "Sales: Outreach",
                     icon: "mail"
                 },
                 {
                     title: "Demo Follow-up",
                     desc: "Beratende Follow-up-E-Mail nach einer Demo mit nächsten Schritten.",
-                    prompt: "Schreibe diese Follow-up-E-Mail nach einer Demo um, damit sie beratender klingt. Inklusive Recap, nächste Schritte und Call-to-Action.",
+                    prompt: "Schreibe diese Follow-up-E-Mail nach einer Demo in einen beratenden Ton um. Inklusive Recap, nächste Schritte und CTA.",
                     tag: "Sales: Outreach",
                     icon: "forward_to_inbox"
                 },
                 {
                     title: "Renewal Pitch",
                     desc: "Erneuerungs-Pitch für Bestandskunden mit ROI-Fokus.",
-                    prompt: "Entwirfe einen Erneuerungs-Pitch für [Kundenname] basierend auf: [Verlaufsdaten]. Hebe den ROI hervor und gib eine klare Empfehlung ab.",
+                    prompt: "Entwirfe einen Verlängerungs-Pitch für [Kunde] basierend auf: [Verlaufsdaten]. Hebe den ROI hervor.",
                     tag: "Sales: Outreach",
                     icon: "autorenew"
+                },
+                {
+                    title: "Exec Pipeline-Update",
+                    desc: "Monatliches Pipeline-Briefing für das Management.",
+                    prompt: "Fasse den Pipeline-Status diesen Monat für das Management zusammen. Inklusive Gesamtvolumen, Top-Risiken und Forecast-Sicherheit.",
+                    tag: "Sales: Outreach",
+                    icon: "campaign"
                 },
 
                 // 2. PILLAR: Vertriebsstrategie & Planung
                 {
                     title: "Strategischer Account-Plan",
                     desc: "Umfassender Plan für Key Accounts mit Zielen und Stakeholdern.",
-                    prompt: "Erstelle einen Account-Plan für [Kunde]. Nutze: Unternehmensprofil, Prioritäten, Stakeholder. Ausgabe: Ziele, Risiken und Chancen.",
+                    prompt: "Erstelle einen Plan für [Kunde]. Nutze: Profil, Prioritäten, Stakeholder. Ausgabe: Ziele, Risiken und Chancen.",
                     tag: "Sales: Strategie",
                     icon: "map"
                 },
                 {
-                    title: "Markteintritts-Planung",
-                    desc: "Evaluierung neuer Märkte anhand von Kaufverhalten und Wettbewerb.",
-                    prompt: "Evaluiere den Markteintritt in [Region/Land] für unsere Lösung. Recherchiere Kaufverhalten, Wettbewerb und regulatorische Faktoren.",
+                    title: "Territory-Planung",
+                    desc: "Leitfaden für die Gebietsplanung basierend auf Team und Markt.",
+                    prompt: "Erstelle einen Leitfaden für die Gebietsplanung des nächsten Geschäftsjahres basierend auf: [Teamgröße, Branchen, Regionen].",
                     tag: "Sales: Strategie",
                     icon: "public"
                 },
                 {
                     title: "Account-Priorisierung",
                     desc: "Priorisierung von Account-Listen nach strategischen Kriterien.",
-                    prompt: "Priorisiere diese Liste von Accounts: [Liste]. Nutze Kriterien wie Branche, Größe und Finanzierung. Gib Begründungen an.",
+                    prompt: "Priorisiere diese Liste von Accounts: [Liste] basierend auf Branche, Größe und Finanzierung. Gib Begründungen an.",
                     tag: "Sales: Strategie",
                     icon: "sort"
                 },
+                {
+                    title: "Markteintritts-Check",
+                    desc: "Evaluierung neuer Märkte anhand von Kaufverhalten und Wettbewerb.",
+                    prompt: "Evaluiere den Markteintritt in [Region] für unsere Lösung. Recherchiere Kaufverhalten, Wettbewerb und Regulatorik.",
+                    tag: "Sales: Strategie",
+                    icon: "flag"
+                },
 
-                // 3. PILLAR: Marktforschung & Enablement
+                // 3. PILLAR: Wettbewerbsanalyse & Enablement
                 {
                     title: "Wettbewerbs-Battlecard",
                     desc: "Übersicht zu Stärken und Schwächen eines Wettbewerbers.",
@@ -518,39 +532,53 @@
                 {
                     title: "Einwandbehandlung",
                     desc: "Souveräne Antworten auf gängige Kundeneinwände.",
-                    prompt: "Erstelle Antworten auf diese Einwände: [Einwände]. Klinge sicher und kompetent, nutze Statistiken oder Erfolgsgeschichten.",
+                    prompt: "Erstelle Antworten auf diese Einwände: [Einwände]. Klinge sicher und kompetent, nutze Beweispunkte.",
                     tag: "Sales: Enablement",
                     icon: "verified"
                 },
                 {
                     title: "Sales One-Pager",
                     desc: "Zusammenfassung von Produktvorteilen und Features für Pitches.",
-                    prompt: "Erstelle einen One-Pager, um [Produkt] bei [Persona] zu pitchen. Inklusive Vorteile, Features und Differenzierungsmerkmale.",
+                    prompt: "Erstelle einen One-Pager, um [Produkt] bei [Persona] zu pitchen. Inklusive Vorteile, Features und Differenzierung.",
                     tag: "Sales: Enablement",
                     icon: "description"
+                },
+                {
+                    title: "Customer Proof Points",
+                    desc: "Zusammenfassung von Kundenstimmen und Kritiken.",
+                    prompt: "Recherchiere Online-Bewertungen über [Produkt/Wettbewerber]. Fasse die Top 5 Zitate und Kritikpunkte zusammen.",
+                    tag: "Sales: Enablement",
+                    icon: "reviews"
                 },
 
                 // 4. PILLAR: Datenanalyse & Performance
                 {
                     title: "Pipeline-Konvertierung",
                     desc: "Analyse von Conversion-Rates und Drop-off-Punkten.",
-                    prompt: "Analysiere diesen Pipeline-Export. Berechne die Konversionsraten zwischen den Phasen und identifiziere den größten Drop-off-Punkt.",
+                    prompt: "Analysiere diesen Pipeline-Export. Berechne Konversionsraten zwischen den Phasen und identifiziere Drop-off-Punkte.",
                     tag: "Sales: Daten",
                     icon: "filter_alt"
                 },
                 {
+                    title: "Top-Rep Analyse",
+                    desc: "Ranking der Vertriebsmitarbeiter nach Abschlussrate.",
+                    prompt: "Berechne die Abschlussrate für jeden Mitarbeiter aus diesem Datensatz und ranke sie nach Erfolg.",
+                    tag: "Sales: Daten",
+                    icon: "emoji_events"
+                },
+                {
                     title: "Deal-Geschwindigkeit",
-                    desc: "Berechnung der durchschnittlichen Deal-Dauer von Lead bis Abschluss.",
-                    prompt: "Berechne die durchschnittliche Deal-Velocity pro Quartal (Tage von Lead bis Abschluss) aus diesem CRM-Export.",
+                    desc: "Berechnung der durchschnittlichen Deal-Dauer.",
+                    prompt: "Berechne die durchschnittliche Deal-Velocity (Tage von Lead bis Abschluss) aus diesem CRM-Export.",
                     tag: "Sales: Daten",
                     icon: "speed"
                 },
                 {
-                    title: "Win/Loss Zusammenfassung",
-                    desc: "Analyse der Gründe für gewonnene und verlorene Deals.",
-                    prompt: "Analysiere diese CRM-Daten der letzten 3 Monate. Was sind die Top-3 Gründe für gewonnene und verlorene Deals?",
+                    title: "Kampagnen-Attribution",
+                    desc: "Zuordnung von Umsatz zu Kampagnenquellen.",
+                    prompt: "Ordne Kampagnenquellen den abgeschlossenen Deals zu. Identifiziere die umsatzstärkste Kampagne.",
                     tag: "Sales: Daten",
-                    icon: "pie_chart"
+                    icon: "attribution"
                 }
             ],
             productivity: [
