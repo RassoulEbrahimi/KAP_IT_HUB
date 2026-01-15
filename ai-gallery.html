@@ -403,61 +403,214 @@
                 }
             ],
             marketing: [
+                // 1. PILLAR: Kampagnenplanung & Strategie
+                {
+                    title: "Kampagnen-Zeitplan",
+                    desc: "Erstellung eines detaillierten Zeitplans für Multi-Channel-Kampagnen.",
+                    prompt: "Erstelle einen Zeitplan für unsere kommende Multi-Channel-Kampagne. Wichtige Daten: [Infos]. Ausgabe als horizontaler Zeitplan mit Phasen und Deadlines.",
+                    tag: "Marketing",
+                    subsection: "Kampagnenplanung & Strategie",
+                    icon: "calendar_month"
+                },
                 {
                     title: "Kampagnen-Brainstorming",
-                    desc: "Kreative Ideenfindung für Events oder Launches mit Fokus auf Zielgruppe und Taktiken.",
-                    prompt: "Brainstorme 5 kreative Kampagnenideen für unser/e kommende/s [Event/Launch]. Zielgruppe: [Zielgruppe], Ziel: [Ziel]. Inklusive Thema, Slogan und 1-2 Kern-Taktiken pro Idee.",
+                    desc: "Kreatives Brainstorming für Events oder Launches mit Fokus auf Zielgruppen.",
+                    prompt: "Brainstorme 5 kreative Kampagnenideen für [Event/Launch]. Zielgruppe: [Ziel], Ziel: [Ziel]. Inklusive Thema, Slogan und Taktiken.",
                     tag: "Marketing",
+                    subsection: "Kampagnenplanung & Strategie",
                     icon: "lightbulb"
                 },
                 {
-                    title: "Messaging-Framework",
-                    desc: "Strukturiertes Framework für Produktkommunikation mit Benefits und Proof Points.",
-                    prompt: "Erstelle ein Messaging-Framework für ein neues Produkt. Details: [Infos]. Ausgabe als Tabelle mit 3 Säulen: Hauptvorteile (Key Benefits), Beweispunkte (Proof Points) und emotionale Trigger.",
+                    title: "Creative Brief Entwurf",
+                    desc: "Strukturiertes Briefing für Paid-Media-Kampagnen.",
+                    prompt: "Erstelle ein Creative Brief für unsere nächste Paid-Media-Kampagne. Inklusive Objektiv, Zielgruppen-Insights, Tonfall und KPIs.",
                     tag: "Marketing",
+                    subsection: "Kampagnenplanung & Strategie",
+                    icon: "assignment"
+                },
+                {
+                    title: "Messaging-Framework",
+                    desc: "Aufbau einer Kommunikationsstrategie mit Vorteilen und Beweispunkten.",
+                    prompt: "Baue ein Messaging-Framework für ein neues Produkt. Tabelle mit 3 Säulen: Hauptvorteile, Beweispunkte und emotionale Trigger.",
+                    tag: "Marketing",
+                    subsection: "Kampagnenplanung & Strategie",
                     icon: "forum"
                 },
                 {
-                    title: "Wettbewerbs-Analyse",
-                    desc: "Analyse der Wettbewerber-Strategien hinsichtlich Tonfall, SEO und Taktiken.",
-                    prompt: "Untersuche die Content-Strategie der Top 5 Wettbewerber im Bereich [Thema]. Analysiere Tonfall, Themenrelevanz und SEO-Fokus. Erstelle eine Zusammenfassung der Standout-Taktiken.",
+                    title: "Customer Journey Map",
+                    desc: "Visualisierung der Kundenreise mit Phasen und Touchpoints.",
+                    prompt: "Erstelle eine Customer Journey Map für [Produkt]. Unterteilt in Phasen, Ziele, Touchpoints und Schmerzpunkte.",
                     tag: "Marketing",
+                    subsection: "Kampagnenplanung & Strategie",
+                    icon: "map"
+                },
+
+                // 2. PILLAR: Wettbewerbs- & Marktforschung
+                {
+                    title: "Wettbewerbs-Content-Analyse",
+                    desc: "Analyse der Content-Strategie von Wettbewerbern.",
+                    prompt: "Untersuche die Blog-Content-Strategie der Top 5 Wettbewerber. Analysiere Tonfall, Frequenz, SEO-Fokus und CTAs.",
+                    tag: "Marketing",
+                    subsection: "Wettbewerbs- & Marktforschung",
                     icon: "analytics"
                 },
                 {
-                    title: "KI-Tools für Marketer",
-                    desc: "Übersicht top-bewerteter KI-Tools mit Funktionen und Nutzen.",
-                    prompt: "Recherchiere die am besten bewerteten KI-Tools für [Funktion, z.B. Copywriting oder Analytics]. Erstelle eine Tabelle mit Funktionen, Preismodellen und primärem Nutzen.",
+                    title: "Trend-Recherche Käuferverhalten",
+                    desc: "Identifikation aktueller Trends im Kaufverhalten.",
+                    prompt: "Recherche der Trends 2024 zum Kaufverhalten in [Branche]. Kurzes Briefing mit Bullet Points zu Verhaltensänderungen.",
                     tag: "Marketing",
-                    icon: "smart_toy"
+                    subsection: "Wettbewerbs- & Marktforschung",
+                    icon: "trending_up"
                 },
                 {
-                    title: "Produkt-Launch E-Mail",
-                    desc: "Aktivierende E-Mail zur Markteinführung für Bestandskunden.",
-                    prompt: "Schreibe eine überzeugende E-Mail zur Markteinführung für unser neues Produkt. Details: [Infos]. Ziel: Bestandskunden aktivieren. Formatiert als fertiger Entwurf mit Betreffzeile.",
+                    title: "Regionale Benchmarks",
+                    desc: "Vergleich von Performance-Kennzahlen für digitale Kampagnen.",
+                    prompt: "Recherche typischer CTRs, CPCs und Conversion-Raten für digitale Kampagnen in [Ort] für 2024. Vergleichstabelle pro Land.",
                     tag: "Marketing",
+                    subsection: "Wettbewerbs- & Marktforschung",
+                    icon: "public"
+                },
+                {
+                    title: "Wettbewerber-Event-Präsenz",
+                    desc: "Zusammenfassung der Event-Aktivitäten von Konkurrenten.",
+                    prompt: "Zusammenfassung der Teilnahme von Wettbewerbern an [Event]. Inklusive Stand-Aktionen, Vorträge und Sponsoring.",
+                    tag: "Marketing",
+                    subsection: "Wettbewerbs- & Marktforschung",
+                    icon: "event"
+                },
+                {
+                    title: "KI-Tools für Marketer",
+                    desc: "Übersicht bewerteter KI-Tools für spezifische Marketing-Funktionen.",
+                    prompt: "Recherche der am besten bewerteten KI-Tools für [Funktion]. Tabelle mit Funktionen, Preis, Vor-/Nachteilen.",
+                    tag: "Marketing",
+                    subsection: "Wettbewerbs- & Marktforschung",
+                    icon: "smart_toy"
+                },
+
+                // 3. PILLAR: Content & Kreation
+                {
+                    title: "Produkt-Launch E-Mail",
+                    desc: "Überzeugende E-Mail zur Einführung neuer Produkte.",
+                    prompt: "Schreibe eine Launch-E-Mail für unser neues Produkt. Nutze Infos zu [Produkt/Zielgruppe]. Überzeugend formatiert.",
+                    tag: "Marketing",
+                    subsection: "Content & Kreation",
                     icon: "mail"
                 },
                 {
-                    title: "Social Media Serie",
-                    desc: "3-teilige Beitragsreihe für Social Media inkl. Visual-Vorschlägen.",
-                    prompt: "Entwirfe eine 3-teilige Social-Media-Beitragsreihe zur Förderung von [Event/Produkt]. Jeder Post inkl. Copy und einem Vorschlag für das visuelle Asset.",
+                    title: "Ad-Copy Variationen",
+                    desc: "Erstellung verschiedener Anzeigen-Texte für Kampagnen.",
+                    prompt: "Erstelle 5 Ad-Copy Variationen für eine [Kanal] Kampagne. Teste verschiedene Hooks und Töne.",
                     tag: "Marketing",
-                    icon: "collections_bookmark"
+                    subsection: "Content & Kreation",
+                    icon: "ads_click"
                 },
                 {
-                    title: "ROI-Kanalanalyse",
-                    desc: "Identifikation der Top-ROI-Kanäle basierend auf Performance-Daten.",
-                    prompt: "Analysiere diese Performance-Daten und identifiziere die Kanäle mit dem höchsten ROI (E-Mail, Social, Paid, Events). Fasse die Top 3 Kanäle und Handlungsempfehlungen zusammen.",
+                    title: "Social Media Serie",
+                    desc: "Konzept für eine mehrteilige Social-Media-Kampagne.",
+                    prompt: "Entwirfe eine 3-teilige Social-Media-Serie für [Event/Produkt]. Inklusive Copy und Vorschlägen für Visuals.",
                     tag: "Marketing",
-                    icon: "query_stats"
+                    subsection: "Content & Kreation",
+                    icon: "share"
+                },
+                {
+                    title: "Customer Spotlight Post",
+                    desc: "Erstellung authentischer LinkedIn-Posts basierend auf Erfolgsgeschichten.",
+                    prompt: "Schreibe einen LinkedIn-Post basierend auf dieser Erfolgsgeschichte: [Details]. Authentisch im Kap-Markenton.",
+                    tag: "Marketing",
+                    subsection: "Content & Kreation",
+                    icon: "stars"
+                },
+                {
+                    title: "Erklärvideo Skript",
+                    desc: "Skript für kurze, prägnante Erklärvideos.",
+                    prompt: "Entwurf eines Skripts für ein 60-sekündiges Erklärvideo. Knackig und klar, inklusive Visual-Vorschlägen.",
+                    tag: "Marketing",
+                    subsection: "Content & Kreation",
+                    icon: "movie"
+                },
+
+                // 4. PILLAR: Datenanalyse & Optimierung
+                {
+                    title: "Kanal-Performance Analyse",
+                    desc: "Identifikation der ROI-stärksten Marketingkanäle.",
+                    prompt: "Analysiere diese Excel-Tabelle und identifiziere Kanäle mit dem höchsten ROI. Zusammenfassung der Top 3 Kanäle.",
+                    tag: "Marketing",
+                    subsection: "Datenanalyse & Optimierung",
+                    icon: "bar_chart"
+                },
+                {
+                    title: "Churn-Muster erkennen",
+                    desc: "Analyse von Kundenabwanderungsdaten zur Risikoerkennung.",
+                    prompt: "Untersuche diesen Churn-Datensatz und identifiziere Merkmale abgewanderter Kunden. Zusammenfassung der Risikofaktoren.",
+                    tag: "Marketing",
+                    subsection: "Datenanalyse & Optimierung",
+                    icon: "person_remove"
+                },
+                {
+                    title: "Umfrage-Zusammenfassung",
+                    desc: "Auswertung von Kundenfeedback und Zufriedenheitsfaktoren.",
+                    prompt: "Fasse die Ergebnisse dieser Kundenumfrage zusammen. 3-Punkte-Zusammenfassung und Übersicht der Zufriedenheitsfaktoren.",
+                    tag: "Marketing",
+                    subsection: "Datenanalyse & Optimierung",
+                    icon: "poll"
+                },
+                {
+                    title: "Lead-Volumen Prognose",
+                    desc: "Prognose zukünftiger Lead-Entwicklungen basierend auf historischen Daten.",
+                    prompt: "Nutze historische Daten der letzten 6 Quartale, um das Lead-Volumen für das nächste Quartal zu prognostizieren.",
+                    tag: "Marketing",
+                    subsection: "Datenanalyse & Optimierung",
+                    icon: "show_chart"
                 },
                 {
                     title: "Budget-Optimierung",
-                    desc: "Empfehlungen zur Budgetallokation für ROI-Maximierung.",
-                    prompt: "Empfiehle basierend auf [Ausgaben/Ergebnisse] eine neue Budgetallokation für das nächste Quartal. Fokus: ROI-Maximierung bei gleichzeitiger Reduzierung schwacher Kanäle.",
+                    desc: "Datenbasierte Empfehlungen zur Budget-Verteilung.",
+                    prompt: "Empfiehle basierend auf [Daten] eine neue Budgetallokation. Fokus auf ROI-Maximierung.",
                     tag: "Marketing",
-                    icon: "savings"
+                    subsection: "Datenanalyse & Optimierung",
+                    icon: "pie_chart"
+                },
+
+                // 5. PILLAR: Visuelle & Markenkommunikation
+                {
+                    title: "Brand Style Guide Outline",
+                    desc: "Entwurf für die Strukturierung eines Marken-Guides.",
+                    prompt: "Erstelle einen Entwurf für einen Brand Style Guide. Inklusive Typografie, Farbpalette und Tonfall.",
+                    tag: "Marketing",
+                    subsection: "Visuelle & Markenkommunikation",
+                    icon: "palette"
+                },
+                {
+                    title: "Visuelles Storytelling",
+                    desc: "Konzepte für visuelle Kampagnengeschichten.",
+                    prompt: "Brainstorme 3 Konzepte für visuelles Storytelling für eine Kampagne zu [Thema]. Inklusive Story-Arc und Mood.",
+                    tag: "Marketing",
+                    subsection: "Visuelle & Markenkommunikation",
+                    icon: "auto_stories"
+                },
+                {
+                    title: "Kampagnen-Moodboard",
+                    desc: "Erstellung von Moodboards für Kampagnen-Visuals.",
+                    prompt: "Erstelle ein Moodboard mit 4 Visuals für [Kampagne]. Thema: [Thema], Tonfall: [Tonfall].",
+                    tag: "Marketing",
+                    subsection: "Visuelle & Markenkommunikation",
+                    icon: "collections"
+                },
+                {
+                    title: "Markenkonsistenz-Check",
+                    desc: "Überprüfung von Assets auf Einhaltung der Markenidentität.",
+                    prompt: "Prüfe diese Assets [Links/Dateien] auf Markenkonsistenz (Ton, Visuals, Botschaften). 3 Stärken und 3 Lücken.",
+                    tag: "Marketing",
+                    subsection: "Visuelle & Markenkommunikation",
+                    icon: "fact_check"
+                },
+                {
+                    title: "Brand Identity Refresh",
+                    desc: "Kreative Vorschläge für die Modernisierung der Marke.",
+                    prompt: "Schlage 3 kreative Richtungen für ein Brand Identity Refresh vor. Inklusive Farbpaletten und visuellen Motiven.",
+                    tag: "Marketing",
+                    subsection: "Visuelle & Markenkommunikation",
+                    icon: "brush"
                 }
             ],
             sales: [
@@ -645,7 +798,26 @@
                 return;
             }
 
+            let lastSubsection = null;
+
             filtered.forEach(p => {
+                // Check for new subsection (only if not searching, or maybe even if searching if we want to keep structure?)
+                // Usually search destroys structure. Let's show headers IF we are not searching deeply or if the user wants it. 
+                // Simple logic: If filtering by category OR 'all', show headers if they exist.
+                // If search is active (length > 0), maybe hide headers to save space? 
+                // Let's keep headers if they change.
+
+                if (p.subsection && p.subsection !== lastSubsection && search.length === 0) {
+                    const header = document.createElement('div');
+                    header.className = "col-span-full mt-6 mb-2 pt-4 border-t border-slate-200 dark:border-slate-800 first:mt-0 first:pt-0 first:border-t-0";
+                    header.innerHTML = `<h3 class="text-xl font-bold text-text-main dark:text-white flex items-center gap-2">
+                        <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+                        ${p.subsection}
+                     </h3>`;
+                    grid.appendChild(header);
+                    lastSubsection = p.subsection;
+                }
+
                 const card = document.createElement('div');
                 card.className = "bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative group";
 
