@@ -274,6 +274,10 @@
                         <button onclick="filterPrompts('role')" id="btn-role"
                             class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">✨
                             Prompt für jede Rolle</button>
+                        <button onclick="filterPrompts('executives')" id="btn-executives"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap flex items-center gap-1">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">leaderboard</span>
+                            Führungskräfte</button>
                     </div>
 
                     <!-- Layout: Prompts Grid -->
@@ -960,6 +964,121 @@
                     subsection: "Organisation & Produktivität",
                     icon: "sync_alt"
                 }
+            ],
+            executives: [
+                // 1. SUB-HEADER: Investor- & Marktintelligenz
+                {
+                    title: "Investor-Trends Zusammenfassung",
+                    desc: "Recherche zu Finanzierungs- und Markttrends mit Fokus auf Bewertungen.",
+                    prompt: "Ich bereite mich auf ein Investor-Update vor. Recherchiere die neuesten Finanzierungs- und Markttrends in [Branche]. Fokus auf Bewertungs-Benchmarks und Exit-Szenarien. Präsentation als Kurzbriefing mit Quellen.",
+                    tag: "Führungskräfte",
+                    subsection: "Investor- & Marktintelligenz",
+                    icon: "trending_up"
+                },
+                {
+                    title: "Marktstimmung & Sentiment",
+                    desc: "Analyse der Investorenstimmung basierend auf Berichten.",
+                    prompt: "Analysiere die aktuelle Stimmung der Investoren im Bereich [Branche]. Nutze Insights aus Earnings Calls und Analystenberichten. Fokus auf Risikobereitschaft und Wachstumserwartungen.",
+                    tag: "Führungskräfte",
+                    subsection: "Investor- & Marktintelligenz",
+                    icon: "sentiment_satisfied"
+                },
+                {
+                    title: "Vergütungs-Benchmarking",
+                    desc: "Benchmark-Übersicht für Führungskräfte-Vergütung.",
+                    prompt: "Recherchiere Benchmarks für die Vergütung von Führungskräften für [Position, z.B. CFO] bei Unternehmen der Größe [Unternehmensgröße]. Erstelle eine Übersicht mit geografischen Unterschieden.",
+                    tag: "Führungskräfte",
+                    subsection: "Investor- & Marktintelligenz",
+                    icon: "attach_money"
+                },
+
+                // 2. SUB-HEADER: Führungs- & Organisationskommunikation
+                {
+                    title: "Vision-Statement Entwurf",
+                    desc: "Entwurf eines inspirierenden Vision-Statements.",
+                    prompt: "Hilf mir, ein inspirierendes Vision-Statement für [Unternehmen/Team] zu entwerfen. Unsere Fokusbereiche sind: [Ziele/Werte]. Es soll motivierend, prägnant und abteilungsübergreifend verständlich sein.",
+                    tag: "Führungskräfte",
+                    subsection: "Führungs- & Organisationskommunikation",
+                    icon: "visibility"
+                },
+                {
+                    title: "Town-Hall Talking Points",
+                    desc: "Redepunkte für Town-Hall-Meetings.",
+                    prompt: "Erstelle Redepunkte für die kommende Kap Town Hall. Thema: [Thema/Ankündigung]. Der Ton soll motivierend, klar und zukunftsorientiert sein. Inhalt für ca. 5 Minuten.",
+                    tag: "Führungskräfte",
+                    subsection: "Führungs- & Organisationskommunikation",
+                    icon: "campaign"
+                },
+                {
+                    title: "Nachfolgeplanungs-Memo",
+                    desc: "Memo zur Nachfolgeplanung für das Führungsteam.",
+                    prompt: "Entwirfe ein Memo zur Nachfolgeplanung für das Führungsteam. Inklusive Begründung, Zeitplan und einer transparenten Übersicht der nächsten Schritte für die interne Kommunikation.",
+                    tag: "Führungskräfte",
+                    subsection: "Führungs- & Organisationskommunikation",
+                    icon: "person_add"
+                },
+
+                // 3. SUB-HEADER: Strategische Planung & Entscheidungen
+                {
+                    title: "Wachstumshebel Priorisierung",
+                    desc: "Identifikation und Bewertung von Wachstumshebeln.",
+                    prompt: "Identifiziere basierend auf unseren Zielen [Ziele] drei hocheffiziente Wachstumshebel. Schätze den Aufwand im Verhältnis zum Impact ab. Ausgabe als Tabelle mit Trade-offs.",
+                    tag: "Führungskräfte",
+                    subsection: "Strategische Planung & Entscheidungen",
+                    icon: "rocket_launch"
+                },
+                {
+                    title: "Markteintritts-Risikoanalyse",
+                    desc: "Zusammenfassung von Risiken beim Markteintritt.",
+                    prompt: "Wir erwägen den Eintritt in [neuer Markt/Region]. Fasse basierend auf wirtschaftlichen, rechtlichen und wettbewerblichen Faktoren die Hauptrisiken und Minderungsstrategien zusammen.",
+                    tag: "Führungskräfte",
+                    subsection: "Strategische Planung & Entscheidungen",
+                    icon: "gavel"
+                },
+                {
+                    title: "3-Jahres-Strategie Outline",
+                    desc: "Grobe Strategie-Skizze mit Fokusbereichen und Meilensteinen.",
+                    prompt: "Entwickle basierend auf diesen Prioritäten [Ziele] eine grobe 3-Jahres-Strategie. Inklusive Hauptfokusbereiche, Risiken und Meilensteine pro Jahr.",
+                    tag: "Führungskräfte",
+                    subsection: "Strategische Planung & Entscheidungen",
+                    icon: "flag"
+                },
+
+                // 4. SUB-HEADER: Analyse & Daten-Insights
+                {
+                    title: "Quartals-Performance Analyse",
+                    desc: "Trendanalyse von Unternehmensdaten für das Board.",
+                    prompt: "Analysiere diesen Datensatz [CSV hochladen] auf Trends bei Umsatz, Abwanderung und Kundenakquise. Nenne 3 Kern-Insights für das Board und schlage Follow-up-Fragen vor.",
+                    tag: "Führungskräfte",
+                    subsection: "Analyse & Daten-Insights",
+                    icon: "analytics"
+                },
+                {
+                    title: "Investitions-Priorisierung",
+                    desc: "Scoring-Modell zur Priorisierung von Initiativen.",
+                    prompt: "Hilf mir, geplante Initiativen zu priorisieren. Nutze Daten zu Kosten, Impact-Score und geschätzter Zeit bis zum ROI. Erstelle ein einfaches Scoring-Modell (Aufwand vs. Nutzen).",
+                    tag: "Führungskräfte",
+                    subsection: "Analyse & Daten-Insights",
+                    icon: "priority_high"
+                },
+
+                // 5. SUB-HEADER: Visualisierung & Framework-Design
+                {
+                    title: "Wettbewerbs-Matrix (2x2)",
+                    desc: "Erstellung einer 2x2 Matrix zur Wettbewerbspositionierung.",
+                    prompt: "Erstelle basierend auf dieser Liste von Wettbewerbern [Liste] eine 2x2 Matrix. Achsen: [X-Achse] und [Y-Achse]. Beschrifte die Quadranten und markiere die Position von Kap.",
+                    tag: "Führungskräfte",
+                    subsection: "Visualisierung & Framework-Design",
+                    icon: "grid_view"
+                },
+                {
+                    title: "Transformations-Zeitplan",
+                    desc: "Visueller Zeitplan für Unternehmenstransformationen.",
+                    prompt: "Erstelle einen visuellen Zeitplan für die Unternehmens-Transformation von [Jahr 1] bis [Jahr 3]. Inklusive Meilensteine: Strategiewechsel, Teamwachstum und Marktexpansion.",
+                    tag: "Führungskräfte",
+                    subsection: "Visualisierung & Framework-Design",
+                    icon: "timeline"
+                }
             ]
         };
 
@@ -969,7 +1088,7 @@
             currentCategory = category;
 
             // Update Buttons
-            const buttons = ['all', 'marketing', 'hr', 'sales', 'productivity', 'role'];
+            const buttons = ['all', 'marketing', 'hr', 'sales', 'productivity', 'role', 'executives'];
             buttons.forEach(btn => {
                 const el = document.getElementById(`btn-${btn}`);
                 if (!el) return;
@@ -1027,6 +1146,7 @@
                 else if (p.tag.startsWith('Sales')) currentDepartment = 'Sales';
                 else if (p.tag === 'Productivity') currentDepartment = 'Productivity';
                 else if (p.tag === 'Prompt für jede Rolle') currentDepartment = 'Prompt für jede Rolle';
+                else if (p.tag === 'Führungskräfte') currentDepartment = 'PROMPTS FÜR FÜHRUNGSKRÄFTE';
 
                 // Render Major Department Header if in 'All' view and department changed (and not searching deeply)
                 if (currentCategory === 'all' && currentDepartment !== lastDepartment && search.length === 0) {
@@ -1061,6 +1181,7 @@
                 if (p.tag.startsWith('Sales')) tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
                 if (p.tag === 'Productivity') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
                 if (p.tag === 'Prompt für jede Rolle') tagColor = "bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400";
+                if (p.tag === 'Führungskräfte') tagColor = "bg-cyan-50 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400";
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between mb-4">
