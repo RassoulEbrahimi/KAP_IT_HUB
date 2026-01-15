@@ -282,32 +282,21 @@
         // Expanded Prompt Data
         const promptData = {
             hr: [
-                {
-                    title: "Interviewfragen erstellen",
-                    desc: "Erstelle verhaltensbasierte Fragen für Bewerbungsgespräche, die fachliche Kompetenz und Culture Fit abdecken.",
-                    prompt: "Erstelle 6-8 verhaltensbasierte Interviewfragen für eine offene Stelle als [Stellenbezeichnung] in der Abteilung [Team]. Berücksichtige unsere Unternehmenswerte und frage sowohl nach fachlichen Kompetenzen als auch nach dem Culture Fit.",
-                    tag: "HR & Recruiting",
-                    icon: "question_answer"
-                },
+                // 1. Workspace Experience & Feedback
                 {
                     title: "Engagement-Umfrage",
                     desc: "Fragen zur Messung von Zugehörigkeit und Work-Life-Balance.",
                     prompt: "Schreibe 6–8 Fragen für eine Mitarbeiterbefragung, um Zugehörigkeit, Vertrauen in Führungskräfte und Work-Life-Balance zu messen. Format: Eine Frage pro Zeile mit Skalierungsvorschlägen.",
                     tag: "HR & Recruiting",
+                    subsection: "Workspace Experience & Feedback",
                     icon: "group"
-                },
-                {
-                    title: "Performance Review Prompts",
-                    desc: "Wachstumsorientierte Fragen für Leistungsbeurteilungen.",
-                    prompt: "Entwickle 5 Fragen für Leistungsbeurteilungen, die Reflexion, zukünftige Zielsetzung und konstruktives Feedback fördern. Tonfall: Wachstumsorientiert.",
-                    tag: "HR & Recruiting",
-                    icon: "rate_review"
                 },
                 {
                     title: "Exit-Interview Analyse",
                     desc: "Analyse von Austrittsgesprächen zur Identifikation wiederkehrender Themen.",
                     prompt: "Analysiere die folgenden Antworten aus Austrittsgesprächen und identifiziere die 3 wichtigsten wiederkehrenden Themen und Trends. Erstelle eine Zusammenfassung mit Bullet Points und nenne repräsentative Zitate. [Antworten hier einfügen]",
                     tag: "HR & Recruiting",
+                    subsection: "Workspace Experience & Feedback",
                     icon: "analytics"
                 },
                 {
@@ -315,13 +304,49 @@
                     desc: "Analyse von Fluktuationsdaten zur Ableitung von Bindungsmaßnahmen.",
                     prompt: "Analysiere diesen Datensatz zur Mitarbeiterfluktuation der letzten 12 Monate. Konzentriere dich auf Muster nach Abteilung und Betriebszugehörigkeit. Schlage 2-3 Maßnahmen zur Mitarbeiterbindung vor. [Daten hier einfügen]",
                     tag: "HR & Recruiting",
+                    subsection: "Workspace Experience & Feedback",
                     icon: "trending_up"
+                },
+                {
+                    title: "Mitarbeiter-Anerkennung",
+                    desc: "Herzliche Anerkennungsnachricht für Slack oder E-Mail.",
+                    prompt: "Schreibe eine kurze Anerkennungsnachricht für [Mitarbeiter/Team], um [Leistung] zu feiern. Tonfall: Herzlich, für Slack oder E-Mail geeignet (max. 100 Wörter).",
+                    tag: "HR & Recruiting",
+                    subsection: "Workspace Experience & Feedback",
+                    icon: "celebration"
+                },
+                {
+                    title: "Performance Review Prompts",
+                    desc: "Wachstumsorientierte Fragen für Leistungsbeurteilungen.",
+                    prompt: "Entwickle 5 Fragen für Leistungsbeurteilungen, die Reflexion, zukünftige Zielsetzung und konstruktives Feedback fördern. Tonfall: Wachstumsorientiert.",
+                    tag: "HR & Recruiting",
+                    subsection: "Workspace Experience & Feedback",
+                    icon: "rate_review"
+                },
+
+                // 2. HR Research & Compliance
+                {
+                    title: "HR-Compliance Recherche",
+                    desc: "Recherche zu Compliance-Änderungen für Remote-Arbeit und Datenschutz.",
+                    prompt: "Recherchiere die neuesten HR-Compliance-Änderungen für 2025 (Fokus: Remote-Arbeit und Datenschutz). Erstelle eine Zusammenfassung in einfacher Sprache.",
+                    tag: "HR & Recruiting",
+                    subsection: "HR Research & Compliance",
+                    icon: "policy"
+                },
+                {
+                    title: "HR-Tech Trends 2025",
+                    desc: "Briefing zu HR-Technologietrends mit Anwendungsfällen.",
+                    prompt: "Erstelle ein Briefing für die Geschäftsführung über die Top 5 HR-Technologietrends für 2025, inklusive Anwendungsfällen und Empfehlungen.",
+                    tag: "HR & Recruiting",
+                    subsection: "HR Research & Compliance",
+                    icon: "lightbulb"
                 },
                 {
                     title: "DEI-Budget Benchmarking",
                     desc: "Benchmarking von DEI-Budgets und Teamgrößen für mittelständische Unternehmen.",
                     prompt: "Recherchiere typische Budgets und Teamgrößen für DEI-Programme in Unternehmen mit 500-5.000 Mitarbeitern. Nenne 3 wichtige Erkenntnisse und erstelle eine kurze Zusammenfassung für die Geschäftsführung.",
                     tag: "HR & Recruiting",
+                    subsection: "HR Research & Compliance",
                     icon: "query_stats"
                 },
                 {
@@ -329,20 +354,43 @@
                     desc: "Vergleich von Recruiting-Tools hinsichtlich Funktionen und Compliance.",
                     prompt: "Vergleiche 4 top-bewertete Tools zur Kandidatenvorauswahl für mittelständische Unternehmen. Erstelle eine Tabelle mit Funktionen, Preismodellen und Compliance-Status (DSGVO/EEOC).",
                     tag: "HR & Recruiting",
+                    subsection: "HR Research & Compliance",
                     icon: "compare_arrows"
+                },
+
+                // 3. Talent Acquisition & Engagement
+                {
+                    title: "Stellenbeschreibungen",
+                    desc: "Professionelle Stellenbeschreibung mit Intro, Qualifikationen und Benefits.",
+                    prompt: "Basierend auf [Aufgaben/Skills] schreibe eine professionelle Stellenbeschreibung für [Jobtitel]. Inklusive Intro, Qualifikationen und Benefits.",
+                    tag: "HR & Recruiting",
+                    subsection: "Talent Acquisition & Engagement",
+                    icon: "description"
+                },
+                {
+                    title: "Interviewfragen erstellen",
+                    desc: "Erstelle verhaltensbasierte Fragen für Bewerbungsgespräche, die fachliche Kompetenz und Culture Fit abdecken.",
+                    prompt: "Erstelle 6-8 verhaltensbasierte Interviewfragen für eine offene Stelle als [Stellenbezeichnung] in der Abteilung [Team]. Berücksichtige unsere Unternehmenswerte und frage sowohl nach fachlichen Kompetenzen als auch nach dem Culture Fit.",
+                    tag: "HR & Recruiting",
+                    subsection: "Talent Acquisition & Engagement",
+                    icon: "question_answer"
                 },
                 {
                     title: "DEI-Workshop Entwurf",
                     desc: "Konzept für einen Workshop zur Förderung inklusiver Kommunikation.",
                     prompt: "Entwirf einen einstündigen DEI-Workshop für das Team [Name]. Ziel: Förderung inklusiver Kommunikation. Erstelle eine Agenda, Lernziele und 3 interaktive Diskussionsfragen.",
                     tag: "HR & Recruiting",
+                    subsection: "Talent Acquisition & Engagement",
                     icon: "diversity_3"
                 },
+
+                // 4. Policy & Program Development
                 {
                     title: "Return-to-Office FAQ",
                     desc: "Erstellung eines FAQ für den Übergang zur Präsenzarbeit.",
                     prompt: "Erstelle ein Mitarbeiter-FAQ für den Übergang zur Präsenzarbeit basierend auf: [RTO-Details einfügen]. Behandle Themen wie hybride Zeitpläne und Gesundheitsprotokolle in einem herzlichen und klaren Ton.",
                     tag: "HR & Recruiting",
+                    subsection: "Policy & Program Development",
                     icon: "apartment"
                 },
                 {
@@ -350,34 +398,15 @@
                     desc: "Phasenweiser Plan für die Einführung neuer Compliance-Schulungen.",
                     prompt: "Erstelle einen phasenweisen Plan für das Rollout einer neuen Compliance-Schulung in [Region/Team]. Inklusive Zeitplan, Kommunikationsstrategie und Zielgruppen.",
                     tag: "HR & Recruiting",
+                    subsection: "Policy & Program Development",
                     icon: "fact_check"
-                },
-                {
-                    title: "HR-Compliance Recherche",
-                    desc: "Recherche zu Compliance-Änderungen für Remote-Arbeit und Datenschutz.",
-                    prompt: "Recherchiere die neuesten HR-Compliance-Änderungen für 2025 (Fokus: Remote-Arbeit und Datenschutz). Erstelle eine Zusammenfassung in einfacher Sprache.",
-                    tag: "HR & Recruiting",
-                    icon: "policy"
-                },
-                {
-                    title: "Stellenbeschreibungen",
-                    desc: "Professionelle Stellenbeschreibung mit Intro, Qualifikationen und Benefits.",
-                    prompt: "Basierend auf [Aufgaben/Skills] schreibe eine professionelle Stellenbeschreibung für [Jobtitel]. Inklusive Intro, Qualifikationen und Benefits.",
-                    tag: "HR & Recruiting",
-                    icon: "description"
-                },
-                {
-                    title: "Mitarbeiter-Anerkennung",
-                    desc: "Herzliche Anerkennungsnachricht für Slack oder E-Mail.",
-                    prompt: "Schreibe eine kurze Anerkennungsnachricht für [Mitarbeiter/Team], um [Leistung] zu feiern. Tonfall: Herzlich, für Slack oder E-Mail geeignet (max. 100 Wörter).",
-                    tag: "HR & Recruiting",
-                    icon: "celebration"
                 },
                 {
                     title: "Onboarding-Wochenplan",
                     desc: "Detaillierter 5-Tage-Zeitplan für neue Mitarbeiter.",
                     prompt: "Erstelle einen detaillierten 5-Tage-Onboarding-Zeitplan für neue Mitarbeiter in [Abteilung]. Inklusive Zielen, Themen und Tools.",
                     tag: "HR & Recruiting",
+                    subsection: "Policy & Program Development",
                     icon: "calendar_today"
                 },
                 {
@@ -385,20 +414,15 @@
                     desc: "Maßgeschneiderte Vorschläge für Wohlbefindens-Programme.",
                     prompt: "Schlage 3 maßgeschneiderte Wohlbefindens-Programme vor. Berücksichtige rationale Begründung, geschätzte Kosten und Erfolgskennzahlen.",
                     tag: "HR & Recruiting",
+                    subsection: "Policy & Program Development",
                     icon: "self_improvement"
-                },
-                {
-                    title: "HR-Tech Trends 2025",
-                    desc: "Briefing zu HR-Technologietrends mit Anwendungsfällen.",
-                    prompt: "Erstelle ein Briefing für die Geschäftsführung über die Top 5 HR-Technologietrends für 2025, inklusive Anwendungsfällen und Empfehlungen.",
-                    tag: "HR & Recruiting",
-                    icon: "lightbulb"
                 },
                 {
                     title: "Richtlinien-Zusammenfassung",
                     desc: "Klare Zusammenfassung von HR-Richtlinien.",
                     prompt: "Fasse die Kernpunkte dieser [Richtlinie/Handbuch] für HR-Partner zusammen. Klar, professionell und unter 200 Wörtern.",
                     tag: "HR & Recruiting",
+                    subsection: "Policy & Program Development",
                     icon: "summarize"
                 }
             ],
@@ -620,6 +644,7 @@
                     desc: "Überzeugende E-Mail für Erstgespräche an spezifische Entscheider.",
                     prompt: "Schreibe eine kurze, überzeugende Kaltakquise-E-Mail an einen [Jobtitel] bei [Unternehmen]. Nutze: [Value Props]. Fokus: Terminvereinbarung.",
                     tag: "Sales: Outreach",
+                    subsection: "Outreach & Kommunikation",
                     icon: "mail"
                 },
                 {
@@ -627,6 +652,7 @@
                     desc: "Beratende Follow-up-E-Mail nach einer Demo mit nächsten Schritten.",
                     prompt: "Schreibe diese Follow-up-E-Mail nach einer Demo in einen beratenden Ton um. Inklusive Recap, nächste Schritte und CTA.",
                     tag: "Sales: Outreach",
+                    subsection: "Outreach & Kommunikation",
                     icon: "forward_to_inbox"
                 },
                 {
@@ -634,6 +660,7 @@
                     desc: "Erneuerungs-Pitch für Bestandskunden mit ROI-Fokus.",
                     prompt: "Entwirfe einen Verlängerungs-Pitch für [Kunde] basierend auf: [Verlaufsdaten]. Hebe den ROI hervor.",
                     tag: "Sales: Outreach",
+                    subsection: "Outreach & Kommunikation",
                     icon: "autorenew"
                 },
                 {
@@ -641,6 +668,7 @@
                     desc: "Monatliches Pipeline-Briefing für das Management.",
                     prompt: "Fasse den Pipeline-Status diesen Monat für das Management zusammen. Inklusive Gesamtvolumen, Top-Risiken und Forecast-Sicherheit.",
                     tag: "Sales: Outreach",
+                    subsection: "Outreach & Kommunikation",
                     icon: "campaign"
                 },
 
@@ -650,6 +678,7 @@
                     desc: "Umfassender Plan für Key Accounts mit Zielen und Stakeholdern.",
                     prompt: "Erstelle einen Plan für [Kunde]. Nutze: Profil, Prioritäten, Stakeholder. Ausgabe: Ziele, Risiken und Chancen.",
                     tag: "Sales: Strategie",
+                    subsection: "Vertriebsstrategie & Planung",
                     icon: "map"
                 },
                 {
@@ -657,6 +686,7 @@
                     desc: "Leitfaden für die Gebietsplanung basierend auf Team und Markt.",
                     prompt: "Erstelle einen Leitfaden für die Gebietsplanung des nächsten Geschäftsjahres basierend auf: [Teamgröße, Branchen, Regionen].",
                     tag: "Sales: Strategie",
+                    subsection: "Vertriebsstrategie & Planung",
                     icon: "public"
                 },
                 {
@@ -664,6 +694,7 @@
                     desc: "Priorisierung von Account-Listen nach strategischen Kriterien.",
                     prompt: "Priorisiere diese Liste von Accounts: [Liste] basierend auf Branche, Größe und Finanzierung. Gib Begründungen an.",
                     tag: "Sales: Strategie",
+                    subsection: "Vertriebsstrategie & Planung",
                     icon: "sort"
                 },
                 {
@@ -671,15 +702,17 @@
                     desc: "Evaluierung neuer Märkte anhand von Kaufverhalten und Wettbewerb.",
                     prompt: "Evaluiere den Markteintritt in [Region] für unsere Lösung. Recherchiere Kaufverhalten, Wettbewerb und Regulatorik.",
                     tag: "Sales: Strategie",
+                    subsection: "Vertriebsstrategie & Planung",
                     icon: "flag"
                 },
 
-                // 3. PILLAR: Marktforschung & Enablement
+                // 3. PILLAR: Wettbewerb & Enablement
                 {
                     title: "Wettbewerbs-Battlecard",
                     desc: "Übersicht zu Stärken und Schwächen eines Wettbewerbers.",
                     prompt: "Erstelle eine Battlecard für [Wettbewerber]. Inklusive Stärken, Schwächen, 'How we win'-Argumente und Talk-Tracks.",
                     tag: "Sales: Enablement",
+                    subsection: "Wettbewerb & Enablement",
                     icon: "compare_arrows"
                 },
                 {
@@ -687,6 +720,7 @@
                     desc: "Souveräne Antworten auf gängige Kundeneinwände.",
                     prompt: "Erstelle Antworten auf diese Einwände: [Einwände]. Klinge sicher und kompetent, nutze Beweispunkte.",
                     tag: "Sales: Enablement",
+                    subsection: "Wettbewerb & Enablement",
                     icon: "verified"
                 },
                 {
@@ -694,6 +728,7 @@
                     desc: "Zusammenfassung von Produktvorteilen und Features für Pitches.",
                     prompt: "Erstelle einen One-Pager, um [Produkt] bei [Persona] zu pitchen. Inklusive Vorteile, Features und Differenzierung.",
                     tag: "Sales: Enablement",
+                    subsection: "Wettbewerb & Enablement",
                     icon: "description"
                 },
                 {
@@ -701,15 +736,17 @@
                     desc: "Zusammenfassung von Kundenstimmen und Kritiken.",
                     prompt: "Recherchiere Online-Bewertungen über [Produkt/Wettbewerber]. Fasse die Top 5 Zitate und Kritikpunkte zusammen.",
                     tag: "Sales: Enablement",
+                    subsection: "Wettbewerb & Enablement",
                     icon: "reviews"
                 },
 
-                // 4. PILLAR: Datenanalyse & Performance
+                // 4. PILLAR: Analyse & Performance
                 {
                     title: "Pipeline-Konvertierung",
                     desc: "Analyse von Conversion-Rates und Drop-off-Punkten.",
                     prompt: "Analysiere diesen Pipeline-Export. Berechne Konversionsraten zwischen den Phasen und identifiziere Drop-off-Punkte.",
                     tag: "Sales: Daten",
+                    subsection: "Analyse & Performance",
                     icon: "filter_alt"
                 },
                 {
@@ -717,6 +754,7 @@
                     desc: "Ranking der Vertriebsmitarbeiter nach Abschlussrate.",
                     prompt: "Berechne die Abschlussrate für jeden Mitarbeiter aus diesem Datensatz und ranke sie nach Erfolg.",
                     tag: "Sales: Daten",
+                    subsection: "Analyse & Performance",
                     icon: "emoji_events"
                 },
                 {
@@ -724,6 +762,7 @@
                     desc: "Berechnung der durchschnittlichen Deal-Dauer.",
                     prompt: "Berechne die durchschnittliche Deal-Velocity (Tage von Lead bis Abschluss) aus diesem CRM-Export.",
                     tag: "Sales: Daten",
+                    subsection: "Analyse & Performance",
                     icon: "speed"
                 },
                 {
@@ -731,6 +770,7 @@
                     desc: "Zuordnung von Umsatz zu Kampagnenquellen.",
                     prompt: "Ordne Kampagnenquellen den abgeschlossenen Deals zu. Identifiziere die umsatzstärkste Kampagne.",
                     tag: "Sales: Daten",
+                    subsection: "Analyse & Performance",
                     icon: "attribution"
                 }
             ],
@@ -799,14 +839,28 @@
             }
 
             let lastSubsection = null;
+            let lastDepartment = null;
 
             filtered.forEach(p => {
-                // Check for new subsection (only if not searching, or maybe even if searching if we want to keep structure?)
-                // Usually search destroys structure. Let's show headers IF we are not searching deeply or if the user wants it. 
-                // Simple logic: If filtering by category OR 'all', show headers if they exist.
-                // If search is active (length > 0), maybe hide headers to save space? 
-                // Let's keep headers if they change.
+                // Determine Department for "Alle" view grouping
+                let currentDepartment = '';
+                if (p.tag === 'Marketing') currentDepartment = 'Marketing';
+                else if (p.tag === 'HR & Recruiting') currentDepartment = 'HR & Recruiting';
+                else if (p.tag.startsWith('Sales')) currentDepartment = 'Sales';
+                else if (p.tag === 'Productivity') currentDepartment = 'Productivity';
 
+                // Render Major Department Header if in 'All' view and department changed (and not searching deeply)
+                if (currentCategory === 'all' && currentDepartment !== lastDepartment && search.length === 0) {
+                    const deptHeader = document.createElement('div');
+                    deptHeader.className = "col-span-full mt-10 mb-6 pb-2 border-b-2 border-slate-200 dark:border-slate-700 first:mt-0";
+                    deptHeader.innerHTML = `<h2 class="text-2xl font-bold uppercase tracking-wider text-text-secondary">${currentDepartment}</h2>`;
+                    grid.appendChild(deptHeader);
+                    lastDepartment = currentDepartment;
+                    lastSubsection = null; // Reset subsection when department changes
+                }
+
+                // Render Subsection Header (if exists and changed)
+                // Logic: Show if subsection exists AND (it's new OR we just switched departments) AND (search is empty)
                 if (p.subsection && p.subsection !== lastSubsection && search.length === 0) {
                     const header = document.createElement('div');
                     header.className = "col-span-full mt-6 mb-2 pt-4 border-t border-slate-200 dark:border-slate-800 first:mt-0 first:pt-0 first:border-t-0";
