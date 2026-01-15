@@ -233,6 +233,9 @@
                         <button onclick="filterPrompts('productivity')" id="btn-productivity"
                             class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">⚡
                             Productivity</button>
+                        <button onclick="filterPrompts('role')" id="btn-role"
+                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 transition-all whitespace-nowrap">✨
+                            Prompt für jede Rolle</button>
                     </div>
 
                     <!-- Layout: Prompts Grid -->
@@ -782,6 +785,143 @@
                     tag: "Productivity",
                     icon: "schedule"
                 }
+            ],
+            role: [
+                // 1. SUB-HEADER: Kommunikation & Schreiben
+                {
+                    title: "Professionelle E-Mail",
+                    desc: "Formulierung klarer und höflicher professioneller E-Mails.",
+                    prompt: "Schreibe eine professionelle E-Mail an [Empfänger] über [Thema]. Tonfall: Höflich, klar und präzise. Inklusive Betreffzeile.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Kommunikation & Schreiben",
+                    icon: "mail"
+                },
+                {
+                    title: "Texte vereinfachen",
+                    desc: "Komplexe Texte verständlicher und professioneller gestalten.",
+                    prompt: "Formuliere den folgenden Text um, damit er leichter verständlich ist, aber den professionellen Ton wahrt. Text: [hier einfügen]",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Kommunikation & Schreiben",
+                    icon: "edit_note"
+                },
+                {
+                    title: "Zielgruppen-Anpassung",
+                    desc: "Anpassung von Nachrichten an verschiedene Empfängergruppen.",
+                    prompt: "Passe diese Nachricht für [Zielgruppe: Führungskräfte/Kollegen/Kunden] an. Ändere Tonfall und Wortwahl entsprechend.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Kommunikation & Schreiben",
+                    icon: "people"
+                },
+                {
+                    title: "Einladung zum Meeting",
+                    desc: "Erstellung vollständiger Kalendereinladungen mit Agenda.",
+                    prompt: "Erstelle eine Kalendereinladung für [Thema] inklusive Agenda, Zielen und erforderlicher Vorbereitung für [Teilnehmer].",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Kommunikation & Schreiben",
+                    icon: "event"
+                },
+
+                // 2. SUB-HEADER: Meetings & Zusammenarbeit
+                {
+                    title: "Meeting-Agenda",
+                    desc: "Strukturierte Agenda mit Zeitfenstern erstellen.",
+                    prompt: "Erstelle eine strukturierte Agenda für ein Meeting über [Thema]. Dauer: [Zeit]. Inklusive Zeitfenstern für jeden Punkt.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Meetings & Zusammenarbeit",
+                    icon: "view_agenda"
+                },
+                {
+                    title: "Protokoll-Zusammenfassung",
+                    desc: "Umwandlung von Notizen in strukturierte Protokolle.",
+                    prompt: "Fasse diese rohen Meeting-Notizen in ein strukturiertes Protokoll mit Entscheidungen und Verantwortlichkeiten zusammen.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Meetings & Zusammenarbeit",
+                    icon: "summarize"
+                },
+                {
+                    title: "Action-Items Liste",
+                    desc: "Extraktion von Aufgaben und Deadlines aus Notizen.",
+                    prompt: "Extrahiere eine klare Aufgabenliste aus diesen Notizen, gruppiert nach Verantwortlichen und Deadlines.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Meetings & Zusammenarbeit",
+                    icon: "checklist"
+                },
+                {
+                    title: "Meeting-Vorbereitung",
+                    desc: "Vorschlag von Fragen, um Expertise zu zeigen.",
+                    prompt: "Schlage 5 durchdachte Fragen vor, die ich in einem Meeting über [Thema] stellen kann, um Expertise zu zeigen.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Meetings & Zusammenarbeit",
+                    icon: "psychology"
+                },
+
+                // 3. SUB-HEADER: Problemlösung & Entscheidungsfindung
+                {
+                    title: "Ursachenanalyse",
+                    desc: "Analyse von Problemen und Identifikation von Grundursachen.",
+                    prompt: "Analysiere dieses Problem: [Beschreibung]. Identifiziere mögliche Grundursachen und schlage Fragen zur Überprüfung vor.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Problemlösung & Entscheidungsfindung",
+                    icon: "manage_search"
+                },
+                {
+                    title: "Optionen-Vergleich",
+                    desc: "Bewertung von Lösungen mit Pro, Contra und Risiken.",
+                    prompt: "Vergleiche diese Lösungen: [Optionen]. Bewerte Pro, Contra und potenzielle Risiken für jede Option.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Problemlösung & Entscheidungsfindung",
+                    icon: "compare_arrows"
+                },
+                {
+                    title: "Entscheidungskriterien",
+                    desc: "Festlegung gewichteter Kriterien für Entscheidungen.",
+                    prompt: "Hilf mir, gewichtete Kriterien für die Entscheidung über [Thema] festzulegen, wenn mehrere Stakeholder beteiligt sind.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Problemlösung & Entscheidungsfindung",
+                    icon: "balance"
+                },
+                {
+                    title: "Risikobewertung",
+                    desc: "Bewertung von Risiken nach Wahrscheinlichkeit und Auswirkung.",
+                    prompt: "Bewerte die Risiken für diesen Plan: [Plan]. Liste sie nach Wahrscheinlichkeit und Auswirkung und schlage Maßnahmen vor.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Problemlösung & Entscheidungsfindung",
+                    icon: "shield"
+                },
+
+                // 4. SUB-HEADER: Organisation & Produktivität
+                {
+                    title: "Tagesprioritäten",
+                    desc: "Erstellung einer priorisierten To-Do-Liste.",
+                    prompt: "Erstelle eine prioritätsbasierte To-Do-Liste aus diesen Aufgaben: [Liste]. Berücksichtige begrenzte Zeit und erkläre das 'Warum'.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Organisation & Produktivität",
+                    icon: "priority_high"
+                },
+                {
+                    title: "Wochenplaner",
+                    desc: "Strukturierter Arbeitsplan für die Woche.",
+                    prompt: "Erstelle einen Wochenarbeitsplan für [Rolle/Situation] mit Deadlines, Meetings und Fokus-Zeit.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Organisation & Produktivität",
+                    icon: "date_range"
+                },
+                {
+                    title: "Dokument-Check",
+                    desc: "Zusammenfassung auf Kernpunkte und Handlungsempfehlungen.",
+                    prompt: "Fasse dieses Dokument in 5 Kernpunkte und 3 Handlungsempfehlungen zusammen. Tonfall: Kurz und professionell.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Organisation & Produktivität",
+                    icon: "fact_check"
+                },
+                {
+                    title: "Projekt-Update",
+                    desc: "Kurzes Status-Update für Stakeholder.",
+                    prompt: "Schreibe ein kurzes Update für Stakeholder über [Projekt]. Inklusive Fortschritt, Blockern und nächsten Schritten.",
+                    tag: "Prompt für jede Rolle",
+                    subsection: "Organisation & Produktivität",
+                    icon: "sync_alt"
+                }
             ]
         };
 
@@ -791,7 +931,7 @@
             currentCategory = category;
 
             // Update Buttons
-            const buttons = ['all', 'marketing', 'hr', 'sales', 'productivity'];
+            const buttons = ['all', 'marketing', 'hr', 'sales', 'productivity', 'role'];
             buttons.forEach(btn => {
                 const el = document.getElementById(`btn-${btn}`);
                 if (!el) return;
@@ -848,6 +988,7 @@
                 else if (p.tag === 'HR & Recruiting') currentDepartment = 'HR & Recruiting';
                 else if (p.tag.startsWith('Sales')) currentDepartment = 'Sales';
                 else if (p.tag === 'Productivity') currentDepartment = 'Productivity';
+                else if (p.tag === 'Prompt für jede Rolle') currentDepartment = 'Prompt für jede Rolle';
 
                 // Render Major Department Header if in 'All' view and department changed (and not searching deeply)
                 if (currentCategory === 'all' && currentDepartment !== lastDepartment && search.length === 0) {
@@ -881,6 +1022,7 @@
                 if (p.tag === 'HR & Recruiting') tagColor = "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
                 if (p.tag.startsWith('Sales')) tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
                 if (p.tag === 'Productivity') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
+                if (p.tag === 'Prompt für jede Rolle') tagColor = "bg-indigo-50 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400";
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between mb-4">
