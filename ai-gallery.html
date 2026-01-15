@@ -181,6 +181,70 @@
                 transform: translateY(0);
             }
         }
+
+        /* Custom Scrollbar */
+        .chat-area::-webkit-scrollbar,
+        textarea::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-area::-webkit-scrollbar-track,
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb,
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+
+        .dark .chat-area::-webkit-scrollbar-thumb,
+        .dark textarea::-webkit-scrollbar-thumb {
+            background-color: #475569;
+        }
+
+        /* Fullscreen Input Mode */
+        #kap-assistant-window.fullscreen-mode {
+            bottom: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            max-height: 100vh;
+            border-radius: 0;
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #kap-assistant-window.fullscreen-mode .h-14 {
+            display: none;
+        }
+
+        #kap-assistant-window.fullscreen-mode .chat-area {
+            display: none;
+        }
+
+        #kap-assistant-window.fullscreen-mode .input-wrapper {
+            height: 100%;
+            border-top: none;
+            padding: 20px;
+        }
+
+        #kap-assistant-window.fullscreen-mode textarea {
+            flex: 1;
+            height: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding-top: 40px;
+            /* Space for fullscreen button */
+        }
+
+        .dark #kap-assistant-window.fullscreen-mode textarea {
+            background: #1a2632;
+        }
     </style>
 </head>
 
@@ -426,16 +490,23 @@
         </div>
 
         <!-- Input Area -->
-        <div class="p-4 bg-white dark:bg-[#1a2632] border-t border-slate-100 dark:border-slate-800 shrink-0">
-            <div class="relative">
+        <div id="input-wrapper"
+            class="input-wrapper p-4 bg-white dark:bg-[#1a2632] border-t border-slate-100 dark:border-slate-800 shrink-0 transition-all duration-300">
+            <div class="relative h-full flex flex-col">
+                <button onclick="toggleFullscreenInput()"
+                    class="absolute right-2 top-2 z-10 p-1.5 text-text-secondary hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors"
+                    title="Vollbildmodus">
+                    <span id="fullscreen-icon" class="material-symbols-outlined"
+                        style="font-size: 20px;">open_in_full</span>
+                </button>
                 <textarea id="chat-input" rows="3" placeholder="Schreibe eine Nachricht oder bearbeite deinen Prompt..."
-                    class="w-full p-3 pr-12 rounded-xl bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-primary text-text-main dark:text-white resize-none text-sm leading-relaxed scrollbar-thin"></textarea>
+                    class="w-full p-3 pr-12 rounded-xl bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-primary text-text-main dark:text-white resize-none text-sm leading-relaxed scrollbar-thin transition-all"></textarea>
                 <button onclick="handleAssistantSend()"
-                    class="absolute right-2 bottom-2 p-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="absolute right-2 bottom-2 p-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed z-10">
                     <span class="material-symbols-outlined" style="font-size: 20px;">send</span>
                 </button>
             </div>
-            <div class="mt-2 flex justify-between items-center text-xs text-text-secondary">
+            <div id="demo-badge" class="mt-2 flex justify-between items-center text-xs text-text-secondary">
                 <span>Kap AI Demo Mode</span>
                 <span class="flex items-center gap-1"><span class="size-1.5 rounded-full bg-green-500"></span>
                     Online</span>
@@ -1404,17 +1475,41 @@
             copyPrompt(activeTipPrompt);
         }
 
-        function copyDailyTip() {
-            if (!activeTipPrompt) return;
-            copyPrompt(activeTipPrompt);
-        }
-
         // --- AI Assistant Logic ---
+
+        function updateWelcomeMessage() {
+            const messages = document.getElementById('chat-messages');
+            if (!messages) return;
+
+            // Find the first system message (welcome message)
+            const firstMsg = messages.querySelector('.chat-bubble.system');
+
+            let welcomeText = "Hallo! Wie kann ich dir heute mit deinen Prompts helfen?";
+
+            if (currentCategory === 'hr') {
+                welcomeText = "Willkommen! Da Sie gerade HR-Prompts durchsehen, kann ich Ihnen helfen, diese für Ihr Team bei Kap anzupassen. Welchen Prompt möchten Sie verfeinern?";
+            } else if (currentCategory === 'sales') {
+                welcomeText = "Willkommen! Bereiten Sie ein Verkaufsgespräch vor? Ich kann Ihnen helfen, diese Sales-Prompts für Ihre Kunden zu personalisieren.";
+            } else if (currentCategory === 'executives') {
+                welcomeText = "Guten Tag! Ich unterstütze Sie gerne dabei, diese strategischen Prompts für das nächste Board-Meeting oder die Kap-Holding vorzubereiten.";
+            }
+
+            if (firstMsg) {
+                firstMsg.textContent = welcomeText;
+            } else {
+                // Should exist, but fail-safe
+                const div = document.createElement('div');
+                div.className = 'chat-bubble system';
+                div.textContent = welcomeText;
+                messages.prepend(div);
+            }
+        }
 
         function toggleAssistant() {
             const win = document.getElementById('kap-assistant-window');
             win.classList.toggle('open');
             if (win.classList.contains('open')) {
+                updateWelcomeMessage();
                 document.getElementById('chat-input').focus();
             }
         }
@@ -1426,6 +1521,9 @@
             // Open window
             win.classList.add('open');
 
+            // Update Welcome
+            updateWelcomeMessage();
+
             // Set text
             input.value = promptText;
 
@@ -1433,7 +1531,25 @@
             input.focus();
             input.setSelectionRange(input.value.length, input.value.length);
 
+            // If in fullscreen mode, ensure we stay there or handle it?
+            // The requirement didn't specify auto-fullscreen on edit, but it might be nice.
+            // For now, standard behavior.
+
             showToast('Prompt zur Bearbeitung geladen.');
+        }
+
+        function toggleFullscreenInput() {
+            const win = document.getElementById('kap-assistant-window');
+            const icon = document.getElementById('fullscreen-icon');
+
+            win.classList.toggle('fullscreen-mode');
+
+            if (win.classList.contains('fullscreen-mode')) {
+                icon.textContent = 'close_fullscreen';
+                document.getElementById('chat-input').focus();
+            } else {
+                icon.textContent = 'open_in_full';
+            }
         }
 
         function handleAssistantSend() {
