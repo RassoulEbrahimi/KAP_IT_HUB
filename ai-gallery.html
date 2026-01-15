@@ -461,60 +461,95 @@
                 }
             ],
             sales: [
+                // 1. PILLAR: Outreach & Kommunikation
                 {
                     title: "Kaltakquise-E-Mail",
                     desc: "Überzeugende E-Mail für Erstgespräche an spezifische Entscheider.",
-                    prompt: "Schreibe eine kurze, überzeugende Kaltakquise-E-Mail an einen [Jobtitel] bei [Unternehmen]. Nutze diesen Hintergrund: [Infos]. Ziel: Erstgespräch vereinbaren.",
-                    tag: "Sales",
+                    prompt: "Schreibe eine kurze, überzeugende Kaltakquise-E-Mail an einen [Jobtitel] bei [Unternehmen]. Nutze diesen Hintergrund: [Value Props]. Format: E-Mail-ready.",
+                    tag: "Sales: Outreach",
                     icon: "mail"
                 },
                 {
                     title: "Demo Follow-up",
                     desc: "Beratende Follow-up-E-Mail nach einer Demo mit nächsten Schritten.",
-                    prompt: "Schreibe diese Follow-up-E-Mail nach einer Demo um, damit sie beratender klingt. Inklusive Zusammenfassung, nächste Schritte und CTA.",
-                    tag: "Sales",
+                    prompt: "Schreibe diese Follow-up-E-Mail nach einer Demo um, damit sie beratender klingt. Inklusive Recap, nächste Schritte und Call-to-Action.",
+                    tag: "Sales: Outreach",
                     icon: "forward_to_inbox"
                 },
                 {
+                    title: "Renewal Pitch",
+                    desc: "Erneuerungs-Pitch für Bestandskunden mit ROI-Fokus.",
+                    prompt: "Entwirfe einen Erneuerungs-Pitch für [Kundenname] basierend auf: [Verlaufsdaten]. Hebe den ROI hervor und gib eine klare Empfehlung ab.",
+                    tag: "Sales: Outreach",
+                    icon: "autorenew"
+                },
+
+                // 2. PILLAR: Vertriebsstrategie & Planung
+                {
                     title: "Strategischer Account-Plan",
                     desc: "Umfassender Plan für Key Accounts mit Zielen und Stakeholdern.",
-                    prompt: "Erstelle einen Account-Plan für [Kunde]. Inklusive Ziele, Stakeholder, Risiken und Chancen. Fokus: Langfristige Partnerschaft.",
-                    tag: "Sales",
+                    prompt: "Erstelle einen Account-Plan für [Kunde]. Nutze: Unternehmensprofil, Prioritäten, Stakeholder. Ausgabe: Ziele, Risiken und Chancen.",
+                    tag: "Sales: Strategie",
                     icon: "map"
                 },
                 {
-                    title: "Markteintritts-Check",
+                    title: "Markteintritts-Planung",
                     desc: "Evaluierung neuer Märkte anhand von Kaufverhalten und Wettbewerb.",
-                    prompt: "Evaluiere den Markteintritt in [Region/Land] für unsere Lösung. Analysiere Kaufverhalten, Wettbewerb und regulatorische Faktoren.",
-                    tag: "Sales",
+                    prompt: "Evaluiere den Markteintritt in [Region/Land] für unsere Lösung. Recherchiere Kaufverhalten, Wettbewerb und regulatorische Faktoren.",
+                    tag: "Sales: Strategie",
                     icon: "public"
                 },
                 {
+                    title: "Account-Priorisierung",
+                    desc: "Priorisierung von Account-Listen nach strategischen Kriterien.",
+                    prompt: "Priorisiere diese Liste von Accounts: [Liste]. Nutze Kriterien wie Branche, Größe und Finanzierung. Gib Begründungen an.",
+                    tag: "Sales: Strategie",
+                    icon: "sort"
+                },
+
+                // 3. PILLAR: Marktforschung & Enablement
+                {
                     title: "Wettbewerbs-Battlecard",
                     desc: "Übersicht zu Stärken und Schwächen eines Wettbewerbers.",
-                    prompt: "Erstelle eine Battlecard für [Wettbewerber]. Inklusive Stärken, Schwächen, 'How we win'-Argumente und einen kurzen Talk-Track.",
-                    tag: "Sales",
+                    prompt: "Erstelle eine Battlecard für [Wettbewerber]. Inklusive Stärken, Schwächen, 'How we win'-Argumente und Talk-Tracks.",
+                    tag: "Sales: Enablement",
                     icon: "compare_arrows"
                 },
                 {
                     title: "Einwandbehandlung",
                     desc: "Souveräne Antworten auf gängige Kundeneinwände.",
-                    prompt: "Erstelle natürliche Antworten auf diese Einwände: [Einwand 1, 2]. Klinge sicher und kompetent, nutze Beweispunkte.",
-                    tag: "Sales",
+                    prompt: "Erstelle Antworten auf diese Einwände: [Einwände]. Klinge sicher und kompetent, nutze Statistiken oder Erfolgsgeschichten.",
+                    tag: "Sales: Enablement",
                     icon: "verified"
                 },
                 {
-                    title: "Pipeline-Analyse",
-                    desc: "Analyse von Conversion-Rates und Drop-off-Punkten im Vertriebsprozess.",
-                    prompt: "Analysiere diesen Pipeline-Export. Berechne Konversionsraten zwischen den Phasen und identifiziere den größten Drop-off-Punkt.",
-                    tag: "Sales",
-                    icon: "trending_up"
+                    title: "Sales One-Pager",
+                    desc: "Zusammenfassung von Produktvorteilen und Features für Pitches.",
+                    prompt: "Erstelle einen One-Pager, um [Produkt] bei [Persona] zu pitchen. Inklusive Vorteile, Features und Differenzierungsmerkmale.",
+                    tag: "Sales: Enablement",
+                    icon: "description"
+                },
+
+                // 4. PILLAR: Datenanalyse & Performance
+                {
+                    title: "Pipeline-Konvertierung",
+                    desc: "Analyse von Conversion-Rates und Drop-off-Punkten.",
+                    prompt: "Analysiere diesen Pipeline-Export. Berechne die Konversionsraten zwischen den Phasen und identifiziere den größten Drop-off-Punkt.",
+                    tag: "Sales: Daten",
+                    icon: "filter_alt"
+                },
+                {
+                    title: "Deal-Geschwindigkeit",
+                    desc: "Berechnung der durchschnittlichen Deal-Dauer von Lead bis Abschluss.",
+                    prompt: "Berechne die durchschnittliche Deal-Velocity pro Quartal (Tage von Lead bis Abschluss) aus diesem CRM-Export.",
+                    tag: "Sales: Daten",
+                    icon: "speed"
                 },
                 {
                     title: "Win/Loss Zusammenfassung",
                     desc: "Analyse der Gründe für gewonnene und verlorene Deals.",
                     prompt: "Analysiere diese CRM-Daten der letzten 3 Monate. Was sind die Top-3 Gründe für gewonnene und verlorene Deals?",
-                    tag: "Sales",
+                    tag: "Sales: Daten",
                     icon: "pie_chart"
                 }
             ],
@@ -590,7 +625,7 @@
                 let tagColor = "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300";
                 if (p.tag === 'Marketing') tagColor = "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400";
                 if (p.tag === 'HR & Recruiting') tagColor = "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
-                if (p.tag === 'Sales') tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
+                if (p.tag.startsWith('Sales')) tagColor = "bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400";
                 if (p.tag === 'Productivity') tagColor = "bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400";
 
                 card.innerHTML = `
