@@ -72,6 +72,115 @@
             opacity: 1;
             bottom: 50px;
         }
+
+        /* AI Assistant Widget */
+        #kap-assistant-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #kap-assistant-fab:hover {
+            transform: scale(1.1);
+        }
+
+        #kap-assistant-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 600px;
+            max-height: 80vh;
+            background: white;
+            z-index: 49;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark #kap-assistant-window {
+            background: #1a2632;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #kap-assistant-window.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Chat Bubbles */
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: #f8fafc;
+        }
+
+        .dark .chat-area {
+            background-color: #111921;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+            word-wrap: break-word;
+        }
+
+        .chat-bubble.user {
+            background: #f1f5f9;
+            color: #0f172a;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .dark .chat-bubble.user {
+            background: #334155;
+            color: #f1f5f9;
+        }
+
+        .chat-bubble.system {
+            background: #eff6ff;
+            color: #1e3a8a;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .dark .chat-bubble.system {
+            background: #1e293b;
+            color: #bfdbfe;
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -288,6 +397,52 @@
             </main>
         </div>
     </div>
+    <!-- AI Assistant Floating UI -->
+    <button id="kap-assistant-fab" onclick="toggleAssistant()"
+        class="size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 active:scale-95 transition-all">
+        <span class="material-symbols-outlined" style="font-size: 28px;">chat_spark</span>
+    </button>
+
+    <div id="kap-assistant-window">
+        <!-- Header -->
+        <div
+            class="h-14 bg-white dark:bg-[#1a2632] border-b border-slate-100 dark:border-slate-800 flex items-center justify-between px-4 shrink-0">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">smart_toy</span>
+                <span class="font-bold text-text-main dark:text-white">Kap AI Assistant</span>
+            </div>
+            <button onclick="toggleAssistant()"
+                class="text-text-secondary hover:text-text-main dark:hover:text-white transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Chat Area -->
+        <div id="chat-messages" class="chat-area">
+            <!-- Initial System Message -->
+            <div class="chat-bubble system">
+                Hallo! Wie kann ich dir heute mit deinen Prompts helfen?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 bg-white dark:bg-[#1a2632] border-t border-slate-100 dark:border-slate-800 shrink-0">
+            <div class="relative">
+                <textarea id="chat-input" rows="3" placeholder="Schreibe eine Nachricht oder bearbeite deinen Prompt..."
+                    class="w-full p-3 pr-12 rounded-xl bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-primary text-text-main dark:text-white resize-none text-sm leading-relaxed scrollbar-thin"></textarea>
+                <button onclick="handleAssistantSend()"
+                    class="absolute right-2 bottom-2 p-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">send</span>
+                </button>
+            </div>
+            <div class="mt-2 flex justify-between items-center text-xs text-text-secondary">
+                <span>Kap AI Demo Mode</span>
+                <span class="flex items-center gap-1"><span class="size-1.5 rounded-full bg-green-500"></span>
+                    Online</span>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Use Global Theme Script
         function toggleTheme() {
@@ -1194,11 +1349,15 @@
                     <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">${p.title}</h4>
                     <p class="text-text-secondary text-sm mb-6 flex-1">${p.desc}</p>
                     
-                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-2">
                         <button onclick="copyPrompt('${p.prompt.replace(/'/g, "\\'")}')" 
-                                class="w-full h-10 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 group-hover:border-primary/50">
+                                class="flex-1 h-10 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 group-hover:border-primary/50">
                             <span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors" style="font-size: 18px;">content_copy</span>
-                            <span>Prompt kopieren</span>
+                            <span>Kopieren</span>
+                        </button>
+                        <button onclick="openAssistant('${p.prompt.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n")}')" 
+                                class="h-10 px-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 group-hover:border-primary/50 group/btn" title="Im Assistant bearbeiten">
+                            <span class="material-symbols-outlined text-text-secondary group-hover/btn:text-primary transition-colors" style="font-size: 18px;">auto_fix</span>
                         </button>
                     </div>
                 `;
@@ -1245,7 +1404,64 @@
             copyPrompt(activeTipPrompt);
         }
 
-        // Init
+        function copyDailyTip() {
+            if (!activeTipPrompt) return;
+            copyPrompt(activeTipPrompt);
+        }
+
+        // --- AI Assistant Logic ---
+
+        function toggleAssistant() {
+            const win = document.getElementById('kap-assistant-window');
+            win.classList.toggle('open');
+            if (win.classList.contains('open')) {
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        function openAssistant(promptText) {
+            const win = document.getElementById('kap-assistant-window');
+            const input = document.getElementById('chat-input');
+
+            // Open window
+            win.classList.add('open');
+
+            // Set text
+            input.value = promptText;
+
+            // Focus and move cursor to end
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+
+            showToast('Prompt zur Bearbeitung geladen.');
+        }
+
+        function handleAssistantSend() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const userText = input.value.trim();
+
+            if (!userText) return;
+
+            // Add user message
+            appendMessage(userText, 'user');
+            input.value = '';
+
+            // Simulate typing delay
+            setTimeout(() => {
+                const response = "Demos-Modus: Der Assistant ist bereit für die API-Anbindung. Ihr bearbeiteter Prompt ist bereit zum Versenden.";
+                appendMessage(response, 'system');
+            }, 800);
+        }
+
+        function appendMessage(text, type) {
+            const messages = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `chat-bubble ${type}`;
+            div.textContent = text;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
         window.addEventListener('DOMContentLoaded', () => {
             filterPrompts('all');
             renderDailyTip();
