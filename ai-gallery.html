@@ -182,68 +182,63 @@
             }
         }
 
-        /* Custom Scrollbar */
-        .chat-area::-webkit-scrollbar,
-        textarea::-webkit-scrollbar {
+        /* Custom Scrollbar (Global) */
+        ::-webkit-scrollbar {
             width: 6px;
+            height: 6px;
         }
 
-        .chat-area::-webkit-scrollbar-track,
-        textarea::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        .chat-area::-webkit-scrollbar-thumb,
-        textarea::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb {
             background-color: #cbd5e1;
             border-radius: 20px;
         }
 
-        .dark .chat-area::-webkit-scrollbar-thumb,
-        .dark textarea::-webkit-scrollbar-thumb {
+        .dark ::-webkit-scrollbar-thumb {
             background-color: #475569;
         }
 
-        /* Fullscreen Input Mode */
-        #kap-assistant-window.fullscreen-mode {
-            bottom: 0;
-            right: 0;
-            width: 100vw;
-            height: 100vh;
-            max-height: 100vh;
-            border-radius: 0;
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Fullscreen Input Mode (Internal Overlay) */
+        #kap-assistant-window {
+            /* Ensure stacking context */
+            position: fixed;
+            z-index: 49;
         }
 
-        #kap-assistant-window.fullscreen-mode .h-14 {
-            display: none;
-        }
-
-        #kap-assistant-window.fullscreen-mode .chat-area {
-            display: none;
+        /* Header stays on top */
+        #kap-assistant-window>div:first-child {
+            position: relative;
+            z-index: 20;
         }
 
         #kap-assistant-window.fullscreen-mode .input-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            z-index: 10;
+            padding-top: 60px;
+            /* Space for header */
+            padding-bottom: 20px;
             border-top: none;
-            padding: 20px;
+            border-radius: 16px;
         }
 
         #kap-assistant-window.fullscreen-mode textarea {
-            flex: 1;
             height: 100%;
             border-radius: 12px;
             font-size: 1.1rem;
             line-height: 1.6;
-            padding-top: 40px;
-            /* Space for fullscreen button */
         }
 
-        .dark #kap-assistant-window.fullscreen-mode textarea {
-            background: #1a2632;
+        #kap-assistant-window.fullscreen-mode .chat-area {
+            /* Hidden or covered? Covered is fine as input has bg */
+            /* But display:none is safer to prevent focus issues */
+            visibility: hidden;
         }
     </style>
 </head>
@@ -464,7 +459,7 @@
     <!-- AI Assistant Floating UI -->
     <button id="kap-assistant-fab" onclick="toggleAssistant()"
         class="size-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-blue-600 active:scale-95 transition-all">
-        <span class="material-symbols-outlined" style="font-size: 28px;">chat_spark</span>
+        <span class="material-symbols-outlined" style="font-family: 'Material Symbols Outlined';">chat_spark</span>
     </button>
 
     <div id="kap-assistant-window">
@@ -1545,7 +1540,7 @@
             win.classList.toggle('fullscreen-mode');
 
             if (win.classList.contains('fullscreen-mode')) {
-                icon.textContent = 'close_fullscreen';
+                icon.textContent = 'fullscreen_exit';
                 document.getElementById('chat-input').focus();
             } else {
                 icon.textContent = 'open_in_full';
