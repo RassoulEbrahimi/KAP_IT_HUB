@@ -12,6 +12,7 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="global-styles.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -49,31 +50,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Toast Notification Styles */
-        .toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.5s, bottom 0.5s;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
-        }
 
         /* Modal Styles */
         .modal-overlay {
@@ -128,22 +105,30 @@
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
             <div class="flex items-center gap-8">
-                <a href="index.html" class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
-                    <div class="size-8 flex items-center justify-center rounded bg-primary/10">
-                        <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
-                    </div>
-                    <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kap
-                        IT Hub</h2>
-                </a>
-                <!-- Desktop Search -->
-                <div class="hidden md:flex flex-col min-w-80 h-10">
-                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
-                        <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
-                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                <div class="flex items-center gap-4">
+                    <button id="mobile-menu-btn" class="md:hidden text-text-main dark:text-white"
+                        onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
+                        <span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+                    </button>
+                    <a href="index.html"
+                        class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
+                        <div class="size-8 flex items-center justify-center rounded bg-primary/10">
+                            <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
                         </div>
-                        <input id="search-input" oninput="handleSearch()"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
-                            placeholder="Suche im Intranet..." value="" />
+                        <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                            Kap
+                            IT Hub</h2>
+                    </a>
+                    <!-- Desktop Search -->
+                    <div class="hidden md:flex flex-col min-w-80 h-10">
+                        <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+                            <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            </div>
+                            <input id="search-input" oninput="handleSearch()"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
+                                placeholder="Suche im Intranet..." value="" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,8 +158,8 @@
         </header>
         <div class="flex flex-1 overflow-hidden">
             <!-- Side Navigation Bar -->
-            <aside
-                class="hidden md:flex w-64 flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0">
+            <aside id="sidebar"
+                class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full transition-transform duration-300 flex flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0 md:relative md:translate-x-0">
                 <div class="flex flex-col gap-2 p-4">
                     <div class="flex flex-col mb-4 px-3">
                         <h1 class="text-text-secondary text-xs font-semibold uppercase tracking-wider leading-normal">
@@ -424,42 +409,9 @@
             e.target.reset();
         }
 
-        // Toggle Theme Function
-        function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
 
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                icon.innerText = 'dark_mode';
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                icon.innerText = 'light_mode';
-            }
-        }
-
-        // Initialize Theme
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            const icon = document.getElementById('theme-icon');
-            if (icon) icon.innerText = 'light_mode';
-        }
-
-        function showToast(message) {
-            let toast = document.getElementById("toast");
-            if (!toast) {
-                toast = document.createElement("div");
-                toast.id = "toast";
-                toast.className = "toast";
-                document.body.appendChild(toast);
-            }
-            toast.textContent = message;
-            toast.className = "toast show";
-            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
-        }
     </script>
+    <script src="global-utils.js"></script>
 </body>
 
 </html>
