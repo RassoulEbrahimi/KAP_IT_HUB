@@ -10,42 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Toggle Theme Function
-function toggleTheme() {
-    const html = document.documentElement;
-    const icon = document.getElementById('theme-icon');
-
-    if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-        icon.innerText = 'dark_mode';
-    } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-        icon.innerText = 'light_mode';
-    }
-}
-
-// Initialize Theme
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-    const icon = document.getElementById('theme-icon');
-    if (icon) icon.innerText = 'light_mode';
-}
-
-function showToast(message) {
-    let toast = document.getElementById("toast");
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toast";
-        toast.className = "toast";
-        document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.className = "toast show";
-    setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
-}
-
 // Render Function
 function renderCards(data) {
     const container = document.getElementById('card-container');
