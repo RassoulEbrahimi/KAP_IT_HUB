@@ -12,6 +12,7 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
+    <link href="global-styles.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -47,31 +48,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Toast Notification Styles */
-        .toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.5s, bottom 0.5s;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
-        }
 
         /* AI Assistant Widget */
         #kap-assistant-fab {
@@ -217,31 +194,7 @@
             }
         }
 
-        /* Custom Scrollbar (Global) */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
 
-        @media (max-width: 640px) {
-            ::-webkit-scrollbar {
-                width: 4px;
-                height: 4px;
-            }
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 20px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background-color: #475569;
-        }
 
         /* Fullscreen Input Mode (Internal Overlay) */
         #kap-assistant-window {
@@ -552,41 +505,8 @@
         </div>
     </div>
 
+    <script src="global-utils.js"></script>
     <script>
-        // Use Global Theme Script
-        function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.theme = 'light';
-                if (icon) icon.innerText = 'dark_mode';
-            } else {
-                html.classList.add('dark');
-                localStorage.theme = 'dark';
-                if (icon) icon.innerText = 'light_mode';
-            }
-        }
-
-        // Initialize Theme
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            const icon = document.getElementById('theme-icon');
-            if (icon) icon.innerText = 'light_mode';
-        }
-
-        function showToast(message) {
-            let toast = document.getElementById("toast");
-            if (!toast) {
-                toast = document.createElement("div");
-                toast.id = "toast";
-                toast.className = "toast";
-                document.body.appendChild(toast);
-            }
-            toast.textContent = message;
-            toast.className = "toast show";
-            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
-        }
 
         // Expanded Prompt Data
         const promptData = {
