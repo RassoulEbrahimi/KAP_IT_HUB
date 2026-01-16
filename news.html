@@ -12,6 +12,7 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="global-styles.css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -46,32 +47,6 @@
         html {
             scroll-behavior: smooth;
         }
-
-        /* Toast Notification Styles */
-        .toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.5s, bottom 0.5s;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-            bottom: 50px;
-        }
     </style>
 </head>
 
@@ -81,13 +56,21 @@
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
             <div class="flex items-center gap-8">
-                <a href="index.html" class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
-                    <div class="size-8 flex items-center justify-center rounded bg-primary/10">
-                        <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
-                    </div>
-                    <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kap
-                        IT Hub</h2>
-                </a>
+                <div class="flex items-center gap-4">
+                    <button id="mobile-menu-btn" class="md:hidden text-text-main dark:text-white"
+                        onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
+                        <span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+                    </button>
+                    <a href="index.html"
+                        class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
+                        <div class="size-8 flex items-center justify-center rounded bg-primary/10">
+                            <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
+                        </div>
+                        <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                            Kap
+                            IT Hub</h2>
+                    </a>
+                </div>
                 <!-- Desktop Search -->
                 <div class="hidden md:flex flex-col min-w-80 h-10">
                     <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
@@ -126,8 +109,8 @@
         </header>
         <div class="flex flex-1 overflow-hidden">
             <!-- Side Navigation Bar -->
-            <aside
-                class="hidden md:flex w-64 flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0">
+            <aside id="sidebar"
+                class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full transition-transform duration-300 flex flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0 md:relative md:translate-x-0">
                 <div class="flex flex-col gap-2 p-4">
                     <div class="flex flex-col mb-4 px-3">
                         <h1 class="text-text-secondary text-xs font-semibold uppercase tracking-wider leading-normal">
@@ -206,34 +189,7 @@
                     </div>
 
                     <!-- Top Story -->
-                    <div class="relative bg-[#1a2632] rounded-2xl overflow-hidden min-h-[400px] flex items-end">
-                        <div class="absolute inset-0 bg-cover bg-center"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-
-                        <div class="relative z-10 p-8 md:p-12 max-w-3xl">
-                            <span
-                                class="inline-block px-3 py-1 rounded bg-primary text-white text-xs font-bold mb-4">Top
-                                Story</span>
-                            <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-4">Erfolgreicher
-                                Launch der neuen KI-Plattform</h2>
-                            <p class="text-gray-300 text-lg mb-8 max-w-xl">Ab heute steht allen Mitarbeitern die neue
-                                Kap AI Suite zur Verfügung. Erfahren Sie mehr über die neuen Features und wie Sie diese
-                                nutzen können.</p>
-
-                            <div class="flex items-center gap-4 text-sm text-gray-400">
-                                <div class="flex items-center gap-2">
-                                    <div class="size-6 rounded-full bg-cover bg-center"
-                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
-                                    </div>
-                                    <span class="font-medium text-white">Sarah Jenkins</span>
-                                </div>
-                                <span>•</span>
-                                <span>Vor 2 Stunden</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="top-story-container"></div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <!-- Left Column: News Grid -->
@@ -241,46 +197,7 @@
                             <h3 class="text-xl font-bold text-text-main dark:text-white">Alle Neuigkeiten</h3>
 
                             <!-- News Card 1 -->
-                            <div
-                                class="flex flex-col md:flex-row gap-6 bg-white dark:bg-[#1a2632] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-                                <div class="w-full md:w-48 h-32 rounded-lg bg-cover bg-center shrink-0"
-                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJqh7ODz3v_7C-ajGurik7au4DdoUel59Wjc385Ksb-J2bnMPcp1poxkupcvve9ujiu8ilFzNxSDkCnaXUsIxwXlFl4wuxFERJ6e1NWlbmq8dQ3xqBfFKCqNDcFRF0NFtdWEPZ-c6RWNGzrJqT4aRMWwQRJ38JiJSXpnZBARgxo0hmgji2abCb7VSjWtbWR4Gk1Qt1Fx-fzuNOiChNqpYXulZze5AqS_gSSy99iwKWqwJFgzDh7KOKT8WkwPM72jtQEHOuNRUmviSq");'>
-                                </div>
-                                <div class="flex flex-col justify-center">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="text-xs font-bold text-text-secondary">Company</span>
-                                        <span class="text-xs text-text-secondary">•</span>
-                                        <span class="text-xs text-text-secondary">14. Okt 2023</span>
-                                    </div>
-                                    <h3
-                                        class="text-xl font-bold text-text-main dark:text-white mb-2 group-hover:text-primary transition-colors">
-                                        Quartalszahlen Q3: Umsatz steigt um 15% trotz Marktlage</h3>
-                                    <p class="text-text-secondary text-sm line-clamp-2">Der Vorstand präsentiert die
-                                        Ergebnisse des dritten Quartals. Besonders die Cloud-Sparte zeigt ein starkes
-                                        Wachstum im Vergleich zum Vorjahr.</p>
-                                </div>
-                            </div>
-
-                            <!-- News Card 2 -->
-                            <div
-                                class="flex flex-col md:flex-row gap-6 bg-white dark:bg-[#1a2632] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-                                <div class="w-full md:w-48 h-32 rounded-lg bg-cover bg-center shrink-0"
-                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATgmW4Ct_L1C9RpfTxaMCLt3LHZx_bhoxWSucr4IRNpMsbe69OINQeTJhu5ESiDp3J7RdtzbO0EIGu0SKQd88tWuK2iPQ29iHtrY5LgRSV-tmQ3pIt6qbpjXemP7CgH_LNjDBaWYqjAr67o1xEb1BOZr8xAsCRCVp9PJzuU0bFBhmhJpHk0RIn5L6l01qXptpCaWb0eZnBhrqYSI2TG1i08ciMzE0ouFEIfq9A4RSzT6Vx8bwBQNEfePqRBCuY2kv7Ry-FpcBKgNsK");'>
-                                </div>
-                                <div class="flex flex-col justify-center">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <span class="text-xs font-bold text-text-secondary">Events</span>
-                                        <span class="text-xs text-text-secondary">•</span>
-                                        <span class="text-xs text-text-secondary">12. Okt 2023</span>
-                                    </div>
-                                    <h3
-                                        class="text-xl font-bold text-text-main dark:text-white mb-2 group-hover:text-primary transition-colors">
-                                        Anmeldung zum "Hackathon 2023" ab sofort geöffnet</h3>
-                                    <p class="text-text-secondary text-sm line-clamp-2">Innovation trifft Code! Melden
-                                        Sie sich jetzt mit Ihrem Team an. Es winken tolle Preise und die Chance, echte
-                                        Probleme zu lösen.</p>
-                                </div>
-                            </div>
+                            <div id="news-grid" class="flex flex-col gap-6"></div>
                         </div>
 
                         <!-- Right Column: Sidebar Widgets -->
@@ -293,35 +210,7 @@
                                     Wichtige Termine
                                 </h3>
 
-                                <div class="flex flex-col gap-4">
-                                    <div class="flex gap-4 items-start">
-                                        <div
-                                            class="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg w-12 h-12 shrink-0">
-                                            <span class="text-xs font-bold uppercase">Okt</span>
-                                            <span class="text-lg font-bold">24</span>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-text-main dark:text-white text-sm">Townhall
-                                                Meeting</h4>
-                                            <p class="text-xs text-text-secondary">10:00 - 11:30 Uhr</p>
-                                            <p class="text-xs text-text-secondary mt-1">Hybrid / Raum 204</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="w-full h-px bg-slate-100 dark:bg-slate-800"></div>
-
-                                    <div class="flex gap-4 items-start">
-                                        <div
-                                            class="flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg w-12 h-12 shrink-0">
-                                            <span class="text-xs font-bold uppercase">Nov</span>
-                                            <span class="text-lg font-bold">01</span>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-text-main dark:text-white text-sm">Feiertag</h4>
-                                            <p class="text-xs text-text-secondary">Büro geschlossen</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="events-container" class="flex flex-col gap-4"></div>
 
                                 <button
                                     class="w-full mt-4 py-2 text-sm text-primary font-medium hover:text-blue-700 dark:hover:text-blue-400 flex items-center justify-center gap-1">
@@ -337,16 +226,7 @@
                                     <span class="material-symbols-outlined text-orange-500">trending_up</span>
                                     Trending
                                 </h3>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">#Homeoffice</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">#KI-Projekte</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">#Weihnachtsfeier</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-medium text-text-secondary hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer">#Jahresabschluss</span>
-                                </div>
+                                <div id="trending-container" class="flex flex-wrap gap-2"></div>
                             </div>
                         </div>
                     </div>
@@ -355,43 +235,9 @@
             </main>
         </div>
     </div>
-    <script>
-        // Toggle Theme Function
-        function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                icon.innerText = 'dark_mode';
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                icon.innerText = 'light_mode';
-            }
-        }
-
-        // Initialize Theme
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            const icon = document.getElementById('theme-icon');
-            if (icon) icon.innerText = 'light_mode';
-        }
-
-        function showToast(message) {
-            let toast = document.getElementById("toast");
-            if (!toast) {
-                toast = document.createElement("div");
-                toast.id = "toast";
-                toast.className = "toast";
-                document.body.appendChild(toast);
-            }
-            toast.textContent = message;
-            toast.className = "toast show";
-            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-    </script>
+    <script src="global-utils.js"></script>
+    <script src="news-data.js"></script>
+    <script src="news-logic.js"></script>
 </body>
 
 </html>
