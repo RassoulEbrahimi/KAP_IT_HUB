@@ -1,0 +1,34 @@
+/* Global Styles for Kap IT Hub */
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+@media (max-width: 640px) {
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
+
+/* Header Alignment Helper (Optional, but good for consistency) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* gap-4 equivalent */
+}
