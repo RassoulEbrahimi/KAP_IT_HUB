@@ -247,98 +247,9 @@
                             class="bg-primary hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">Suchen</button>
                     </div>
 
-                    <!-- Hardware & Software Section -->
-                    <div class="flex flex-col gap-6">
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">devices</span>
-                            <h3 class="text-xl font-bold text-text-main dark:text-white">Hardware & Software</h3>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Card: Notebook Request -->
-                            <div
-                                class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full relative overflow-hidden">
-                                <div
-                                    class="absolute top-4 right-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-bold px-2 py-1 rounded">
-                                    Verfügbar</div>
-                                <div
-                                    class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center mb-4">
-                                    <span class="material-symbols-outlined" style="font-size: 32px;">laptop_mac</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Neues Notebook
-                                    beantragen</h4>
-                                <p class="text-text-secondary text-sm mb-6 flex-1">Standard-Notebooks für neue
-                                    Mitarbeiter oder Austauschgeräte bei Defekt anfordern.</p>
-                                <button onclick="openModal()"
-                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-sm">add_circle</span>
-                                    <span>Antrag starten</span>
-                                </button>
-                            </div>
-
-                            <!-- Card: Software License Request -->
-                            <div
-                                class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
-                                <div
-                                    class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center mb-4">
-                                    <span class="material-symbols-outlined" style="font-size: 32px;">extension</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Software-Lizenz
-                                    anfordern</h4>
-                                <p class="text-text-secondary text-sm mb-6 flex-1">Lizenzen für Adobe Creative Cloud,
-                                    JetBrains, Visio oder Project beantragen.</p>
-                                <button onclick="openModal()"
-                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-sm">add_circle</span>
-                                    <span>Antrag starten</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Personal & Office Section -->
-                    <div class="flex flex-col gap-6">
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">person</span>
-                            <h3 class="text-xl font-bold text-text-main dark:text-white">Personal & Office</h3>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Card 1: Urlaubsantrag -->
-                            <div
-                                class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
-                                <div
-                                    class="size-12 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
-                                    <span class="material-symbols-outlined" style="font-size: 28px;">beach_access</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Urlaubsantrag</h4>
-                                <p class="text-text-secondary text-sm mb-4 flex-1">Erholungsurlaub, Sonderurlaub oder
-                                    Freizeitausgleich einfach digital einreichen.</p>
-                                <button onclick="showToast('Urlaubsantrag wird geladen...')"
-                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
-                                    <span>Antrag starten</span>
-                                </button>
-                            </div>
-
-                            <!-- Card 2: Home-Office -->
-                            <div
-                                class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
-                                <div
-                                    class="size-12 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
-                                    <span class="material-symbols-outlined" style="font-size: 28px;">home_work</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">Homeoffice-Anmeldung
-                                </h4>
-                                <p class="text-text-secondary text-sm mb-4 flex-1">Planen und melden Sie Ihre mobilen
-                                    Arbeitstage für den kommenden Monat.</p>
-                                <button onclick="showToast('Home-Office Formular wird geladen...')"
-                                    class="w-full h-10 rounded-lg bg-primary hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined"
-                                        style="font-size: 18px;">calendar_month</span>
-                                    <span>Anmelden</span>
-                                </button>
-                            </div>
-                        </div>
+                    <!-- Content Container (Dynamic) -->
+                    <div id="service-container" class="flex flex-col gap-10">
+                        <!-- Services will be rendered here by self-service-logic.js -->
                     </div>
                 </div>
             </main>
@@ -385,32 +296,8 @@
         </div>
     </div>
 
-    <script>
-        // Modal Logic
-        function openModal() {
-            document.getElementById('service-modal').classList.add('open');
-            document.getElementById('software-name').focus();
-        }
-
-        function closeModal() {
-            document.getElementById('service-modal').classList.remove('open');
-        }
-
-        document.getElementById('service-modal').addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        function submitRequest(e) {
-            e.preventDefault();
-            closeModal();
-            showToast('✅ Ticket #2024-894 erstellt: Anfrage an Helpdesk übermittelt');
-            e.target.reset();
-        }
-
-
-    </script>
+    <script src="self-service-data.js"></script>
+    <script src="self-service-logic.js"></script>
     <script src="global-utils.js"></script>
 </body>
 
