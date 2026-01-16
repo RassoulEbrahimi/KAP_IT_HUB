@@ -10,7 +10,22 @@ const m365Tips = [
         tagText: 'Teams',
         title: 'Best Practices für Meetings',
         description: 'Lernen Sie, wie Sie Meetings effizient strukturieren, die richtigen Rollen zuweisen und Besprechungsoptionen sicher einstellen.',
-        specialContent: ''
+        specialContent: '',
+        detailedContent: `
+                <div class="space-y-4">
+                    <h3 class="font-bold text-lg">1. Vor dem Meeting</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-text-secondary dark:text-slate-300">
+                         <li><strong>Agenda erstellen:</strong> Kein Meeting ohne Agenda. Füge sie direkt im Termin ein.</li>
+                         <li><strong>Besprechungsoptionen prüfen:</strong> Wer darf präsentieren? Wer muss im Wartebereich warten?</li>
+                         <li><strong>Teilnehmerkreis kritisch prüfen:</strong> Nur notwendige Personen einladen. Für reine Info-Weitergabe reicht oft eine Mail.</li>
+                    </ul>
+                    <h3 class="font-bold text-lg">2. Während des Meetings</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-text-secondary dark:text-slate-300">
+                         <li><strong>Aufzeichnung starten:</strong> Wenn vereinbart, für abwesende Kollegen aufzeichnen.</li>
+                         <li><strong>Notizen machen:</strong> Nutzen Sie Loop-Komponenten oder OneNote direkt im Meeting.</li>
+                         <li><strong>Moderation:</strong> Halten Sie die Zeit im Blick und führen Sie durch die Agenda.</li>
+                    </ul>
+                </div>`
     },
     {
         id: 2,
@@ -22,7 +37,20 @@ const m365Tips = [
         tagText: 'Outlook',
         title: 'E-Mail Regeln effizient nutzen',
         description: 'Automatisieren Sie Ihren Posteingang: Nachrichten automatisch in Ordner verschieben, priorisieren oder weiterleiten.',
-        specialContent: ''
+        specialContent: '',
+        detailedContent: `
+                <div class="space-y-4">
+                    <p class="text-sm text-text-secondary dark:text-slate-300">Regeln helfen, den Posteingang sauber zu halten. So geht's:</p>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-text-secondary dark:text-slate-300">
+                         <li>Rechtsklick auf eine E-Mail, die Sie automatisch verschieben wollen.</li>
+                         <li>Wählen Sie <strong>Regeln</strong> > <strong>Regel erstellen</strong>.</li>
+                         <li>Wählen Sie die Bedingung (z.B. "Von [Absender]") und die Aktion (z.B. "In Ordner verschieben").</li>
+                         <li>Klicken Sie auf <strong>OK</strong>.</li>
+                    </ol>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-100 dark:border-blue-800">
+                        <strong class="text-blue-700 dark:text-blue-300">Tipp:</strong> Erstellen Sie eine Regel für "CC"-Mails, um diese in einen Ordner "Später lesen" zu verschieben.
+                    </div>
+                </div>`
     },
     {
         id: 3,

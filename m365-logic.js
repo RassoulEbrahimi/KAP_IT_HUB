@@ -66,7 +66,7 @@ function renderCards(data) {
                 <h4 class="text-lg font-bold text-text-main dark:text-white mb-2">${tip.title}</h4>
                 <p class="text-text-secondary text-sm ${tip.specialContent ? 'mb-4' : 'mb-6 flex-1'}">${tip.description}</p>
                 ${tip.specialContent}
-                <button onclick="showToast('Anleitung öffnet sich in Kürze...')"
+                <button onclick="${tip.detailedContent ? `openModal(${tip.id})` : `showToast('Anleitung öffnet sich in Kürze...')`}"
                     class="w-full h-10 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 ${tip.specialContent ? '' : 'mt-auto'}">
                     <span class="material-symbols-outlined" style="font-size: 18px;">menu_book</span>
                     <span>Anleitung öffnen</span>
@@ -75,6 +75,31 @@ function renderCards(data) {
         `;
         container.insertAdjacentHTML('beforeend', html);
     });
+}
+
+// Modal Functions
+function openModal(id) {
+    const tip = m365Tips.find(t => t.id === id);
+    if (!tip || !tip.detailedContent) return;
+
+    const modal = document.getElementById('info-modal');
+    const titleEl = document.getElementById('modal-title');
+    const contentEl = document.getElementById('modal-content');
+
+    if (modal && titleEl && contentEl) {
+        titleEl.textContent = tip.title;
+        contentEl.innerHTML = tip.detailedContent;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('info-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
 }
 
 // Filter Function
