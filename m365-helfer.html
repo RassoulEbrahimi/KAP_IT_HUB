@@ -81,53 +81,62 @@
         <header
             class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white dark:bg-[#1a2632] dark:border-slate-800 px-6 py-3 shrink-0 z-20">
             <div class="flex items-center gap-8">
-                <a href="index.html" class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
-                    <div class="size-8 flex items-center justify-center rounded bg-primary/10">
-                        <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
-                    </div>
-                    <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Kap
-                        IT Hub</h2>
-                </a>
-                <!-- Desktop Search -->
-                <div class="hidden md:flex flex-col min-w-80 h-10">
-                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
-                        <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
-                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                <div class="flex items-center gap-4">
+                    <button id="mobile-menu-btn" class="md:hidden text-text-main dark:text-white"
+                        onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
+                        <span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+                    </button>
+                    <a href="index.html"
+                        class="flex items-center gap-4 text-primary hover:opacity-80 transition-opacity">
+                        <div class="size-8 flex items-center justify-center rounded bg-primary/10">
+                            <span class="material-symbols-outlined text-primary" style="font-size: 24px;">hub</span>
                         </div>
-                        <input id="search-input" oninput="handleSearch()"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
-                            placeholder="Suche im Intranet..." value="" />
+                        <h2 class="text-text-main dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                            Kap
+                            IT Hub</h2>
+                    </a>
+                    <!-- Desktop Search -->
+                    <div class="hidden md:flex flex-col min-w-80 h-10">
+                        <div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+                            <div class="text-text-secondary flex items-center justify-center pl-4 pr-2">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            </div>
+                            <input id="search-input" oninput="handleSearch()"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 focus:outline-none text-text-main dark:text-white placeholder:text-text-secondary text-sm font-normal leading-normal"
+                                placeholder="Suche im Intranet..." value="" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex items-center gap-4">
-                <button onclick="showToast('Du hast keine neuen Benachrichtigungen.')"
-                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors relative">
-                    <span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
-                    <span
-                        class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2632]"></span>
-                </button>
-                <!-- Theme Toggle -->
-                <button onclick="toggleTheme()"
-                    class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors">
-                    <span id="theme-icon" class="material-symbols-outlined" style="font-size: 24px;">dark_mode</span>
-                </button>
-                <button onclick="showToast('Profil-Einstellungen in Vorbereitung.')"
-                    class="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                    <div class="bg-center bg-no-repeat bg-cover rounded-full size-8"
-                        data-alt="User profile picture placeholder"
-                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
-                    </div>
-                    <span class="text-sm font-medium hidden lg:block text-text-main dark:text-white">Sarah Müller</span>
-                    <span class="material-symbols-outlined text-text-secondary hidden lg:block"
-                        style="font-size: 20px;">expand_more</span>
-                </button>
-            </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="showToast('Du hast keine neuen Benachrichtigungen.')"
+                        class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors relative">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1a2632]"></span>
+                    </button>
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()"
+                        class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-text-main dark:text-white transition-colors">
+                        <span id="theme-icon" class="material-symbols-outlined"
+                            style="font-size: 24px;">dark_mode</span>
+                    </button>
+                    <button onclick="showToast('Profil-Einstellungen in Vorbereitung.')"
+                        class="flex items-center gap-2 pl-1 pr-3 py-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <div class="bg-center bg-no-repeat bg-cover rounded-full size-8"
+                            data-alt="User profile picture placeholder"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYXFOzDmoa-HDRIuE1yL2-YTwM5Ejvyn2umzfAw6kpx3-sfAbaUMHOa0eau7dnbzg8PunhJd0PpEGye8dseT6F_hvtTn5SRp1X8fzTqzx0DCgUvE1f_8KrIDWtrEt7S9KPG1rUL4bRs_5gASVpU20SWk4LbqXwbxQw9bTuOr7n4rRYfeUcZL8gOs15pguLnsScqTf3dztnv9aTfCllLqDg4Zj543I9akOKF3yhqZbFRkFsQ_MEQsF0lp9DUkbAabQsTKiEb_3ROXFR");'>
+                        </div>
+                        <span class="text-sm font-medium hidden lg:block text-text-main dark:text-white">Sarah
+                            Müller</span>
+                        <span class="material-symbols-outlined text-text-secondary hidden lg:block"
+                            style="font-size: 20px;">expand_more</span>
+                    </button>
+                </div>
         </header>
         <div class="flex flex-1 overflow-hidden">
             <!-- Side Navigation Bar -->
-            <aside
-                class="hidden md:flex w-64 flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0">
+            <aside id="sidebar"
+                class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full transition-transform duration-300 flex flex-col bg-white dark:bg-[#1a2632] border-r border-slate-200 dark:border-slate-800 shrink-0 md:relative md:translate-x-0">
                 <div class="flex flex-col gap-2 p-4">
                     <div class="flex flex-col mb-4 px-3">
                         <h1 class="text-text-secondary text-xs font-semibold uppercase tracking-wider leading-normal">
@@ -208,7 +217,8 @@
                         <div class="flex-1 relative">
                             <span
                                 class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
-                            <input type="text" placeholder="Was möchten Sie heute in M365 erledigen?"
+                            <input id="page-search-input" type="text"
+                                placeholder="Was möchten Sie heute in M365 erledigen?" oninput="handleSearch()"
                                 class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border-none focus:ring-2 focus:ring-primary text-text-main dark:text-white">
                         </div>
                         <button
@@ -246,7 +256,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Card 1: Meeting Best Practices -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
@@ -260,7 +270,7 @@
                             <p class="text-text-secondary text-sm mb-6 flex-1">Lernen Sie, wie Sie Meetings effizient
                                 strukturieren, die richtigen Rollen zuweisen und Besprechungsoptionen sicher einstellen.
                             </p>
-                            <button
+                            <button onclick="showToast('Anleitung öffnet sich in Kürze...')"
                                 class="w-full h-10 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-text-main dark:text-white font-medium text-sm transition-colors flex items-center justify-center gap-2">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">menu_book</span>
                                 <span>Anleitung öffnen</span>
@@ -269,7 +279,7 @@
 
                         <!-- Card 2: Outlook Rules -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -291,7 +301,7 @@
 
                         <!-- Card 3: SharePoint Versioning -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 flex items-center justify-center">
@@ -314,7 +324,7 @@
 
                         <!-- Card 4: OneDrive Sharing -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 flex items-center justify-center">
@@ -336,7 +346,7 @@
 
                         <!-- Card 5: Loop Components (Tip of the Week) -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full border-l-4 border-l-primary/50">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full border-l-4 border-l-primary/50">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center">
@@ -369,7 +379,7 @@
 
                         <!-- Card 6: Teams Channels vs Chat -->
                         <div
-                            class="bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                            class="content-card bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
                             <div class="flex items-center justify-between mb-4">
                                 <div
                                     class="size-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
@@ -428,6 +438,29 @@
             toast.textContent = message;
             toast.className = "toast show";
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        function handleSearch() {
+            // Get value from either search input (header or page)
+            const headerSearch = document.getElementById('search-input');
+            const pageSearch = document.getElementById('page-search-input');
+
+            // Determine which input triggered the event or has value
+            let query = "";
+            if (headerSearch && headerSearch.value) query = headerSearch.value;
+            if (pageSearch && pageSearch.value) query = pageSearch.value;
+
+            query = query.toLowerCase();
+
+            const cards = document.querySelectorAll('.content-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
