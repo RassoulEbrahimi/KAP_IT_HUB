@@ -327,5 +327,64 @@ const m365Tips = [
                     </p>
                 </div>
             </div>`
+    },
+    {
+        id: 9,
+        app: 'OneNote',
+        icon: 'edit_note',
+        iconColorClass: 'text-purple-700 dark:text-purple-400',
+        iconBgClass: 'bg-purple-50 dark:bg-purple-900/30',
+        tagClass: 'bg-slate-100 dark:bg-slate-700 text-text-secondary',
+        tagText: 'OneNote',
+        title: 'Digitales Notizbuch',
+        description: 'Erfassen Sie Ideen, nutzen Sie den Mathe-Assistenten und organisieren Sie Meetings mit Audio-Notizen.',
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p><strong>OneNote</strong> ist mehr als nur Text. Es ist Ihr digitaler Leitz-Ordner für alles – von einfachen Mitschriften bis hin zu komplexen Projektplänen.</p>
+
+                <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-100 dark:border-purple-800">
+                    <h4 class="font-bold text-purple-800 dark:text-purple-300 mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined">calculate</span> Mathe-Assistent
+                    </h4>
+                    <p class="text-sm text-text-secondary dark:text-slate-300 mb-2">
+                        Schreiben Sie eine Gleichung (handschriftlich oder getippt). OneNote löst sie und zeigt Ihnen sogar die Rechenwege Schritt für Schritt.
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-text-secondary dark:text-slate-300 ml-2">
+                        <li>Gehen Sie auf <strong>Zeichnen</strong> > Gleichung schreiben/markieren.</li>
+                        <li>Klicken Sie auf <strong>Mathe</strong> und wählen Sie eine Aktion (z.B. "Lösen").</li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-text-secondary">mic</span> Audio-Notizen
+                        </h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300">
+                            Nehmen Sie Meetings direkt in OneNote auf. Die Aufnahme wird mit Ihren getippten Notizen synchronisiert.
+                            <br><em class="text-xs opacity-80">Einfügen > Audio</em>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-text-secondary">smart_display</span> Interaktiv
+                        </h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300">
+                            Betten Sie YouTube-Videos, Microsoft Forms Quizze oder Sways direkt in Ihre Seite ein, indem Sie einfach den Link einfügen.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 dark:border-slate-700 pt-4 flex gap-3 items-start">
+                    <span class="material-symbols-outlined text-purple-600 mt-1">vertical_split</span>
+                    <div>
+                        <h4 class="font-bold text-sm mb-1">Layout anpassen (Vertical Tabs)</h4>
+                        <p class="text-xs text-text-secondary dark:text-slate-400">
+                            Mögen Sie die Navigation lieber links wie im Datei-Explorer? Wechseln Sie zu <strong>Vertikale Registerkarten</strong> unter <em>Ansicht > Registerkartenlayout</em>.
+                        </p>
+                    </div>
+                </div>
+            </div>`
     }
 ];
