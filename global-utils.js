@@ -44,3 +44,20 @@ function showToast(message) {
         });
     }
 })();
+
+
+// Sidebar Click Outside to Close
+document.addEventListener('click', function (event) {
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+
+    // If elements exist and sidebar is OPEN (doesn't have the hide class)
+    if (sidebar && menuBtn && !sidebar.classList.contains('-translate-x-full')) {
+        // If the click target is NOT the sidebar AND NOT the menu button
+        if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+            // Close the sidebar
+            sidebar.classList.add('-translate-x-full');
+        }
+    }
+});
+
