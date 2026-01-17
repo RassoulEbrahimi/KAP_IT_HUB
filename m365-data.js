@@ -275,5 +275,57 @@ const m365Tips = [
                     </div>
                 </div>
             </div>`
+    },
+    {
+        id: 8,
+        app: 'To Do',
+        icon: 'check_circle', // آیکون مناسب برای تسک‌ها
+        iconColorClass: 'text-sky-600 dark:text-sky-400',
+        iconBgClass: 'bg-sky-50 dark:bg-sky-900/30',
+        tagClass: 'bg-slate-100 dark:bg-slate-700 text-text-secondary',
+        tagText: 'To Do',
+        title: 'Aufgaben meistern',
+        description: 'Organisieren Sie Ihren Arbeitstag mit intelligenten Listen, täglicher Planung und Outlook-Integration.',
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p><strong>Microsoft To Do</strong> ist Ihr persönlicher Planer, um den Überblick über Aufgaben zu behalten – integriert in Ihr M365-Ökosystem.</p>
+                
+                <div class="bg-sky-50 dark:bg-sky-900/20 p-4 rounded-lg border border-sky-100 dark:border-sky-800 flex gap-4 items-start">
+                   <span class="material-symbols-outlined text-sky-600 dark:text-sky-400 text-3xl">wb_sunny</span>
+                   <div>
+                       <h4 class="font-bold text-sky-800 dark:text-sky-300 mb-1">Die "Mein Tag"-Ansicht</h4>
+                       <p class="text-sm text-text-secondary dark:text-slate-300">
+                           Starten Sie jeden Morgen mit einer leeren Seite. Fügen Sie Aufgaben aus Ihren Listen zu "Mein Tag" hinzu, um sich nur auf das zu konzentrieren, was heute wichtig ist. Die Liste setzt sich jede Nacht zurück.
+                       </p>
+                   </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-text-secondary">sync</span> Outlook Sync
+                        </h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300">
+                            Markieren Sie eine E-Mail in Outlook mit der roten Fahne 🚩, und sie erscheint automatisch als Aufgabe in Ihrer "Gekennzeichnete E-Mails"-Liste in To Do.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-text-secondary">group_add</span> Teilen
+                        </h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300">
+                            Erstellen Sie Listen für Projekte und teilen Sie diese mit Kollegen. Sie können Aufgaben direkt Personen zuweisen, um die Zusammenarbeit zu fördern.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 dark:border-slate-700 pt-4">
+                    <h4 class="font-bold text-sm mb-1">Alles an einem Ort</h4>
+                    <p class="text-xs text-text-secondary dark:text-slate-400">
+                        Aufgaben, die Ihnen in <strong>Microsoft Planner</strong> zugewiesen wurden, erscheinen automatisch in der Liste "Mir zugewiesen".
+                    </p>
+                </div>
+            </div>`
     }
 ];
