@@ -227,48 +227,48 @@
                     </div>
 
                     <!-- Filter Chips -->
-                    <div class="flex items-center gap-2 overflow-x-auto pb-2">
+                    <div class="flex items-center gap-2 flex-wrap">
                         <span class="text-sm font-medium text-text-main dark:text-white mr-2">Apps:</span>
                         <button onclick="filterByApp('Alle')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-text-main text-white transition-all shadow-sm filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-text-main text-white transition-all shadow-sm filter-btn"
                             data-app="Alle">Alle</button>
                         <button onclick="filterByApp('Teams')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="Teams">
                             <span class="material-symbols-outlined text-sm">groups</span> Teams
                         </button>
                         <button onclick="filterByApp('Outlook')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="Outlook">
                             <span class="material-symbols-outlined text-sm">mail</span> Outlook
                         </button>
                         <button onclick="filterByApp('To Do')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="To Do">
                             <span class="material-symbols-outlined text-sm">check_circle</span> To Do
                         </button>
                         <button onclick="filterByApp('SharePoint')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="SharePoint">
                             <span class="material-symbols-outlined text-sm">folder_open</span> SharePoint
                         </button>
                         <button onclick="filterByApp('OneDrive')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="OneDrive">
                             <span class="material-symbols-outlined text-sm">cloud</span> OneDrive
                         </button>
                         <button onclick="filterByApp('OneNote')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="OneNote">
                             <span class="material-symbols-outlined text-sm">edit_note</span> OneNote
                         </button>
                         <button onclick="filterByApp('Word')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="Word">
                             <span class="material-symbols-outlined text-sm">description</span> Word
                         </button>
                         <button onclick="filterByApp('Loop')"
-                            class="px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
+                            class="whitespace-nowrap px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-slate-800 text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-sm border border-slate-200 dark:border-slate-700 flex items-center gap-2 filter-btn"
                             data-app="Loop">
                             <span class="material-symbols-outlined text-sm">loop</span> Loop
                         </button>
