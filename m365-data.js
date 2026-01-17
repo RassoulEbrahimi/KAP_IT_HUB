@@ -94,6 +94,41 @@ const m365Tips = [
                         <li>Klicke auf <strong>"+"</strong> (Neuer Workspace)</li>
                         <li>Gib einen <strong>Titel</strong> ein und starte</li>
                     </ol>
+                </div>`,
+        detailedContent: `
+                <div class="space-y-6">
+                    <p><strong>Microsoft Loop</strong> ist eine transformative Co-Creation-Experience, die Teams, Inhalte und Aufgaben über Ihre Tools und Geräte hinweg zusammenbringt.</p>
+                    
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-100 dark:border-purple-800">
+                       <h4 class="font-bold text-purple-700 dark:text-purple-300 mb-2">Die 3 Elemente von Loop:</h4>
+                       <ul class="list-disc list-inside text-sm space-y-1">
+                         <li><strong>Komponenten:</strong> Tragbare Inhalte (Listen, Tabellen, Notizen), die in Chats, Mails oder Dokumenten synchron bleiben.</li>
+                         <li><strong>Seiten:</strong> Flexible Canvas im Loop-Workspace für Dateien, Links und Daten.</li>
+                         <li><strong>Arbeitsbereiche:</strong> Gemeinsame Räume für Projekte, um alles Wichtige an einem Ort zu sehen.</li>
+                       </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Loop in Microsoft Teams</h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300 mb-2">So nutzen Sie Loop-Komponenten im Chat für Echtzeit-Zusammenarbeit:</p>
+                        <ol class="list-decimal list-inside space-y-1 text-sm text-text-secondary dark:text-slate-300">
+                            <li>Öffnen Sie einen Chat in Teams.</li>
+                            <li>Klicken Sie unter dem Eingabefeld auf das <strong>Loop-Symbol</strong> (Schleifen-Icon).</li>
+                            <li>Wählen Sie eine Komponente (z.B. Checkliste, Tabelle, Absatz).</li>
+                            <li>Geben Sie Inhalte ein und klicken Sie auf <strong>Senden</strong>. Jeder im Chat kann nun live editieren.</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Loop in Word (Web)</h3>
+                        <p class="text-sm text-text-secondary dark:text-slate-300 mb-2">Betten Sie Live-Komponenten direkt in Ihre Dokumente ein:</p>
+                        <ol class="list-decimal list-inside space-y-1 text-sm text-text-secondary dark:text-slate-300">
+                            <li>Öffnen Sie ein Dokument in <strong>Word für das Web</strong>.</li>
+                            <li>Platzieren Sie den Cursor an der gewünschten Stelle.</li>
+                            <li>Gehen Sie auf den Reiter <strong>Einfügen</strong> > <strong>Loop-Komponente</strong>.</li>
+                            <li>Wählen Sie den gewünschten Typ. Die Komponente ist nun live und kann auch in Teams kopiert werden.</li>
+                        </ol>
+                    </div>
                 </div>`
     },
     {
