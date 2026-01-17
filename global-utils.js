@@ -46,6 +46,7 @@ function showToast(message) {
 })();
 
 
+
 // Sidebar Click Outside to Close
 document.addEventListener('click', function (event) {
     const sidebar = document.getElementById('sidebar');
@@ -60,4 +61,18 @@ document.addEventListener('click', function (event) {
         }
     }
 });
+
+
+// Register Service Worker (PWA)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+                console.error('Service Worker registration failed:', error);
+            });
+    });
+}
 
