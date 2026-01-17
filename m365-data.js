@@ -62,7 +62,28 @@ const m365Tips = [
         tagText: 'SharePoint',
         title: 'Dokumenten-Versionierung',
         description: 'Verstehen Sie den Versionsverlauf, stellen Sie alte Dateiversionen wieder her und arbeiten Sie gleichzeitig an Dokumenten.',
-        specialContent: ''
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p>SharePoint speichert automatisch Versionen Ihrer Dokumente. So gehen Sie damit um:</p>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Versionsverlauf nutzen</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-text-secondary dark:text-slate-300">
+                        <li>Rechtsklick auf die Datei in der Liste.</li>
+                        <li>Wählen Sie <strong>Versionsverlauf</strong>.</li>
+                        <li>Sie sehen alle Speicherpunkte mit Datum und Bearbeiter.</li>
+                        <li>Klicken Sie auf das Datum einer alten Version, um sie anzusehen oder <strong>Wiederherzustellen</strong>.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-teal-50 dark:bg-teal-900/20 p-4 rounded-lg border border-teal-100 dark:border-teal-800">
+                    <h4 class="font-bold text-teal-700 dark:text-teal-300 mb-1">Gleichzeitiges Bearbeiten</h4>
+                    <p class="text-sm text-text-secondary dark:text-slate-300">
+                        Wenn Sie ein Dokument in Word/Excel Online öffnen, können Sie sehen, wo Kollegen gerade tippen (farbige Cursor). Es ist kein "Auschecken" mehr nötig!
+                    </p>
+                </div>
+            </div>`
     },
     {
         id: 4,
@@ -74,7 +95,36 @@ const m365Tips = [
         tagText: 'OneDrive',
         title: 'Dateien teilen & schützen',
         description: 'Sicheres Teilen von Dateien mit externen Partnern, Einrichten von Ablaufdaten und Passwörtern.',
-        specialContent: ''
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p>Statt große Anhänge zu versenden, teilen Sie sichere Links über OneDrive:</p>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Sicheres Teilen</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm text-text-secondary dark:text-slate-300">
+                        <li>Rechtsklick auf die Datei > <strong>Teilen</strong>.</li>
+                        <li>Klicken Sie auf das Zahnrad-Symbol (Einstellungen), um Optionen zu sehen:
+                            <ul class="list-disc list-inside ml-4 mt-1 text-xs opacity-80">
+                                <li><strong>Jeder:</strong> Öffentlich (Vorsicht!)</li>
+                                <li><strong>Personen in Kap IT Hub:</strong> Nur Kollegen.</li>
+                                <li><strong>Bestimmte Personen:</strong> Nur Empfänger der Mail.</li>
+                            </ul>
+                        </li>
+                        <li>Optional: Setzen Sie ein <strong>Ablaufdatum</strong> oder ein <strong>Passwort</strong> für externe Links.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-sky-50 dark:bg-sky-900/20 p-4 rounded-lg border border-sky-100 dark:border-sky-800 flex gap-3 items-start">
+                    <span class="material-symbols-outlined text-sky-600">sync_lock</span>
+                    <div>
+                        <h4 class="font-bold text-sky-700 dark:text-sky-300 text-sm">Files On-Demand</h4>
+                        <p class="text-xs text-text-secondary dark:text-slate-300 mt-1">
+                            Dateien mit dem Wolken-Symbol ☁️ sind nur online und belegen keinen Platz auf Ihrem PC. Doppelklick lädt sie herunter.
+                        </p>
+                    </div>
+                </div>
+            </div>`
     },
     {
         id: 5,
@@ -142,5 +192,54 @@ const m365Tips = [
         title: 'Kanal vs. Gruppenchat',
         description: 'Ein Leitfaden zur Entscheidungsfindung: Wann sollten Sie einen neuen Kanal erstellen und wann reicht ein Gruppenchat?',
         specialContent: ''
+    },
+    {
+        id: 7,
+        app: 'Word',
+        icon: 'description',
+        iconColorClass: 'text-blue-700 dark:text-blue-400',
+        iconBgClass: 'bg-blue-50 dark:bg-blue-900/30',
+        tagClass: 'bg-slate-100 dark:bg-slate-700 text-text-secondary',
+        tagText: 'Word',
+        title: 'Intelligentes Schreiben',
+        description: 'Nutzen Sie KI-gestützte Funktionen wie den Editor, Diktierfunktion und Übersetzer für bessere Dokumente.',
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p><strong>Microsoft Word</strong> ist mehr als nur Textverarbeitung. Nutzen Sie diese intelligenten Features aus dem "Quick Guide":</p>
+                
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800">
+                   <h4 class="font-bold text-blue-700 dark:text-blue-300 mb-2 flex items-center gap-2">
+                       <span class="material-symbols-outlined">edit_note</span> Microsoft Editor
+                   </h4>
+                   <p class="text-sm text-text-secondary dark:text-slate-300 mb-2">Ihr persönlicher Schreibassistent für Grammatik und Stil.</p>
+                   <ul class="list-disc list-inside text-sm space-y-1">
+                     <li>Markiert Fehler (rot) und Stilschwächen (blau).</li>
+                     <li>Gibt Vorschläge für prägnantere Formulierungen.</li>
+                     <li><strong>Aktivieren:</strong> Reiter <em>Start</em> > <em>Editor</em>.</li>
+                   </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Diktieren (Speech-to-Text)</h3>
+                    <p class="text-sm text-text-secondary dark:text-slate-300 mb-2">Verfassen Sie Entwürfe schneller durch Sprechen:</p>
+                    <ol class="list-decimal list-inside space-y-1 text-sm text-text-secondary dark:text-slate-300">
+                        <li>Gehen Sie auf <strong>Start</strong> > <strong>Diktieren</strong> (Mikrofon-Icon).</li>
+                        <li>Warten Sie auf den roten Aufnahmepunkt.</li>
+                        <li>Sprechen Sie klar und deutlich (inkl. Satzzeichen wie "Punkt", "Neue Zeile").</li>
+                    </ol>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="border border-slate-200 dark:border-slate-700 p-3 rounded-lg">
+                        <h4 class="font-bold text-sm mb-1">Plastischer Reader</h4>
+                        <p class="text-xs text-text-secondary dark:text-slate-400">Unter <em>Ansicht</em> > <em>Plastischer Reader</em> können Sie den Fokus verbessern (Zeilenfokus, Seitenfarbe, Vorlesen).</p>
+                    </div>
+                    <div class="border border-slate-200 dark:border-slate-700 p-3 rounded-lg">
+                        <h4 class="font-bold text-sm mb-1">Übersetzen</h4>
+                        <p class="text-xs text-text-secondary dark:text-slate-400">Unter <em>Überprüfen</em> > <em>Übersetzen</em> können Sie Textabschnitte oder ganze Dokumente in eine andere Sprache konvertieren.</p>
+                    </div>
+                </div>
+            </div>`
     }
 ];
