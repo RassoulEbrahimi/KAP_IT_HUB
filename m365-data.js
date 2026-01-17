@@ -137,14 +137,7 @@ const m365Tips = [
         title: 'Kollaborative Komponenten',
         description: 'Nutzen Sie Loop-Komponenten in Teams-Chats und Outlook-Mails für Echtzeit-Zusammenarbeit an Listen und Tabellen.',
         highlight: true,
-        specialContent: `
-                <div class="rounded-lg bg-background-light dark:bg-background-dark p-3 text-xs text-text-secondary mb-4">
-                    <ol class="list-decimal list-inside space-y-1">
-                        <li>Öffne <strong>loop.microsoft.com</strong></li>
-                        <li>Klicke auf <strong>"+"</strong> (Neuer Workspace)</li>
-                        <li>Gib einen <strong>Titel</strong> ein und starte</li>
-                    </ol>
-                </div>`,
+        specialContent: '',
         detailedContent: `
                 <div class="space-y-6">
                     <p><strong>Microsoft Loop</strong> ist eine transformative Co-Creation-Experience, die Teams, Inhalte und Aufgaben über Ihre Tools und Geräte hinweg zusammenbringt.</p>
