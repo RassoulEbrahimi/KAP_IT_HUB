@@ -191,7 +191,48 @@ const m365Tips = [
         tagText: 'Teams',
         title: 'Kanal vs. Gruppenchat',
         description: 'Ein Leitfaden zur Entscheidungsfindung: Wann sollten Sie einen neuen Kanal erstellen und wann reicht ein Gruppenchat?',
-        specialContent: ''
+        specialContent: '',
+        detailedContent: `
+            <div class="space-y-6">
+                <p>Die Wahl zwischen Chat und Kanal ist entscheidend für eine organisierte Kommunikation. Hier ist die Faustregel:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-100 dark:border-indigo-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-indigo-600 dark:text-indigo-400">chat</span>
+                            <h4 class="font-bold text-indigo-700 dark:text-indigo-300">Gruppenchat</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm space-y-1 text-text-secondary dark:text-slate-300">
+                            <li><strong>Schnell & Informell:</strong> Für schnelle Absprachen ("Gehen wir Mittagessen?").</li>
+                            <li><strong>Privat:</strong> Nur für eingeladene Personen sichtbar.</li>
+                            <li><strong>Kurzlebig:</strong> Nachrichten verschwinden im Feed schnell nach oben.</li>
+                            <li><strong>Dateien:</strong> Werden im persönlichen OneDrive gespeichert.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border border-purple-100 dark:border-purple-800">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-purple-600 dark:text-purple-400">tag</span>
+                            <h4 class="font-bold text-purple-700 dark:text-purple-300">Kanal (Team)</h4>
+                        </div>
+                        <ul class="list-disc list-inside text-sm space-y-1 text-text-secondary dark:text-slate-300">
+                            <li><strong>Strukturiert:</strong> Für Projekte, Themen oder Abteilungen.</li>
+                            <li><strong>Transparent:</strong> Jeder im Team kann mitlesen und später einsteigen.</li>
+                            <li><strong>Durchsuchbar:</strong> Diskussionen bleiben im Kontext (Threads).</li>
+                            <li><strong>Dateien:</strong> Gehören dem Team (SharePoint).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border border-yellow-100 dark:border-yellow-800">
+                    <h4 class="font-bold text-yellow-800 dark:text-yellow-200 text-sm mb-1">Entscheidungshilfe:</h4>
+                    <p class="text-sm text-yellow-700 dark:text-yellow-300">
+                        Fragen Sie sich: <em>"Könnte diese Information für jemanden nützlich sein, der erst nächsten Monat zum Team stößt?"</em><br>
+                        Wenn <strong>JA</strong> -> Nutzen Sie einen <strong>Kanal</strong>.<br>
+                        Wenn <strong>NEIN</strong> -> Nutzen Sie einen <strong>Chat</strong>.
+                    </p>
+                </div>
+            </div>`
     },
     {
         id: 7,
